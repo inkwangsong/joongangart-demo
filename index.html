@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>중앙아트 디지털 악보몰 — 시안</title>
+<style>
+  :root{
+    --ink:#12292D; --tx:#12292D; --tx2:#4C6165; --tx3:#667577;
+    --ln:#E0E5E6; --ln2:#EEF2F2; --pt:#203BA1; --pt-tint:#EEF0FA;
+    --paper:#F9FBFB; --card:#fff; --lime:#C7F04A;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --tx:#E8EDED; --tx2:#AEBFC1; --tx3:#8FA0A2;
+      --ln:#2A3A3D; --ln2:#1C2A2D; --pt:#8FA3E8; --pt-tint:#1A2340;
+      --paper:#0E1A1C; --card:#152427;
+    }
+  }
+  :root[data-theme="dark"]{
+    --tx:#E8EDED; --tx2:#AEBFC1; --tx3:#8FA0A2;
+    --ln:#2A3A3D; --ln2:#1C2A2D; --pt:#8FA3E8; --pt-tint:#1A2340;
+    --paper:#0E1A1C; --card:#152427;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--paper); color:var(--tx);
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",
+      "Noto Sans KR",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:0 16px 80px;}
+  header{padding:72px 0 40px; border-bottom:1px solid var(--ln);}
+  .eyebrow{
+    font-size:12px; letter-spacing:.14em; font-weight:700;
+    color:var(--pt); text-transform:uppercase; margin:0 0 14px;
+  }
+  h1{
+    font-size:clamp(28px,5vw,40px); line-height:1.25; margin:0 0 14px;
+    letter-spacing:-.02em; font-weight:800;
+  }
+  .lede{font-size:16px; line-height:1.7; color:var(--tx2); margin:0; max-width:52ch;}
+  .meta{
+    margin-top:28px; display:flex; flex-wrap:wrap; gap:8px 20px;
+    font-size:13px; color:var(--tx3);
+  }
+  .meta b{color:var(--tx2); font-weight:600;}
+  h2{
+    font-size:13px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--tx3); font-weight:700; margin:48px 0 16px;
+  }
+  .grid{display:grid; gap:12px;}
+  a.card{
+    display:block; text-decoration:none; color:inherit;
+    background:var(--card); border:1px solid var(--ln);
+    border-radius:12px; padding:22px 24px;
+    transition:border-color .15s, transform .15s;
+  }
+  a.card:hover{border-color:var(--pt); transform:translateY(-2px);}
+  a.card:focus-visible{outline:2px solid var(--pt); outline-offset:2px;}
+  .card-top{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
+  .card h3{font-size:17px; margin:0; font-weight:700; letter-spacing:-.01em;}
+  .tag{
+    font-size:11px; font-weight:700; letter-spacing:.06em;
+    background:var(--pt-tint); color:var(--pt);
+    padding:3px 8px; border-radius:5px; white-space:nowrap;
+  }
+  .card p{margin:8px 0 0; font-size:14px; line-height:1.65; color:var(--tx2);}
+  .note{
+    margin-top:44px; padding:20px 24px; border-radius:12px;
+    background:var(--ln2); border:1px solid var(--ln);
+    font-size:14px; line-height:1.7; color:var(--tx2);
+  }
+  .note b{color:var(--tx);}
+  .note code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:13px; background:var(--card); border:1px solid var(--ln);
+    padding:2px 6px; border-radius:4px; color:var(--tx);
+  }
+  .note dl{margin:12px 0 0; display:grid; grid-template-columns:auto 1fr; gap:6px 14px;}
+  .note dt{font-weight:600; color:var(--tx3); font-size:13px;}
+  .note dd{margin:0; font-size:13px;}
+  footer{
+    margin-top:56px; padding-top:24px; border-top:1px solid var(--ln);
+    font-size:13px; color:var(--tx3); line-height:1.7;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">중앙아트 J&amp;A MUSIC</p>
+    <h1>디지털 악보몰 시안</h1>
+    <p class="lede">
+      중앙성가 합창 악보를 PDF로 구매해 바로 내려받는 서비스입니다.
+      고객 사이트와 관리자 페이지는 실제로 눌러서 동작을 확인하실 수 있습니다.
+    </p>
+    <div class="meta">
+      <span><b>작성</b> 송인광</span>
+      <span><b>문서</b> 4종</span>
+      <span><b>최종 수정</b> 2026년 10월 31일</span>
+    </div>
+  </header>
+
+  <h2>프로토타입</h2>
+  <div class="grid">
+    <a class="card" href="sheet.html">
+      <div class="card-top">
+        <h3>고객 사이트</h3>
+        <span class="tag">13개 화면</span>
+      </div>
+      <p>
+        홈 · 분류별 목록 · 악보 상세 · 장바구니 · 주문서 · 결제 · 내 악보함까지
+        구매 동선 전체가 이어집니다. 로그인 화면에서 <b>자동 입력</b>을 누르시면
+        테스트 계정이 채워집니다.
+      </p>
+    </a>
+    <a class="card" href="admin.html">
+      <div class="card-top">
+        <h3>관리자 페이지</h3>
+        <span class="tag">13개 메뉴</span>
+      </div>
+      <p>
+        악보 등록 · 주문 관리 · 환불 처리 · 정산 · 회원 · 접속 기록을 담았습니다.
+        로그인 정보는 아래 안내를 참고해 주세요.
+      </p>
+    </a>
+  </div>
+
+  <h2>기획 문서</h2>
+  <div class="grid">
+    <a class="card" href="review.html">
+      <div class="card-top">
+        <h3>회의용 요약</h3>
+        <span class="tag">먼저 보기</span>
+      </div>
+      <p>
+        서비스 개요와 핵심 정책, 그리고 결정이 필요한 사항을 추렸습니다.
+        시간이 많지 않으시면 이 문서부터 보시면 됩니다.
+      </p>
+    </a>
+    <a class="card" href="docs.html">
+      <div class="card-top">
+        <h3>통합 문서</h3>
+        <span class="tag">8개 문서</span>
+      </div>
+      <p>
+        기본 정책서(45개 정책 조항) · 화면 정책서 · 화면 기획서 · 기술 검토서 ·
+        시스템 구성 · 디자인 가이드 · 확인사항을 한 파일에 모았습니다.
+        왼쪽 목록으로 이동하실 수 있습니다.
+      </p>
+    </a>
+  </div>
+
+  <div class="note">
+    <b>관리자 페이지 로그인</b>
+    <dl>
+      <dt>아이디</dt><dd><code>admin@joongangart.com</code></dd>
+      <dt>비밀번호</dt><dd><code>joongang2026!</code></dd>
+    </dl>
+    <p style="margin:14px 0 0">
+      시안이므로 실제 결제는 일어나지 않습니다. 결제 단계는 PG사 연동 화면까지
+      흐름만 재현한 것이며, 악보 데이터와 회원 정보도 모두 예시입니다.
+    </p>
+  </div>
+
+  <footer>
+    중앙아트 J&amp;A MUSIC · 디지털 악보몰 기획 시안<br>
+    문의는 송인광에게 주시면 됩니다.
+  </footer>
+</div>
+</body>
+</html>
