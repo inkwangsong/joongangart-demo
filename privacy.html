@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>중앙아트 디지털 악보몰 — 개인정보 대응</title>
+<style>
+:root{
+  --ink:#12292D;--tx:#12292D;--tx2:#4C6165;--tx3:#8B9A9C;--ln:#E0E5E6;--ln2:#EEF2F2;
+  --teal:#1E4A50;--pt:#203BA1;--pt-tint:#EEF0FA;--red:#8A1F3D;--red-tint:#FAEDF1;
+  --lime:#C7F04A;--paper:#F9FBFB;--card:#F1F4F4;--ok:#1E7A4A;--warn:#B5761A;
+  --r1:5px;--r2:8px;--r3:12px;--pill:999px;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:#E9EDED;color:var(--tx);
+ font-family:'Pretendard','Malgun Gothic',-apple-system,'Apple SD Gothic Neo',sans-serif;
+ font-size:14px;line-height:1.85;letter-spacing:-.2px;
+ -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.doc{max-width:980px;margin:0 auto;background:#fff;box-shadow:0 0 28px rgba(0,0,0,.07);}
+.pad{padding:0 58px;}
+
+.cover{background:var(--teal);color:#fff;padding:56px 58px 46px;position:relative;overflow:hidden;}
+.cover::after{content:'';position:absolute;right:-70px;top:-70px;width:280px;height:280px;
+ border:1px solid rgba(255,255,255,.12);border-radius:50%;}
+.cover .k{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--lime);
+ margin-bottom:16px;position:relative;z-index:2;}
+.cover h1{font-size:32px;font-weight:750;line-height:1.3;margin:0 0 14px;letter-spacing:-1.5px;
+ position:relative;z-index:2;}
+.cover p{font-size:14px;color:rgba(255,255,255,.76);margin:0;line-height:1.85;
+ position:relative;z-index:2;}
+.cover .m{margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.18);
+ display:flex;gap:40px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,.6);
+ position:relative;z-index:2;}
+.cover .m b{display:block;color:#fff;font-weight:400;font-size:13.5px;margin-top:3px;}
+
+.toc{background:var(--paper);border-bottom:1px solid var(--ln);padding:24px 58px;}
+.toc-h{font-family:var(--mono);font-size:10.5px;letter-spacing:1.6px;color:var(--tx3);
+ margin-bottom:12px;}
+.toc ol{margin:0;padding-left:18px;columns:2;column-gap:40px;font-size:13px;color:var(--tx2);}
+.toc li{margin-bottom:5px;break-inside:avoid;}
+
+section{padding:48px 0 6px;}
+h2{font-size:21px;font-weight:750;letter-spacing:-1px;margin:0 0 8px;padding-bottom:12px;
+ border-bottom:2px solid var(--ink);display:flex;align-items:baseline;gap:12px;}
+h2 .no{font-family:var(--mono);font-size:11px;color:#fff;background:var(--ink);
+ padding:4px 10px;border-radius:var(--pill);font-weight:500;position:relative;top:-2px;}
+h3{font-size:15.5px;font-weight:700;margin:32px 0 10px;padding-left:11px;
+ border-left:3px solid var(--pt);}
+h4{font-size:14px;font-weight:700;margin:22px 0 8px;color:var(--tx);}
+p{margin:0 0 13px;}
+.lead{font-size:14.5px;color:var(--tx2);margin:16px 0 6px;line-height:1.95;}
+code{font-family:var(--mono);font-size:12px;background:var(--card);padding:2px 7px;
+ border-radius:4px;color:var(--teal);}
+
+pre{background:#12292D;color:#DCE6E4;border-radius:var(--r2);padding:18px 20px;
+ overflow-x:auto;font-family:var(--mono);font-size:12px;line-height:1.8;margin:14px 0 20px;
+ letter-spacing:0;}
+pre .c{color:#7E9A96;}
+pre .s{color:#C7F04A;}
+pre .k{color:#8FB3F5;}
+
+table{width:100%;border-collapse:collapse;margin:14px 0 24px;font-size:12.5px;}
+th,td{border:1px solid var(--ln);padding:10px 12px;text-align:left;vertical-align:top;}
+th{background:var(--paper);font-weight:600;font-size:11.5px;color:var(--tx2);}
+td.c,th.c{text-align:center;}
+td.mono{font-family:var(--mono);font-size:11.5px;letter-spacing:0;}
+
+.box{border:1px solid var(--ln);border-radius:var(--r3);padding:16px 18px;margin:18px 0;
+ background:var(--paper);break-inside:avoid;}
+.box-t{font-weight:700;font-size:13.5px;margin-bottom:7px;color:var(--pt);}
+.box.warn{border-left:3px solid var(--warn);background:#FFFCF5;}
+.box.warn .box-t{color:var(--warn);}
+.box.risk{border-left:3px solid var(--red);background:var(--red-tint);}
+.box.risk .box-t{color:var(--red);}
+.box.ok{border-left:3px solid var(--ok);background:#EDF7F1;}
+.box.ok .box-t{color:var(--ok);}
+.box p:last-child{margin-bottom:0;}
+
+figure{margin:22px 0 26px;border:1px solid var(--ln);border-radius:var(--r3);background:#fff;
+ break-inside:avoid;overflow:hidden;}
+figcaption{background:var(--paper);border-bottom:1px solid var(--ln);padding:10px 16px;
+ font-size:12px;color:var(--tx2);}
+figcaption b{color:var(--pt);}
+.figbody{padding:20px 16px;}
+svg{display:block;width:100%;height:auto;}
+
+.chk{border:1px solid var(--ln);border-radius:var(--r3);margin:16px 0 24px;overflow:hidden;}
+.chk-r{display:flex;gap:14px;padding:14px 16px;border-bottom:1px solid var(--ln2);
+ align-items:flex-start;}
+.chk-r:last-child{border-bottom:0;}
+.chk-n{width:26px;height:26px;border-radius:50%;background:var(--pt-tint);color:var(--pt);
+ font-family:var(--mono);font-size:11px;font-weight:700;display:flex;align-items:center;
+ justify-content:center;flex-shrink:0;}
+.chk-b b{display:block;font-size:13.5px;margin-bottom:3px;}
+.chk-b span{font-size:12.5px;color:var(--tx2);line-height:1.75;}
+
+.tag{display:inline-block;font-size:10.5px;padding:3px 10px;border-radius:var(--pill);
+ white-space:nowrap;font-weight:600;}
+.tag.must{background:var(--red-tint);color:var(--red);}
+.tag.rec{background:var(--pt-tint);color:var(--pt);}
+.tag.opt{background:var(--card);color:var(--tx2);}
+
+footer{margin-top:44px;border-top:1px solid var(--ln);padding:24px 58px 44px;
+ font-size:11.5px;color:var(--tx3);line-height:1.85;}
+
+@media print{body{background:#fff;}.doc{box-shadow:none;max-width:none;}
+ figure,table,.box,.chk,pre{page-break-inside:avoid;}}
+@media (max-width:760px){.pad,.cover,.toc,footer{padding-left:22px;padding-right:22px;}
+ .cover h1{font-size:25px;}.toc ol{columns:1;}}
+</style>
+</head>
+<body>
+<div class="doc">
+
+<div class="cover">
+  <div class="k">PRIVACY COMPLIANCE · v1.0</div>
+  <h1>디지털 악보몰<br>개인정보 대응</h1>
+  <p>개인정보보호법(PIPA) 기준으로 지켜야 할 것과, 지금 상태에서 모자란 것을 정리했습니다.<br>
+  2026년 9월 11일 개정 내용을 반영했습니다.</p>
+  <div class="m">
+    <div>작성일<b>2026년 11월 6일</b></div>
+    <div>대상<b>대표 · 개발 담당자</b></div>
+    <div>범위<b>수집 · 위탁 · 보관 · 파기 · 사고 대응</b></div>
+  </div>
+</div>
+
+<div class="toc">
+  <div class="toc-h">목 차</div>
+  <ol>
+    <li>이 문서를 읽는 법</li>
+    <li>우리가 실제로 다루는 개인정보</li>
+    <li>2026년 9월 개정에서 달라진 것</li>
+    <li>수집과 동의</li>
+    <li>위탁 — 카페24와 PG사</li>
+    <li>보관과 파기</li>
+    <li>워터마크와 개인정보</li>
+    <li>안전성 확보조치</li>
+    <li>유출 사고가 났을 때</li>
+    <li>개인정보 처리방침에 들어갈 것</li>
+    <li>오픈 전 체크리스트</li>
+    <li>변호사에게 물어볼 것</li>
+  </ol>
+</div>
+
+<!-- 1 -->
+<section>
+  <h2><span class="no">01</span>이 문서를 읽는 법</h2>
+
+  <p class="lead">이 문서는 법률 자문이 아닙니다. 기획자가 개발과 운영을 준비하면서
+  빠뜨리기 쉬운 것을 정리한 실무 점검표입니다.
+  <b>최종 판단은 변호사나 개인정보 전문가에게 확인하셔야 합니다.</b>
+  12장에 물어볼 항목을 따로 모아 두었습니다.</p>
+
+  <table>
+    <thead><tr><th style="width:120px">표시</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag must">필수</span></td>
+        <td>법에 정해져 있어 안 하면 과태료·과징금 대상입니다</td></tr>
+      <tr><td><span class="tag rec">권장</span></td>
+        <td>법이 강제하지는 않지만, 사고가 났을 때 책임을 가르는 지점입니다</td></tr>
+      <tr><td><span class="tag opt">확인</span></td>
+        <td>우리 상황에 해당하는지 따져봐야 하는 항목입니다</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box">
+    <div class="box-t">중앙아트가 특별히 신경 써야 하는 이유</div>
+    <p>다루는 개인정보의 양은 적습니다. 주민번호도, 계좌번호도 받지 않습니다.
+    그런데 <b>구매자 성함을 PDF 파일 안에 새겨서 내보냅니다.</b>
+    이건 일반적인 쇼핑몰에 없는 처리입니다. 파일이 한 번 밖으로 나가면
+    회수가 불가능하고, 그 안에 이름이 들어 있습니다.
+    이 한 가지 때문에 보통의 소규모 쇼핑몰보다 고지와 동의를 더 꼼꼼히 해야 합니다.</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section>
+  <h2><span class="no">02</span>우리가 실제로 다루는 개인정보</h2>
+
+  <p class="lead">무엇을 가지고 있는지 모르면 지킬 수도 없습니다.
+  시안과 기본 정책서를 기준으로 실제 흐르는 항목을 적었습니다.</p>
+
+  <table>
+    <thead><tr>
+      <th style="width:21%">항목</th><th style="width:17%">어디서</th>
+      <th style="width:17%">왜</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td><b>이름</b></td><td>카페24 연동</td><td>주문자 확인 · 워터마크</td>
+        <td><b>PDF에 인쇄됩니다.</b> 7장 참고</td></tr>
+      <tr><td><b>이메일</b></td><td>카페24 연동</td><td>계정 식별 · 주문 안내</td>
+        <td>아이디로도 씁니다</td></tr>
+      <tr><td>카페24 회원 식별자</td><td>카페24 연동</td><td>계정 연결</td>
+        <td>연동 해제 시 끊김</td></tr>
+      <tr><td><b>주문·결제 기록</b></td><td>자체 생성</td><td>계약 이행 · 법정 보존</td>
+        <td>결제수단 정보는 PG사가 보유</td></tr>
+      <tr><td>내려받기 이력</td><td>자체 생성</td><td>이상 감지 · 분쟁 대응</td>
+        <td>시각 · IP · 회차</td></tr>
+      <tr><td>접속 IP · 쿠키</td><td>자동 수집</td><td>로그인 유지 · 보안</td>
+        <td>처리방침에 적어야 합니다</td></tr>
+      <tr><td>관리자 접속 기록</td><td>자체 생성</td><td>사고 추적</td>
+        <td>직원 개인정보이기도 합니다</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box ok">
+    <div class="box-t">받지 않기로 한 것 — 이 선택을 유지하세요</div>
+    <p><b>주민등록번호, 계좌번호, 카드번호, 주소, 전화번호를 받지 않습니다.</b>
+    디지털 상품이라 배송이 없고, 결제는 PG사가 처리하므로 우리가 가질 이유가 없습니다.<br>
+    고유식별정보(주민번호 등)를 받기 시작하면 암호화 의무, 별도 동의,
+    안전성 확보조치 수준이 한 단계 올라갑니다. <b>받지 않는 것이 가장 강력한 보호 조치입니다.</b>
+    나중에 “있으면 편할 것 같다”는 이유로 항목을 늘리지 마세요.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section>
+  <h2><span class="no">03</span>2026년 9월 개정에서 달라진 것</h2>
+
+  <p class="lead">2026년 9월 11일부터 개정 개인정보보호법이 시행되었습니다.
+  우리에게 영향이 있는 것만 추렸습니다.</p>
+
+  <table>
+    <thead><tr><th style="width:26%">항목</th><th>내용</th><th style="width:15%">우리 영향</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td><b>유출 통지 72시간</b></td>
+        <td>유출이 <b>확인되지 않아도</b>, 유출 가능성을 인지한 때부터 72시간 이내에
+          정보주체에게 알려야 합니다</td>
+        <td><b>큼</b> — 9장</td></tr>
+      <tr><td><b>대상 범위 확대</b></td>
+        <td>분실·도난·유출에 더해 <b>위조·변조·훼손</b>도 포함됩니다.
+          랜섬웨어로 파일이 잠긴 경우처럼 외부 유출 흔적이 없어도 대상이 됩니다</td>
+        <td><b>큼</b></td></tr>
+      <tr><td>통지 내용 추가</td>
+        <td>분쟁조정 신청 방법과 손해배상 청구 방법을 안내해야 합니다</td>
+        <td>통지문 양식</td></tr>
+      <tr><td>과징금 상향</td>
+        <td>원칙 전체 매출액의 3% 이하. 반복·중대 위반은 최대 10%</td>
+        <td>중간</td></tr>
+      <tr><td>대표자 최종 책임</td>
+        <td>개인정보 보호의 최종 책임자가 대표자임이 명시되었습니다</td>
+        <td><b>대표님 확인</b></td></tr>
+      <tr><td>CPO 지정·신고</td>
+        <td>연 매출 1,800억 초과 + 개인정보 100만 명 이상(또는 민감·고유식별정보 5만 명 이상)인
+          기업은 이사회 의결을 거쳐 위원회에 신고</td>
+        <td><b>해당 없음</b> — 아래 참고</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box warn">
+    <div class="box-t">신고 의무가 없다고 지정 의무까지 없는 것은 아닙니다</div>
+    <p>중앙아트는 매출·처리 규모로 보아 <b>CPO 신고 의무 대상이 아닙니다.</b>
+    하지만 개인정보 보호책임자를 <b>지정하는 것</b> 자체는 규모와 무관한 의무입니다.
+    소규모 사업자는 대표자가 겸임할 수 있습니다.<br>
+    <b>처리방침에 이름·직책·연락처를 적어야 하므로, 누가 맡을지 먼저 정해야 합니다.</b></p>
+  </div>
+
+  <div class="box">
+    <div class="box-t">앞으로 올 것 — ISMS-P 인증 의무화</div>
+    <p>2027년 7월 1일부터 주요 개인정보처리자를 대상으로 ISMS-P 인증이 의무화됩니다.
+    대상 기준은 시행령에서 정해질 예정이며, 현재 규모로는 해당하지 않을 가능성이 높습니다.
+    <b>다만 사업이 커지면 다시 봐야 하므로 기록해 둡니다.</b></p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section>
+  <h2><span class="no">04</span>수집과 동의</h2>
+
+  <h3>동의를 받는 자리</h3>
+  <p class="lead">지금 시안에는 동의를 받는 자리가 두 군데 있습니다.
+  각각 무엇에 대한 동의인지 섞이지 않게 해야 합니다.</p>
+
+  <table>
+    <thead><tr><th style="width:22%">자리</th><th>받는 동의</th><th style="width:13%">구분</th></tr></thead>
+    <tbody>
+      <tr><td><b>최초 연동 화면</b><br>(카페24 로그인 후)</td>
+        <td>이용약관 동의 / 개인정보 수집·이용 동의 / 라이선스 안내 확인</td>
+        <td><span class="tag must">필수</span></td></tr>
+      <tr><td><b>주문서</b></td>
+        <td>저작권 고지 확인 / 청약철회 제한 동의</td>
+        <td><span class="tag must">필수</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="chk">
+    <div class="chk-r"><div class="chk-n">1</div><div class="chk-b">
+      <b>필수와 선택을 나누고, 선택은 거부해도 가입이 되게 합니다</b>
+      <span>필수 항목만으로 서비스가 돌아가야 합니다.
+        마케팅 수신 동의를 넣는다면 반드시 선택이어야 하고,
+        거부해도 악보를 살 수 있어야 합니다.
+        <b>전체 동의 버튼 하나로 묶어서 받으면 안 됩니다.</b></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">2</div><div class="chk-b">
+      <b>수집 항목·목적·보유기간을 동의 화면에서 바로 읽을 수 있게 합니다</b>
+      <span>“자세히 보기”를 눌러야만 보이면 동의를 받았다고 보기 어렵습니다.
+        현재 시안의 연동 화면에는 전달되는 정보가 이름·이메일로 표시되어 있습니다.
+        <b>여기에 보유기간과 목적을 한 줄씩 덧붙여야 합니다.</b></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">3</div><div class="chk-b">
+      <b>워터마크 표기를 동의 시점에 알립니다</b>
+      <span>“구매하신 악보 파일에 성함과 주문번호가 표기됩니다”를
+        동의 화면과 주문서 양쪽에 넣습니다. 7장에서 자세히 다룹니다.</span></div></div>
+
+    <div class="chk-r"><div class="chk-n">4</div><div class="chk-b">
+      <b>만 14세 미만 가입을 어떻게 할지 정합니다</b>
+      <span>만 14세 미만은 법정대리인 동의가 필요합니다.
+        합창 악보 구매자는 대부분 성인 지휘자·반주자지만,
+        <b>가입을 막을지 법정대리인 동의 절차를 넣을지 정해야 합니다.</b>
+        카페24 쪽에서 이미 걸러지는지 확인이 필요합니다.
+        <span class="tag opt">확인</span></span></div></div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section>
+  <h2><span class="no">05</span>위탁 — 카페24와 PG사</h2>
+
+  <p class="lead">우리가 직접 처리하지 않고 남에게 맡기는 부분이 있습니다.
+  맡기는 것 자체는 문제가 아니지만, <b>알리지 않고 맡기면 문제가 됩니다.</b></p>
+
+  <table>
+    <thead><tr>
+      <th style="width:18%">상대</th><th style="width:20%">맡기는 일</th>
+      <th style="width:20%">넘어가는 정보</th><th>성격</th></tr></thead>
+    <tbody>
+      <tr><td><b>카페24</b></td><td>회원 인증</td><td>— (받아옴)</td>
+        <td><b>방향이 반대입니다.</b> 우리가 받는 쪽이라
+          제공인지 위탁인지 판단이 필요합니다 <span class="tag opt">확인</span></td></tr>
+      <tr><td><b>PG사</b><br>(KG이니시스 등)</td><td>결제 처리</td>
+        <td>주문번호 · 금액 · 결제수단 정보</td>
+        <td>결제 대행 위탁. 처리방침에 공개 <span class="tag must">필수</span></td></tr>
+      <tr><td>서버 호스팅</td><td>데이터 보관</td><td>전체</td>
+        <td>클라우드도 위탁입니다. 국외 서버면 국외이전 고지까지
+          <span class="tag must">필수</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="box risk">
+    <div class="box-t">가장 먼저 확정해야 할 것 — 사업자가 같습니까 다릅니까</div>
+    <p>기본 정책서 13장에도 적어 두었던 사안인데, 아직 결론이 나지 않았습니다.
+    <b>기존 쇼핑몰(joongangart.co.kr)과 새 악보몰의 사업자가 같은지 다른지</b>에 따라
+    법적 성격이 완전히 달라집니다.</p>
+    <table style="margin-top:12px">
+      <thead><tr><th style="width:26%">경우</th><th>성격</th><th style="width:26%">필요한 것</th></tr></thead>
+      <tbody>
+        <tr><td><b>같은 사업자</b></td><td>내부 이용 또는 업무 위탁</td>
+          <td>처리방침에 공개하면 됩니다</td></tr>
+        <tr class="hi"><td><b>다른 사업자</b></td><td><b>제3자 제공</b></td>
+          <td><b>별도 동의</b>가 필요하고 동의 화면 문구가 달라집니다</td></tr>
+      </tbody>
+    </table>
+    <p><b>이건 개발이 아니라 대표님이 정하실 일입니다.</b>
+    사업자등록증을 확인해서 먼저 정해 주셔야 동의 화면을 확정할 수 있습니다.</p>
+  </div>
+
+  <div class="chk">
+    <div class="chk-r"><div class="chk-n">1</div><div class="chk-b">
+      <b>위탁받는 곳과 위탁 업무를 처리방침에 공개합니다</b>
+      <span>PG사, 호스팅 업체, 고객 응대를 외부에 맡긴다면 그곳까지.
+        상호와 위탁 업무 내용을 적습니다. <span class="tag must">필수</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">2</div><div class="chk-b">
+      <b>위탁 계약서에 보호 의무를 넣습니다</b>
+      <span>목적 외 이용 금지, 재위탁 제한, 안전성 확보조치, 관리·감독, 손해배상.
+        PG사와 호스팅은 표준 계약서에 보통 들어 있으니 <b>있는지 확인만 하면 됩니다.</b>
+        <span class="tag must">필수</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">3</div><div class="chk-b">
+      <b>서버가 국내인지 확인합니다</b>
+      <span>해외 클라우드(AWS 도쿄 리전 등)를 쓰면 <b>국외이전</b>에 해당해
+        처리방침에 이전 국가·시기·방법·항목·보유기간을 적어야 합니다.
+        <b>국내 리전을 쓰면 이 절차가 통째로 없어집니다.</b>
+        시스템 구성을 정할 때 함께 결정하세요. <span class="tag rec">권장</span></span></div></div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section>
+  <h2><span class="no">06</span>보관과 파기</h2>
+
+  <p class="lead">기본 정책서 13장의 보관 기간 표를 법적 근거와 함께 다시 봅니다.
+  <b>“지우지 않고 가지고 있는 것”이 사고 났을 때 피해 규모를 결정합니다.</b></p>
+
+  <table>
+    <thead><tr>
+      <th style="width:22%">데이터</th><th style="width:14%">기간</th>
+      <th style="width:28%">근거</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>회원 연결 정보</td><td>연동 해제 시까지</td>
+        <td>이용 목적 달성 시까지</td><td>해제 시 즉시 파기</td></tr>
+      <tr class="hi"><td><b>계약·청약철회 기록</b></td><td><b>5년</b></td>
+        <td>전자상거래법 시행령 제6조</td><td>법정 보존이라 동의와 무관하게 보관</td></tr>
+      <tr class="hi"><td><b>대금결제·재화공급 기록</b></td><td><b>5년</b></td>
+        <td>전자상거래법 시행령 제6조</td><td>상동</td></tr>
+      <tr><td>소비자 불만·분쟁처리</td><td>3년</td>
+        <td>전자상거래법 시행령 제6조</td><td>문의 내역이 여기 해당합니다</td></tr>
+      <tr><td>표시·광고 기록</td><td>6개월</td>
+        <td>전자상거래법 시행령 제6조</td><td>기획전 배너 등</td></tr>
+      <tr><td>내려받기 이력</td><td>3년</td>
+        <td><b>자체 기준</b></td><td>법정 의무 아님. 분쟁 대응 목적</td></tr>
+      <tr><td>워터마크 사본</td><td>90일</td>
+        <td><b>자체 기준</b></td><td>만료 후 재요청 시 재생성</td></tr>
+      <tr><td>관리자 접속 기록</td><td>1년</td>
+        <td><b>자체 기준</b></td><td>안전성 확보조치상 최소 1년 권장</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box warn">
+    <div class="box-t">법정 보존 기간과 자체 기간을 섞지 마세요</div>
+    <p>5년 보존은 <b>전자상거래법이 시키는 것</b>이고,
+    내려받기 이력 3년은 <b>우리가 정한 것</b>입니다.
+    성격이 다르므로 처리방침에도 구분해서 적어야 하고,
+    <b>회원이 탈퇴해도 법정 보존분은 남습니다.</b>
+    이 사실을 탈퇴 화면에서 미리 알려야 분쟁이 생기지 않습니다.</p>
+  </div>
+
+  <div class="chk">
+    <div class="chk-r"><div class="chk-n">1</div><div class="chk-b">
+      <b>기간이 지난 것은 지체 없이 파기합니다</b>
+      <span>보유 기간이 끝났거나 목적을 달성하면 지체 없이 파기해야 합니다.
+        <b>연 1회 수동 점검으로는 “지체 없이”를 지켰다고 보기 어렵습니다.</b>
+        자동 파기 배치를 넣으세요. <span class="tag must">필수</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">2</div><div class="chk-b">
+      <b>복구할 수 없는 방법으로 지웁니다</b>
+      <span>DB에서 플래그만 바꾸는 것은 파기가 아닙니다.
+        전자파일은 복원이 불가능한 방식으로 삭제해야 합니다.
+        <b>백업본에서도 지워지는지 확인하세요.</b> 여기서 많이 놓칩니다.
+        <span class="tag must">필수</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">3</div><div class="chk-b">
+      <b>법정 보존분은 분리해서 보관합니다</b>
+      <span>5년 보존 대상만 따로 두고 접근 권한을 좁힙니다.
+        현업에서 일상적으로 열어보는 테이블에 섞어 두지 마세요.
+        <span class="tag rec">권장</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">4</div><div class="chk-b">
+      <b>파기 기록을 남깁니다</b>
+      <span>무엇을 언제 얼마나 지웠는지 남겨야 나중에 증명할 수 있습니다.
+        <span class="tag rec">권장</span></span></div></div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section>
+  <h2><span class="no">07</span>워터마크와 개인정보</h2>
+
+  <p class="lead">이 서비스에서 가장 특이한 처리입니다.
+  <b>구매자의 이름을 파일에 새겨서 고객에게 내보냅니다.</b>
+  기본 정책서 L-09, L-10에 표기 규격을 정해 두었고, 여기서는 개인정보 관점만 봅니다.</p>
+
+  <table>
+    <thead><tr><th style="width:30%">쟁점</th><th>판단과 대응</th></tr></thead>
+    <tbody>
+      <tr><td><b>이게 개인정보 처리인가</b></td>
+        <td><b>그렇습니다.</b> 성명을 특정 목적(저작권 보호)으로 이용하는 것이므로
+          수집·이용 동의의 범위 안에 들어가 있어야 합니다</td></tr>
+      <tr><td><b>목적이 정당한가</b></td>
+        <td>저작권 침해 방지와 추적이라는 목적이 뚜렷하고,
+          그 목적에 필요한 최소한(이름·주문번호·부수)만 씁니다.
+          <b>연락처를 넣지 않기로 한 결정이 여기서 효과를 냅니다</b></td></tr>
+      <tr class="hi"><td><b>고지를 했는가</b></td>
+        <td><b>지금이 가장 약한 부분입니다.</b> 아래 체크리스트 참고</td></tr>
+      <tr><td><b>유출되면 어떻게 되나</b></td>
+        <td>파일이 단체방에 올라가면 구매자 이름이 함께 퍼집니다.
+          다만 이름만으로는 특정이 어렵고, 억제 효과가 그 위험보다 큽니다.
+          <b>이 판단 근거를 문서로 남겨 두는 것이 중요합니다</b></td></tr>
+    </tbody>
+  </table>
+
+  <div class="chk">
+    <div class="chk-r"><div class="chk-n">1</div><div class="chk-b">
+      <b>이용약관과 개인정보처리방침에 명시합니다</b>
+      <span>“구매하신 악보 파일의 모든 면 하단에 성함과 주문번호, 구매 부수가 표기됩니다.”
+        <b>이 문장이 약관과 처리방침 양쪽에 들어가야 합니다.</b>
+        <span class="tag must">필수</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">2</div><div class="chk-b">
+      <b>구매 전에 눈으로 보게 합니다</b>
+      <span>주문서 저작권 고지 블록에 이미 들어가 있습니다.
+        내려받기 전 미리보기로 <b>실제 찍히는 모습</b>을 보여주는 것도 구현되어 있습니다.
+        이 둘을 빼지 마세요. <span class="tag must">필수</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">3</div><div class="chk-b">
+      <b>표기 항목을 늘리지 않습니다</b>
+      <span>“더 확실하게 하려고” 이메일이나 전화번호를 넣자는 말이 나올 수 있습니다.
+        <b>추적에 도움이 안 되면서 유출 피해만 키웁니다.</b>
+        기본 정책서 L-10에 금지로 박아 두었습니다. <span class="tag rec">권장</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">4</div><div class="chk-b">
+      <b>워터마크 사본을 오래 쌓아두지 않습니다</b>
+      <span>이름이 박힌 PDF가 서버에 쌓이면 그 자체가 유출 대상입니다.
+        90일 후 파기하고 재요청 시 다시 만드는 현재 방침이 맞습니다.
+        <span class="tag rec">권장</span></span></div></div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section>
+  <h2><span class="no">08</span>안전성 확보조치</h2>
+
+  <p class="lead">법에서 요구하는 기술적·관리적 조치입니다.
+  규모가 작아도 면제되지 않습니다. 개발자분께 그대로 전달하셔도 됩니다.</p>
+
+  <h3>접근 권한</h3>
+  <div class="chk">
+    <div class="chk-r"><div class="chk-n">1</div><div class="chk-b">
+      <b>관리자 계정을 사람별로 만듭니다</b>
+      <span>공용 계정 하나를 여럿이 쓰면 사고가 나도 누가 했는지 알 수 없습니다.
+        <b>퇴사자 계정은 즉시 삭제합니다.</b> <span class="tag must">필수</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">2</div><div class="chk-b">
+      <b>권한을 업무에 필요한 만큼만 줍니다</b>
+      <span>관리자 시안에 이미 반영되어 있습니다 —
+        환불과 정산은 전체 권한자만 볼 수 있습니다.
+        <b>이 구분을 개발 단계에서 실제로 서버가 막아야 합니다.</b>
+        화면에서만 숨기면 소용없습니다. <span class="tag must">필수</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">3</div><div class="chk-b">
+      <b>접근 기록을 1년 이상 남기고 지워지지 않게 합니다</b>
+      <span>누가 언제 어떤 개인정보를 봤는지 남깁니다.
+        관리자 본인이 로그를 지울 수 있으면 의미가 없습니다.
+        <span class="tag must">필수</span></span></div></div>
+  </div>
+
+  <h3>암호화와 전송</h3>
+  <div class="chk">
+    <div class="chk-r"><div class="chk-n">4</div><div class="chk-b">
+      <b>전 구간 HTTPS</b>
+      <span>로그인 화면만이 아니라 전체입니다. <span class="tag must">필수</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">5</div><div class="chk-b">
+      <b>비밀번호는 복호화되지 않는 방식으로 저장합니다</b>
+      <span>관리자 비밀번호에 해당합니다.
+        <b>고객 비밀번호는 카페24가 가지고 있어 우리가 저장하지 않습니다</b> —
+        이것도 위험을 줄이는 선택입니다. <span class="tag must">필수</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">6</div><div class="chk-b">
+      <b>악보 PDF에 직접 접근할 수 없게 합니다</b>
+      <span>주소만 알면 받아지는 구조면 안 됩니다.
+        <b>로그인과 구매 여부를 서버가 확인한 뒤 일회성 주소로 내보냅니다.</b>
+        원본 PDF는 어떤 경우에도 그대로 나가면 안 됩니다. <span class="tag must">필수</span></span></div></div>
+  </div>
+
+  <h3>기타</h3>
+  <div class="chk">
+    <div class="chk-r"><div class="chk-n">7</div><div class="chk-b">
+      <b>내부관리계획을 문서로 만듭니다</b>
+      <span>개인정보 보호책임자, 취급자 범위, 교육 계획, 사고 대응 절차를 적은 문서입니다.
+        <b>분량이 길 필요는 없지만 없으면 안 됩니다.</b>
+        점검이 나오면 가장 먼저 요구받습니다. <span class="tag must">필수</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">8</div><div class="chk-b">
+      <b>백업을 암호화하고 복구 시험을 합니다</b>
+      <span>원본 PDF는 유실되면 복구가 불가능합니다.
+        백업 자체가 유출되면 그것도 사고입니다. <span class="tag rec">권장</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">9</div><div class="chk-b">
+      <b>보호 조치에 쓴 비용을 기록으로 남깁니다</b>
+      <span>개정법에서 보호에 예산·인력을 투자한 사업자는 과징금을 감경받을 수 있습니다.
+        솔루션 계약서, 점검 기록, 교육 이력을 모아 두세요.
+        <b>사고가 난 뒤에 만들 수 없는 종류의 증거입니다.</b>
+        <span class="tag rec">권장</span></span></div></div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section>
+  <h2><span class="no">09</span>유출 사고가 났을 때</h2>
+
+  <p class="lead">개정법에서 가장 크게 바뀐 부분입니다.
+  <b>72시간은 생각보다 짧습니다.</b> 사고가 난 뒤에 절차를 만들면 늦습니다.</p>
+
+  <div class="box risk">
+    <div class="box-t">“유출됐는지 아직 모르겠다”도 대상입니다</div>
+    <p>개정 전에는 유출이 확인되어야 통지 의무가 생겼습니다.
+    지금은 <b>유출 가능성을 인지한 때부터 72시간</b>입니다.
+    서버에 이상한 접근 기록이 보이는데 실제로 빠져나갔는지 확인이 안 되는 상황,
+    랜섬웨어로 파일이 잠긴 상황도 포함됩니다.<br>
+    <b>“확인되면 알리자”고 미루는 판단이 가장 위험합니다.</b></p>
+  </div>
+
+  <table>
+    <thead><tr><th style="width:17%">시점</th><th style="width:30%">할 일</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td><b>인지 즉시</b></td>
+        <td>확산 차단 · 증거 보존</td>
+        <td>서버를 바로 초기화하면 증거가 사라집니다.
+          <b>로그부터 따로 복사하세요</b></td></tr>
+      <tr><td>인지 즉시</td><td>대표자 보고</td>
+        <td>개정법상 최종 책임자가 대표자입니다</td></tr>
+      <tr class="hi"><td><b>72시간 이내</b></td>
+        <td><b>정보주체 통지</b></td>
+        <td>항목 · 시점 · 경위 · 피해 최소화 방법 · 대응 조치 ·
+          <b>분쟁조정 신청 방법 · 손해배상 청구 방법</b></td></tr>
+      <tr><td>72시간 이내</td><td>개인정보보호위원회 신고</td>
+        <td>일정 규모 이상일 때. 기준은 시행령 확인 <span class="tag opt">확인</span></td></tr>
+      <tr><td>24시간 이내</td><td>침해사고 신고</td>
+        <td>정보통신망법상 과기정통부·KISA.
+          <b>개인정보 유출 통지와 별개입니다</b></td></tr>
+      <tr><td>이후</td><td>재발 방지 대책 수립</td>
+        <td>기록으로 남깁니다</td></tr>
+    </tbody>
+  </table>
+
+  <div class="chk">
+    <div class="chk-r"><div class="chk-n">1</div><div class="chk-b">
+      <b>지금 통지문 양식을 미리 만들어 둡니다</b>
+      <span>사고가 나면 72시간 안에 문장을 다듬을 여유가 없습니다.
+        빈칸만 채우면 되는 양식을 지금 만들어 두세요.
+        <b>분쟁조정·손해배상 안내 문구를 넣는 것을 잊지 마세요.</b>
+        <span class="tag must">필수</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">2</div><div class="chk-b">
+      <b>연락 체계를 한 장으로 정리합니다</b>
+      <span>누가 판단하고, 누가 개발사에 연락하고, 누가 공지를 올리는지.
+        대표님 연락이 안 될 때 누가 대신 판단할지까지 정해 두세요.
+        <span class="tag must">필수</span></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">3</div><div class="chk-b">
+      <b>이메일 일괄 발송 수단을 미리 확보합니다</b>
+      <span>통지 수단이 없으면 72시간을 지킬 수 없습니다.
+        회원이 적을 때는 수동도 가능하지만, 지금 방법을 정해 두세요.
+        <span class="tag rec">권장</span></span></div></div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section>
+  <h2><span class="no">10</span>개인정보 처리방침에 들어갈 것</h2>
+
+  <p class="lead">홈페이지에 공개해야 하는 문서입니다.
+  <b>약관과 별개이고, 동의를 받는 것이 아니라 알리는 것입니다.</b>
+  아래 항목이 빠지면 과태료 대상입니다.</p>
+
+  <table>
+    <thead><tr><th style="width:34%">항목</th><th>우리 경우 들어갈 내용</th></tr></thead>
+    <tbody>
+      <tr><td>처리 목적</td><td>회원 식별 · 주문 이행 · 저작권 보호 · 고객 응대</td></tr>
+      <tr><td>처리 항목</td><td>이름 · 이메일 · 카페24 식별자 · 주문기록 · 접속기록 · IP · 쿠키</td></tr>
+      <tr><td>보유·이용 기간</td><td>6장 표 그대로. <b>법정 보존분을 구분해서</b></td></tr>
+      <tr class="hi"><td><b>제3자 제공</b></td>
+        <td>사업자 판단에 따라 달라집니다 — 5장 참고</td></tr>
+      <tr class="hi"><td><b>처리위탁</b></td>
+        <td>PG사 · 호스팅 업체 상호와 위탁 업무</td></tr>
+      <tr><td>국외이전</td><td>해외 서버를 쓸 때만. 안 쓰면 생략</td></tr>
+      <tr><td>파기 절차·방법</td><td>기간 경과 시 지체 없이, 복구 불가능한 방법으로</td></tr>
+      <tr><td>정보주체 권리와 행사 방법</td>
+        <td>열람 · 정정 · 삭제 · 처리정지. <b>어디로 요청하는지 연락처까지</b></td></tr>
+      <tr class="hi"><td><b>개인정보 보호책임자</b></td>
+        <td>성명 · 직책 · 연락처. <b>먼저 정하셔야 합니다</b> — 3장 참고</td></tr>
+      <tr><td>안전성 확보조치</td><td>8장에서 실제로 한 것만 적습니다</td></tr>
+      <tr><td>자동수집장치</td><td>쿠키 사용 목적과 거부 방법</td></tr>
+      <tr><td>권익침해 구제 방법</td>
+        <td>개인정보분쟁조정위원회 · 개인정보침해신고센터 등 안내</td></tr>
+      <tr class="hi"><td><b>워터마크 표기</b></td>
+        <td><b>“구매하신 악보 파일에 성함과 주문번호가 표기됩니다”</b> — 7장</td></tr>
+      <tr><td>변경 시 고지</td><td>변경 내용과 시행일을 미리 공지</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box warn">
+    <div class="box-t">남의 처리방침을 복사하지 마세요</div>
+    <p>인터넷에 있는 쇼핑몰 처리방침을 그대로 가져다 쓰면
+    <b>우리가 받지도 않는 항목(주소·전화번호·생년월일)이 적히게 됩니다.</b>
+    적힌 대로 처리하지 않으면 그 자체가 위반입니다.<br>
+    <b>실제로 하는 것만 적고, 적은 것은 실제로 지키세요.</b>
+    개정법은 처리방침과 실제 운영이 어긋나는지를 점검 대상으로 보고 있습니다.</p>
+  </div>
+</section>
+
+<!-- 11 -->
+<section>
+  <h2><span class="no">11</span>오픈 전 체크리스트</h2>
+
+  <p class="lead">순서대로 확인하시면 됩니다.
+  <b>굵게 표시한 것은 이것이 안 되면 오픈하면 안 되는 항목입니다.</b></p>
+
+  <table>
+    <thead><tr>
+      <th style="width:6%" class="c">완료</th><th style="width:28%">항목</th>
+      <th style="width:16%">누가</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td class="c">☐</td><td><b>사업자 동일 여부 확정</b></td><td><b>대표</b></td>
+        <td>이게 정해져야 동의 화면이 확정됩니다 — 5장</td></tr>
+      <tr class="hi"><td class="c">☐</td><td><b>개인정보 보호책임자 지정</b></td><td><b>대표</b></td>
+        <td>처리방침에 이름이 들어갑니다 — 3장</td></tr>
+      <tr><td class="c">☐</td><td>서버 위치 결정 (국내/국외)</td><td>대표 · 개발</td>
+        <td>국내면 국외이전 절차가 없어집니다 — 5장</td></tr>
+      <tr class="hi"><td class="c">☐</td><td><b>개인정보 처리방침 작성·게시</b></td><td>대표 · 기획</td>
+        <td>10장 항목 전부 — 변호사 검토 권장</td></tr>
+      <tr><td class="c">☐</td><td>이용약관에 워터마크 표기 명시</td><td>기획</td>
+        <td>7장</td></tr>
+      <tr><td class="c">☐</td><td>동의 화면에 항목·목적·기간 표시</td><td>기획 · 개발</td>
+        <td>4장</td></tr>
+      <tr><td class="c">☐</td><td>필수·선택 동의 분리</td><td>개발</td><td>4장</td></tr>
+      <tr><td class="c">☐</td><td>만 14세 미만 처리 방침 결정</td><td>대표 · 기획</td>
+        <td>카페24 쪽 확인 먼저 — 4장</td></tr>
+      <tr class="hi"><td class="c">☐</td><td><b>PDF 직접 접근 차단</b></td><td><b>개발</b></td>
+        <td>주소만으로 받아지면 안 됩니다 — 8장</td></tr>
+      <tr class="hi"><td class="c">☐</td><td><b>권한 분리를 서버에서 강제</b></td><td><b>개발</b></td>
+        <td>화면에서만 숨기면 소용없습니다 — 8장</td></tr>
+      <tr><td class="c">☐</td><td>관리자 계정 사람별 분리</td><td>개발 · 운영</td><td>8장</td></tr>
+      <tr><td class="c">☐</td><td>접근 기록 1년 보관·삭제 불가</td><td>개발</td><td>8장</td></tr>
+      <tr><td class="c">☐</td><td>전 구간 HTTPS</td><td>개발</td><td>8장</td></tr>
+      <tr><td class="c">☐</td><td>자동 파기 배치 구현</td><td>개발</td>
+        <td>수동 점검으로는 부족합니다 — 6장</td></tr>
+      <tr><td class="c">☐</td><td>백업에서도 파기되는지 확인</td><td>개발</td><td>6장</td></tr>
+      <tr><td class="c">☐</td><td>위탁 계약서 보호 조항 확인</td><td>대표</td>
+        <td>PG사·호스팅 표준 계약서 — 5장</td></tr>
+      <tr class="hi"><td class="c">☐</td><td><b>내부관리계획 문서화</b></td><td><b>대표 · 기획</b></td>
+        <td>점검 시 가장 먼저 요구받습니다 — 8장</td></tr>
+      <tr class="hi"><td class="c">☐</td><td><b>유출 통지문 양식·연락 체계</b></td><td><b>대표 · 기획</b></td>
+        <td>72시간은 짧습니다 — 9장</td></tr>
+      <tr><td class="c">☐</td><td>탈퇴 시 법정 보존 안내 문구</td><td>기획</td><td>6장</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 12 -->
+<section>
+  <h2><span class="no">12</span>변호사에게 물어볼 것</h2>
+
+  <p class="lead">제가 판단할 수 없는 것들입니다.
+  <b>이 목록을 그대로 들고 가시면 상담이 빨라집니다.</b></p>
+
+  <div class="chk">
+    <div class="chk-r"><div class="chk-n">1</div><div class="chk-b">
+      <b>기존 쇼핑몰에서 회원 정보를 받아오는 것이 제3자 제공입니까, 위탁입니까</b>
+      <span>사업자등록증 두 개를 같이 보여주고 물어보세요.
+        <b>답에 따라 동의 화면 문구와 절차가 달라집니다.</b>
+        가장 먼저 풀어야 할 매듭입니다.</span></div></div>
+
+    <div class="chk-r"><div class="chk-n">2</div><div class="chk-b">
+      <b>구매자 성명을 PDF에 새기는 것에 별도 동의가 필요합니까</b>
+      <span>수집·이용 동의 범위 안에서 처리 가능한지,
+        아니면 별도 고지·동의가 필요한지.
+        <b>저작권 보호 목적이라는 점과 연락처는 넣지 않는다는 점을 함께 설명하세요.</b></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">3</div><div class="chk-b">
+      <b>유출 신고 대상이 되는 규모 기준이 우리에게 어떻게 적용됩니까</b>
+      <span>정보주체 통지는 규모와 무관하지만,
+        위원회 신고는 일정 기준 이상일 때입니다.
+        <b>우리 회원 규모에서 어느 선부터 신고 대상인지 확인하세요.</b></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">4</div><div class="chk-b">
+      <b>작성한 개인정보 처리방침과 이용약관 검토</b>
+      <span>10장 항목으로 초안을 만든 뒤 검토받으시면 비용이 덜 듭니다.
+        <b>백지에서 맡기는 것보다 훨씬 쌉니다.</b></span></div></div>
+
+    <div class="chk-r"><div class="chk-n">5</div><div class="chk-b">
+      <b>만 14세 미만 가입을 막아야 합니까</b>
+      <span>카페24 계정을 그대로 쓰는 구조에서
+        우리가 별도로 확인할 의무가 있는지.</span></div></div>
+  </div>
+
+  <div class="box">
+    <div class="box-t">이 문서의 한계</div>
+    <p>법령 내용은 2026년 11월 기준 공개 자료를 바탕으로 정리했으며,
+    개정 직후라 해석이 정리되는 중인 항목이 있습니다.
+    특히 <b>유출 신고의 인원수 기준과 CPO 신고 기한은 자료마다 다르게 적혀 있어</b>
+    개인정보보호위원회의 시행령·고시 원문으로 확인이 필요합니다.<br>
+    이 문서는 <b>무엇을 확인해야 하는지</b>를 알려주는 지도이지,
+    법적 판단을 대신하지 않습니다.</p>
+  </div>
+</section>
+
+<div class="pad"></div>
+</div>
+
+</body>
+</html>
