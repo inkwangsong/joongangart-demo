@@ -29,7 +29,7 @@
     margin:0; background:var(--paper); color:var(--tx);
     font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",
       "Noto Sans KR",system-ui,sans-serif;
-    -webkit-font-smoothing:antialiased;
+    -webkit-font-smoothing:antialiased; word-break:keep-all;
   }
   .wrap{max-width:860px; margin:0 auto; padding:0 16px 80px;}
   header{padding:72px 0 40px; border-bottom:1px solid var(--ln);}
@@ -37,6 +37,9 @@
     font-size:12px; letter-spacing:.14em; font-weight:700;
     color:var(--pt); text-transform:uppercase; margin:0 0 14px;
   }
+  .brand{display:flex;align-items:center;gap:12px;margin:0 0 22px;}
+  .brand img{display:block;width:44px;height:44px;}
+  .brand span{font-size:14px;font-weight:700;color:var(--pt);letter-spacing:.01em;}
   h1{
     font-size:clamp(28px,5vw,40px); line-height:1.25; margin:0 0 14px;
     letter-spacing:-.02em; font-weight:800;
@@ -98,7 +101,10 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="eyebrow">중앙아트 J&amp;A MUSIC</p>
+    <div class="brand">
+      <img src="favicon.svg" width="44" height="44" alt="">
+      <span>중앙아트 J&amp;A MUSIC</span>
+    </div>
     <h1>디지털 악보몰 시안</h1>
     <p class="lede">
       중앙성가 합창 악보를 PDF로 구매해 바로 내려받는 서비스입니다.
