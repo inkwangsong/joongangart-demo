@@ -281,6 +281,12 @@ figure,table,.box,.pol,.scr,.sc,.qs,.chk{page-break-inside:avoid;}}
 #decide .chk-w{margin-left:auto;font-size:11px;color:#fff;background:#8894A8;padding:4px 12px;border-radius:999px;flex-shrink:0;align-self:center;white-space:nowrap;}
 #decide .chk-w[data-u="1"]{background:var(--red,#8A1F3D);}
 @media (max-width:720px){#decide .chk-r{flex-wrap:wrap;}#decide .chk-w{margin-left:30px;}}
+
+/* 논의 표시 — 아직 정해지지 않은 곳. 번호는 확인사항 7장 「논의점 목록」과 같습니다 */
+.disc{display:inline-flex;align-items:center;gap:4px;font-size:10.5px!important;font-weight:700;letter-spacing:0;
+ color:#8A5A00!important;background:#FFF4DC!important;border:1px dashed #D9A441;border-radius:999px;padding:1px 9px!important;
+ margin-left:6px;vertical-align:middle;white-space:nowrap;line-height:1.7;font-style:normal;opacity:1!important;}
+.disc::before{content:'';width:6px;height:6px;border-radius:50%;background:#D9A441;}
 </style>
 </head>
 <body>
@@ -393,7 +399,7 @@ figure,table,.box,.pol,.scr,.sc,.qs,.chk{page-break-inside:avoid;}}
   <table>
     <thead><tr><th style="width:18%">구분</th><th class="c" style="width:14%">상태</th><th>내용</th></tr></thead>
     <tbody>
-      <tr><td>화면 설계</td><td class="c"><span class="tag done">완료</span></td><td>고객 13화면 · 관리자 13메뉴. 모바일 대응, 인쇄 · 워터마크까지 시안에 반영</td></tr>
+      <tr><td>화면 설계</td><td class="c"><span class="tag done">완료</span></td><td>고객 14화면 · 관리자 13메뉴. 모바일 대응, 인쇄 · 워터마크, 내 정보 · 연동 해제까지 시안에 반영</td></tr>
       <tr><td>기획 문서</td><td class="c"><span class="tag done">완료</span></td><td>정책 · 화면 · 기술 · 시스템 · 디자인 · 개인정보 문서를 지금 시안 기준으로 맞춤</td></tr>
       <tr class="hi"><td><b>회원 · 기능 범위</b></td><td class="c"><span class="tag now">오늘 결정</span></td><td>회원 방식, 1차 기능, 결제 수단, 워터마크 문구가 정해져야 개발 범위가 나옵니다</td></tr>
       <tr class="hi"><td><b>판매 범위</b></td><td class="c"><span class="tag now">확인 필요</span></td><td>어느 곡집을 디지털로 팔 수 있는지 아직 확인되지 않았습니다. 가장 급합니다</td></tr>
@@ -455,6 +461,7 @@ figure,table,.box,.pol,.scr,.sc,.qs,.chk{page-break-inside:avoid;}}
       <tr><td><b>베스트 순위</b></td><td>최근 3개월 기준 TOP 5. 절기 순위는 ‘이번 절기 준비’ 안에서 작년 같은 시즌 기준으로</td><td>비시즌에는 절기 곡이 거의 안 팔려 순위가 무의미합니다</td></tr>
       <tr><td><b>관리자</b></td><td>고객 화면에 나오는 정보는 악보 · 곡집 표지 · 분류 · 절기 · 사업자 정보 · 검색어까지 모두 관리자에서 바꿉니다</td><td>개발자를 거치지 않고 운영하시도록</td></tr>
       <tr><td><b>모바일</b></td><td>고객 사이트와 관리자 모두 휴대폰에서 쓸 수 있습니다</td><td>지휘자는 이동 중에 곡을 고릅니다</td></tr>
+      <tr><td><b>회원 화면</b></td><td>고객 ‘내 정보’(동의 내역 · 연동 해제)와 관리자 ‘회원’(가려 보기 · 열람 기록)을 새로 만들었습니다. 동의 전문 보기, 쇼핑몰 가입 · 찾기 안내도 채웠습니다</td><td>동의 철회와 열람 기록은 개인정보보호법상 갖춰야 합니다</td></tr>
       <tr><td><b>시안 가격</b></td><td>합창 악보 1부 1,000원, 오케스트라 총보 1부 5,000원</td><td>실물 곡집 곡당 가격과의 균형. 최종 금액은 오픈 전 확정</td></tr>
       <tr><td><b>개인정보</b></td><td>2026년 9월 개정법(유출 의심 72시간 안 통지, 대표자 최종 책임)을 반영한 점검표를 만들었습니다</td><td>오픈 전에 갖출 것을 빠뜨리지 않도록</td></tr>
     </tbody>
@@ -462,7 +469,8 @@ figure,table,.box,.pol,.scr,.sc,.qs,.chk{page-break-inside:avoid;}}
   <div class="box warn">
     <div class="box-t">다시 여쭙게 된 것</div>
     <p>지난번 ‘정해진 것’에 있던 <b>회원 방식(기존 카페24 아이디만 사용)</b>을 이번에 다시 여쭙니다(Q1).
-    알림톡처럼 휴대폰 번호가 필요한 기능과 함께 판단하셔야 하기 때문입니다.</p>
+    알림톡처럼 휴대폰 번호가 필요한 기능과 함께 판단하셔야 하기 때문입니다.
+    두 방식의 비교표는 「확인사항」 Q1에 있고, 기획 문서의 미정 항목은 <span class="disc">논의 D-00</span> 표시와 함께 「확인사항」 7장에 모았습니다.</p>
   </div>
 </section>
 <section>
@@ -629,7 +637,7 @@ figure,table,.box,.pol,.scr,.sc,.qs,.chk{page-break-inside:avoid;}}
     <tbody>
       <tr class="hi"><td><b>진행 보고 (본 문서)</b></td><td>대표님</td><td>이번 회의용 요약</td></tr>
       <tr class="hi"><td><b>확인사항</b></td><td>대표님</td><td>Q1~Q8 선택지와 실무 의견, 부탁드릴 일</td></tr>
-      <tr><td>고객 사이트 시안</td><td>전원</td><td>실제로 눌러 볼 수 있는 13화면. 휴대폰에서도 동작</td></tr>
+      <tr><td>고객 사이트 시안</td><td>전원</td><td>실제로 눌러 볼 수 있는 14화면. 휴대폰에서도 동작</td></tr>
       <tr><td>관리자 시안</td><td>대표님 · 담당자</td><td>운영 화면 13메뉴</td></tr>
       <tr><td>기본 정책서</td><td>개발 · 운영</td><td>판매 · 이용 범위 · 환불 · 워터마크 · 홈 규칙</td></tr>
       <tr><td>화면 기획서 · 화면 정책서</td><td>개발</td><td>화면 구성, 동작과 예외</td></tr>
@@ -681,6 +689,24 @@ figure,table,.box,.pol,.scr,.sc,.qs,.chk{page-break-inside:avoid;}}
         대신 기존 고객이 아이디를 하나 더 만들어야 하고, 비밀번호 보관 · 유출 대응 등 개인정보 책임이 전부 이쪽으로 옵니다.</span></div></div>
       <div class="opt"><span class="opt-k">C</span><div class="opt-b"><b>둘 다 (카페24 연결 + 자체 가입 또는 카카오 로그인)</b>
         <span>처음 오는 고객까지 편합니다. 개발과 운영이 가장 많고, 같은 분이 계정을 둘 갖게 될 수 있습니다.</span></div></div>
+
+      <table>
+        <thead><tr><th style="width:20%">기준</th><th>A. 카페24 아이디로 연결</th><th>B. 새로 가입</th></tr></thead>
+        <tbody>
+          <tr><td><b>기존 고객</b></td><td>쇼핑몰 아이디로 바로 로그인, 처음 한 번 동의만</td><td>아이디를 하나 더 만들어야 합니다. 첫 구매 전에 이탈이 생깁니다</td></tr>
+          <tr><td><b>처음 오는 고객</b></td><td>쇼핑몰에서 가입한 뒤 돌아옵니다(한 단계 더)</td><td>이 사이트에서 바로 가입합니다</td></tr>
+          <tr><td><b>개인정보 책임</b></td><td>이름 · 이메일만 받고 <b>비밀번호를 보관하지 않습니다</b></td><td>비밀번호 · 본인 확인 · 탈퇴까지 전부 우리 책임. 유출 사고 때 통지 대상이 커집니다</td></tr>
+          <tr><td><b>보안 개발</b></td><td>로그인 보안은 카페24가 맡습니다</td><td>비밀번호 암호화 · 재설정 메일 · 로그인 시도 제한을 직접 만듭니다</td></tr>
+          <tr><td><b>개발량</b></td><td>카페24 앱 등록과 로그인 연동</td><td>가입 · 로그인 · 아이디/비밀번호 찾기 · 탈퇴 화면이 더 생깁니다</td></tr>
+          <tr><td><b>외부 의존</b></td><td>카페24에 장애가 나면 <b>새 로그인이 막힙니다</b>(이미 로그인한 분은 유지)</td><td>의존이 없습니다</td></tr>
+          <tr><td><b>일정</b></td><td>카페24 앱 심사를 기다려야 합니다</td><td>심사는 없지만 개발 기간이 늘어납니다</td></tr>
+          <tr><td><b>고객 데이터</b></td><td>실물 · 디지털 구매자를 <b>같은 사람</b>으로 봅니다</td><td>같은 분이 계정 두 개 — 실물과 디지털 고객을 묶어 보기 어렵습니다</td></tr>
+          <tr><td><b>휴대폰 번호 (알림톡)</b></td><td>처음 연결할 때 선택 입력으로 받습니다</td><td>가입할 때 받습니다</td></tr>
+          <tr><td><b>사업자 관계 (Q5)</b></td><td>쇼핑몰과 사업자가 다르면 ‘제3자 제공’ 동의가 따로 필요합니다</td><td>상관없습니다</td></tr>
+          <tr><td><b>탈퇴</b></td><td>쇼핑몰을 탈퇴하면 이 사이트도 못 씁니다 <span class="disc">논의 D-02</span></td><td>이 사이트에서 따로 탈퇴합니다</td></tr>
+          <tr><td><b>나중에 바꾸기</b></td><td>나중에 자체 가입을 더하기(C안) 쉽습니다</td><td>나중에 카페24 연결을 붙이면 계정 합치기 문제가 생깁니다</td></tr>
+        </tbody>
+      </table>
       <div class="rec"><b>실무 의견</b> — A안을 권합니다. 처음 1~2년의 주 고객은 이미 카페24 회원인 기존 고객입니다.
         휴대폰 번호가 필요하면(Q2 알림톡) 처음 연결하는 화면에서 <b>선택 항목으로 한 번만</b> 받으면 되므로, 그 때문에 B안으로 갈 필요는 없습니다.</div>
       <div class="why"><b>참고</b> — 카페24에서 휴대폰 번호를 받아오는 방법도 있지만 앱 권한 심사와 동의 범위(Q5-2) 확인이 필요해, 개발 담당이 따로 확인합니다.</div>
@@ -805,7 +831,7 @@ figure,table,.box,.pol,.scr,.sc,.qs,.chk{page-break-inside:avoid;}}
   <div class="q">
     <div class="q-h"><span class="q-n">Q7</span><div>
       <b>시안을 보시고 더하고 싶은 것, 빠진 것이 있으신가요?</b>
-      <span>고객 사이트 13개 화면과 관리자 13개 메뉴가 실제로 눌러지게 되어 있습니다. 아래 질문으로 보시면 빠르게 보실 수 있습니다.</span></div></div>
+      <span>고객 사이트 14개 화면과 관리자 13개 메뉴가 실제로 눌러지게 되어 있습니다. 아래 질문으로 보시면 빠르게 보실 수 있습니다.</span></div></div>
     <div class="q-b">
       <table>
         <tbody>
@@ -918,6 +944,29 @@ figure,table,.box,.pol,.scr,.sc,.qs,.chk{page-break-inside:avoid;}}
       <tr><td><b>곡당 가격</b></td><td>시안의 1부 1,000원은 실물 곡집(곡당 500원 수준)에 디지털의 즉시성을 더한 제안가입니다. 세무사 확인(면세 여부) 뒤 확정합니다</td><td>오픈 한 달 전</td></tr>
       <tr><td><b>운영 담당</b></td><td>악보 등록 · 주문 확인 · 문의 응대를 누가 할지에 맞춰 관리자 권한과 교육을 준비합니다</td><td>관리자 개발 전</td></tr>
       <tr><td><b>기존 고객 알림</b></td><td>쇼핑몰 배너 · 회원 메일 · 찬양세미나 시연 중에서 고릅니다. 메일은 수신 동의 확인이 필요합니다</td><td>오픈 한 달 전</td></tr>
+    </tbody>
+  </table>
+</section>
+<section>
+  <h2>논의점 목록</h2>
+  <p class="lead">기획 문서에서 아직 정해지지 않은 곳에 <span class="disc">논의 D-00</span> 표시를 달았습니다.
+  번호가 같으면 같은 논의입니다. 정해지면 표시를 지우고 문서를 고칩니다.</p>
+  <table>
+    <thead><tr><th class="c" style="width:58px">번호</th><th style="width:30%">논의점</th><th>표시된 곳</th><th style="width:52px" class="c">질문</th><th style="width:15%">누가 정하나</th></tr></thead>
+    <tbody>
+      <tr><td class="c"><b>D-01</b></td><td><b>회원 방식</b> — 카페24 연결 / 새로 가입 / 둘 다</td><td>기본 정책서 2장 · 화면 정책서 B-01 · 기술 검토서 7장 · 화면 기획서 9장</td><td class="c">Q1</td><td>대표님</td></tr>
+      <tr><td class="c"><b>D-02</b></td><td>쇼핑몰을 탈퇴한 분이 이미 산 악보</td><td>기본 정책서 M-05 · 기술 검토서 9장 · 화면 정책서 B-01</td><td class="c">—</td><td>대표님 · 변호사</td></tr>
+      <tr><td class="c"><b>D-03</b></td><td>연동 해제 뒤 다시 연결하면 예전 구매 이력을 되살릴지</td><td>기본 정책서 M-07 · 화면 정책서 C-06 · 기술 검토서 9장</td><td class="c">—</td><td>변호사</td></tr>
+      <tr><td class="c"><b>D-04</b></td><td>휴대폰 번호를 받아 카카오 알림톡을 할지</td><td>기본 정책서 M-04 · 화면 정책서 B-02 · 기술 검토서 11장 · 개인정보 대응 2장</td><td class="c">Q2</td><td>대표님</td></tr>
+      <tr><td class="c"><b>D-05</b></td><td>1차 결제 수단</td><td>기술 검토서 11장</td><td class="c">Q3</td><td>대표님</td></tr>
+      <tr><td class="c"><b>D-06</b></td><td>워터마크 문구</td><td>기본 정책서 L-09</td><td class="c">Q4</td><td>대표님</td></tr>
+      <tr><td class="c"><b>D-07</b></td><td>쇼핑몰과 같은 사업자인지 · 개인정보 보호책임자</td><td>기본 정책서 11장 · 개인정보 대응 5장</td><td class="c">Q5</td><td>대표님</td></tr>
+      <tr><td class="c"><b>D-08</b></td><td>세금계산서인가 계산서인가 (디지털 악보 면세 여부)</td><td>기본 정책서 11장</td><td class="c">—</td><td>세무사</td></tr>
+      <tr><td class="c"><b>D-09</b></td><td>여러 곡을 한 번에 산 주문의 부분 환불</td><td>기술 검토서 11장</td><td class="c">—</td><td>대표님 · 개발</td></tr>
+      <tr><td class="c"><b>D-10</b></td><td>만 14세 미만 이용</td><td>개인정보 대응 4장</td><td class="c">—</td><td>변호사 · 카페24 확인</td></tr>
+      <tr><td class="c"><b>D-11</b></td><td>곡당 가격 최종 금액</td><td>기본 정책서 R-01</td><td class="c">—</td><td>대표님 (오픈 전)</td></tr>
+      <tr><td class="c"><b>D-12</b></td><td>홈 ‘이번 절기 준비’ 블록</td><td>화면 정책서 A-01</td><td class="c">Q8</td><td>대표님</td></tr>
+      <tr><td class="c"><b>D-13</b></td><td>카페24에서 휴대폰 번호를 받아올 권한이 있는지</td><td>기술 검토서 9장</td><td class="c">—</td><td>개발 담당</td></tr>
     </tbody>
   </table>
 </section>
@@ -1826,7 +1875,7 @@ figure,table,.box,.pol,.scr,.sc,.qs,.chk{page-break-inside:avoid;}}
     <tbody>
       <tr><td><b>독자 회원 가입</b></td>
         <td>계정이 둘로 나뉘면 고객이 혼란스럽습니다. 카페24 계정만 사용합니다.
-          <b>대표님께 다시 확인 중</b>(확인사항 Q1)</td></tr>
+          <b>대표님께 다시 확인 중</b> <span class="disc">논의 D-01 · Q1</span></td></tr>
       <tr><td><b>곡집 통째 판매</b></td>
         <td>실물 곡집과 겹칩니다. 낱곡이 이 서비스의 존재 이유입니다</td></tr>
       <tr><td><b>구독 모델</b></td>

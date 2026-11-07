@@ -108,6 +108,12 @@ footer{margin-top:44px;border-top:1px solid var(--ln);padding:24px 58px 44px;
  figure,table,.box,.chk,pre{page-break-inside:avoid;}}
 @media (max-width:760px){.pad,.cover,.toc,footer{padding-left:22px;padding-right:22px;}
  .cover h1{font-size:25px;}.toc ol{columns:1;}}
+
+/* 논의 표시 — 아직 정해지지 않은 곳. 번호는 확인사항 7장 「논의점 목록」과 같습니다 */
+.disc{display:inline-flex;align-items:center;gap:4px;font-size:10.5px!important;font-weight:700;letter-spacing:0;
+ color:#8A5A00!important;background:#FFF4DC!important;border:1px dashed #D9A441;border-radius:999px;padding:1px 9px!important;
+ margin-left:6px;vertical-align:middle;white-space:nowrap;line-height:1.7;font-style:normal;opacity:1!important;}
+.disc::before{content:'';width:6px;height:6px;border-radius:50%;background:#D9A441;}
 </style>
 </head>
 <body>
@@ -213,7 +219,7 @@ footer{margin-top:44px;border-top:1px solid var(--ln);padding:24px 58px 44px;
     나중에 “있으면 편할 것 같다”는 이유로 항목을 늘리지 마세요.</p>
   </div>
   <div class="box warn">
-    <div class="box-t">예외로 검토 중 — 카카오 알림톡용 휴대폰 번호 (확인사항 Q2)</div>
+    <div class="box-t">예외로 검토 중 — 카카오 알림톡용 휴대폰 번호 <span class="disc">논의 D-04 · Q2</span></div>
     <p>알림톡을 하기로 하면 휴대폰 번호가 필요합니다. 그때는 <b>선택 항목</b>으로만 받고,
     거부해도 악보를 살 수 있어야 합니다. 동의 화면 · 처리방침에 항목 · 목적(주문 · 발급 안내) · 보유기간(연결 해제 시까지)을 더하고,
     알림톡 발송 업체를 <b>위탁</b>으로 공개합니다. 워터마크에는 넣지 않습니다(L-10).</p>
@@ -310,7 +316,7 @@ footer{margin-top:44px;border-top:1px solid var(--ln);padding:24px 58px 44px;
         동의 화면과 주문서 양쪽에 넣습니다. 7장에서 자세히 다룹니다.</span></div></div>
 
     <div class="chk-r"><div class="chk-n">4</div><div class="chk-b">
-      <b>만 14세 미만 가입을 어떻게 할지 정합니다</b>
+      <b>만 14세 미만 가입을 어떻게 할지 정합니다</b> <span class="disc">논의 D-10</span>
       <span>만 14세 미만은 법정대리인 동의가 필요합니다.
         합창 악보 구매자는 대부분 성인 지휘자·반주자지만,
         <b>가입을 막을지 법정대리인 동의 절차를 넣을지 정해야 합니다.</b>
@@ -344,7 +350,7 @@ footer{margin-top:44px;border-top:1px solid var(--ln);padding:24px 58px 44px;
   </table>
 
   <div class="box risk">
-    <div class="box-t">가장 먼저 확정해야 할 것 — 사업자가 같습니까 다릅니까</div>
+    <div class="box-t">가장 먼저 확정해야 할 것 — 사업자가 같습니까 다릅니까 <span class="disc">논의 D-07 · Q5</span></div>
     <p>기본 정책서 13장에도 적어 두었던 사안인데, 아직 결론이 나지 않았습니다.
     <b>기존 쇼핑몰(joongangart.co.kr)과 새 악보몰의 사업자가 같은지 다른지</b>에 따라
     법적 성격이 완전히 달라집니다.</p>
