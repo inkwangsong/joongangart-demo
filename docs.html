@@ -458,6 +458,31 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
   .lg-big{padding:30px 22px;}
   
 }
+
+/* ══ UX 비교 장표 ══ */
+.ux-hero{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:30px 0 8px;}
+.ux-hero > div{border:1px solid var(--ln);border-radius:18px;padding:26px 24px;background:#fff;}
+.ux-hero-r{border:2px solid var(--pt);background:var(--pt-tint);}
+.ux-k{display:inline-block;font-size:11.5px;font-weight:700;color:var(--tx3);background:var(--card);border-radius:999px;padding:4px 12px;margin-bottom:14px;}
+.ux-k.on{color:#fff;background:var(--pt);}
+.ux-hero p{font-size:13.5px;line-height:1.9;color:var(--tx2);margin:0 0 12px;word-break:keep-all;}
+.ux-hero-r p{color:var(--ink);}
+.ux-tiny{font-size:4.3px;line-height:1.5;color:var(--tx);background:#fff;border:1px solid var(--ln);border-radius:8px;padding:14px;margin:0 0 12px;text-align:center;}
+.ux-norm{font-size:16px;line-height:1.5;color:var(--ink);font-weight:600;background:#fff;border:1px solid var(--pt);border-radius:8px;padding:14px;margin:0 0 12px;text-align:center;}
+.ux-tb{margin-top:26px;}
+.ux-tb td:first-child{width:auto;}
+.ux-h3{font-size:17px;font-weight:750;letter-spacing:-.7px;margin:40px 0 4px;}
+.ux-small{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;}
+.ux-small > div{border:1px solid var(--ln);border-radius:14px;padding:20px 18px;background:#fff;}
+.ux-small > div > b{display:block;font-size:14px;letter-spacing:-.4px;margin-bottom:8px;color:var(--ink);}
+.ux-small span b{display:inline;font-size:inherit;color:var(--ink);}
+.ux-small span{font-size:12.5px;line-height:1.85;color:var(--tx2);word-break:keep-all;}
+@media (max-width:1100px){.ux-small{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:760px){
+  .ux-hero{grid-template-columns:1fr;}
+  .ux-small{grid-template-columns:1fr;}
+  .ux-tb td:first-child{width:72px;}
+}
 </style></head>
 <body>
 <button class="menu-btn" id="menuBtn" aria-label="목차 열기"><svg viewBox="0 0 24 24"><path d="M4 7h16 M4 12h16 M4 17h16"/></svg></button>
@@ -674,6 +699,51 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
 
 <section class="pt">
   <span class="pt-no">04</span>
+  <h2 class="pt-h">쓰기에 무엇이 달라지나</h2>
+  <p class="pt-sub">기존 쇼핑몰이 잘못된 것이 아니라, <b>책을 파는 화면</b>과 <b>악보 한 곡을 고르는 화면</b>은 필요한 동작이 다릅니다. 같은 일을 몇 번에 끝내는지로 비교했습니다.</p>
+
+  <div class="ux-hero">
+    <div class="ux-hero-l">
+      <span class="ux-k">휴대폰에서 읽기</span>
+      <p>기존 쇼핑몰은 화면 폭이 <b>1260px로 고정</b>되어 있습니다. 390px 휴대폰에서 열면
+        페이지 전체가 <b>31%로 줄어</b>, 본문 글자가 이만큼이 됩니다 —</p>
+      <div class="ux-tiny">부활절 칸타타 · 중앙성가 52집 · 1,000원</div>
+      <p>읽으려면 손가락으로 확대하고, 확대하면 좌우로 밀어야 합니다.</p>
+    </div>
+    <div class="ux-hero-r">
+      <span class="ux-k on">디지털 악보몰</span>
+      <p>휴대폰 폭에 맞춰 화면을 다시 짭니다. 글자는 <b>16px 그대로</b>입니다 —</p>
+      <div class="ux-norm">부활절 칸타타 · 중앙성가 52집 · 1,000원</div>
+      <p>확대할 일도, 좌우로 밀 일도 없습니다. 360 · 390px에서 <b>가로 넘침 0건</b>으로 확인했습니다.</p>
+    </div>
+  </div>
+
+  <table class="pt-tb ux-tb">
+    <thead><tr><th style="width:21%">하려는 일</th><th>기존 쇼핑몰 (실물)</th><th class="hi">디지털 악보몰</th></tr></thead>
+    <tbody>
+      <tr><td>곡이 어떤지 본다</td><td>표지와 상품 설명. 악보 안을 볼 수 없습니다</td><td class="hi"><b>악보 1면을 펼쳐 보고, 들으면서</b> 고릅니다</td></tr>
+      <tr><td>조건으로 좁힌다</td><td>분류를 고르고 정렬(신상품 · 가격 · 인기)</td><td class="hi">정렬에 더해 <b>절기 · 편성 · 반주 · 난이도</b>로 좁힙니다</td></tr>
+      <tr><td>절기 곡을 찾는다</td><td>분류를 하나씩 들어가 눈으로 찾습니다</td><td class="hi">홈에서 <b>「부활절」 한 번</b>, 또는 컬렉션에 묶여 있습니다</td></tr>
+      <tr><td>필요한 만큼 산다</td><td>곡집 한 권 단위</td><td class="hi">곡 하나 × <b>필요한 부수</b></td></tr>
+      <tr><td>받는다</td><td>주문 → 포장 → 택배를 기다립니다</td><td class="hi"><b>결제하고 바로</b> 내려받아 인쇄</td></tr>
+      <tr><td>파일을 잃어버렸다</td><td>다시 사야 합니다</td><td class="hi">악보함에서 <b>추가 결제 없이</b> 다시 받습니다</td></tr>
+      <tr><td>로그인</td><td>볼 때부터 로그인을 권합니다</td><td class="hi">둘러보기 · 미리듣기 · 장바구니까지 <b>로그인 없이</b>. 결제할 때 처음 묻습니다</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="ux-h3">눈에 잘 안 띄지만 손에 닿는 것들</h3>
+  <div class="ux-small">
+    <div><b>하던 일이 끊기지 않습니다</b><span>로그인이 필요해 로그인하면, 홈으로 돌아가지 않고 <b>하려던 일을 이어서</b> 합니다. 하트를 누르다 로그인하면 그 곡이 담겨 있습니다.</span></div>
+    <div><b>빈 화면이 막다른 길이 아닙니다</b><span>“없습니다”로 끝내지 않고 다음에 할 일을 같이 둡니다 — 조건에 맞는 곡이 없으면 <b>조건 풀기</b>, 악보함이 비었으면 <b>악보 보러가기</b>.</span></div>
+    <div><b>지우면 되돌릴 수 있습니다</b><span>장바구니에서 지워도 <b>되돌리기</b>가 5초 동안 떠 있습니다. 확인 창으로 한 번 더 묻지 않습니다.</span></div>
+    <div><b>손가락에 맞는 크기</b><span>누르는 단추는 모두 <b>44px 이상</b>, 입력칸 글자는 16px 이상입니다. 아이폰에서 칸을 눌러도 화면이 확대되지 않습니다.</span></div>
+    <div><b>숫자에 기준이 붙습니다</b><span>“최근 3개월”로 끝내지 않고 <b>실제 날짜</b>를, 증감에는 <b>비교 기준</b>을 함께 적습니다 — “지난달 같은 기간 대비”.</span></div>
+    <div><b>살 때 헷갈리지 않습니다</b><span>부수를 고르면 금액과 함께 <b>“인쇄 권한이 20부로 기록됩니다”</b>를 그 자리에서 보여 줍니다. 결제 뒤에 알게 되는 조건이 없습니다.</span></div>
+  </div>
+</section>
+
+<section class="pt pt-alt">
+  <span class="pt-no">05</span>
   <h2 class="pt-h">한 표로 보면</h2>
   <table class="pt-tb">
     <thead><tr><th></th><th>기존 쇼핑몰 (실물)</th><th class="hi">디지털 악보몰</th></tr></thead>
@@ -691,7 +761,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
 </section>
 
 <section class="pt pt-ink">
-  <span class="pt-no">05</span>
+  <span class="pt-no">06</span>
   <h2 class="pt-h">중앙아트에 생기는 것</h2>
   <div class="pt-gain">
     <div><b>새 매출 자리</b><span>곡집 한 권을 사기엔 부담스럽던 한두 곡 수요, 주일 직전의 급한 주문을 받습니다.</span></div>
@@ -702,8 +772,8 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
   <p class="pt-foot light">실물 곡집 매출을 깎는지, 새 수요인지는 오픈 뒤 6개월 동안 함께 지켜봅니다(회의 자료 「오픈 이후 준비」).</p>
 </section>
 
-<section class="pt pt-alt">
-  <span class="pt-no">06</span>
+<section class="pt">
+  <span class="pt-no">07</span>
   <h2 class="pt-h">지금 준비된 것</h2>
   <div class="pt-nums">
     <div><b>23</b><span>고객 화면<br>홈에서 인쇄까지 이어짐</span></div>
