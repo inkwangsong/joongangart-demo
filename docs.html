@@ -910,14 +910,15 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
     <thead><tr><th class="c" style="width:7%">번호</th><th style="width:30%">여쭐 것</th><th style="width:33%">참고</th><th>회의 결과</th></tr></thead>
     <tbody>
       <tr><td class="c mono"><b>Q7</b></td><td><b>시안을 보시고</b> 더하고 싶은 것, 빠진 것</td><td>곡 상세 정보, 기존 쇼핑몰에서 자주 받는 문의, 관리자에서 하고 싶은 일</td><td></td></tr>
-      <tr><td class="c mono"><b>Q8</b></td><td>홈 ‘이번 절기 준비’ 블록을 둘지</td><td>절기 16주 전부터만 나타나고, 관리자에서 끌 수 있습니다</td><td></td></tr>
+      <tr><td class="c mono"><b>Q8</b></td><td>홈 ‘이번 절기 준비’ 블록을 둘지</td><td>성탄 16주 · 부활절 20주 전부터만 나타나고, 관리자에서 끌 수 있습니다</td><td></td></tr>
     </tbody>
   </table>
 
   <h3>알아 두기만 할 것</h3>
   <table>
     <tbody>
-      <tr><td style="width:37%"><b>기존 쇼핑몰의 교회 증빙 처리</b></td><td>카페24에서 세금계산서 · 현금영수증을 지금 어떻게 발행하고 계신지. 새 악보몰도 같은 흐름으로 맞춥니다</td></tr>
+      <tr><td style="width:37%"><b>기존 쇼핑몰의 교회 증빙 처리</b></td><td><b>현금영수증</b>은 PG사가 자동 신고하므로 그대로 됩니다(개발 없음).
+        <b>세금계산서</b>는 카페24에 자동발행이 없어, 지금 <b>홈택스에서 수기로</b> 하시는지 <b>발행 대행 앱(팝빌 · 바로빌 등)</b>을 쓰시는지 알려 주세요 — 같은 방식으로 맞춥니다</td></tr>
     </tbody>
   </table>
 
@@ -1183,9 +1184,35 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
       <span>디지털 악보몰 로고를 기존 CI를 바탕으로 새로 만들었습니다(JA와 두 실선은 그대로, 흰 바탕에 오선). 이대로 써도 될지 봐 주시고,
       CI 원본 벡터 파일과 쓰실 주소(예: sheet.joongangart.co.kr)를 정해 주세요.</span></div><span class="chk-w">병행</span></div>
   </div>
+</section>
+<section>
+  <h2><span class="no" data-doc="brief">06</span>알아 두기만 할 것</h2>
+  <p class="lead">결정할 것은 아니지만, 새 악보몰을 기존 쇼핑몰과 같은 방식으로 맞추기 위해 여쭙습니다.</p>
+  <div class="box">
+    <div class="box-t">기존 쇼핑몰(카페24)에서 교회 증빙은 어떻게 처리하고 계신가요?</div>
+    <p>교회 재정부는 세금계산서나 현금영수증을 자주 요청합니다. 증빙이 안 나오면 개인 돈으로 결제한 분이 교회에서 정산을 못 받아 재구매가 막힙니다.
+    두 가지는 처리 방식이 다릅니다.</p>
+    <table>
+      <tbody>
+        <tr><td style="width:24%"><b>현금영수증</b></td><td><b>그대로 됩니다 — 개발이 없습니다.</b>
+          계좌이체 · 가상계좌로 결제하면 <b>PG사(KG이니시스)가 결제창에서 신청을 받아 국세청에 자동 신고</b>합니다. 결제 신청 때 옵션만 켜면 됩니다.
+          <div style="margin-top:5px;color:#64748b;font-size:13px;line-height:1.6">카드 결제는 매출전표가 대신하므로 현금영수증 대상이 아닙니다.</div></td></tr>
+        <tr><td><b>세금계산서</b></td><td><b>자동이 아닙니다. 지금 방식을 알려 주셔야 맞출 수 있습니다.</b>
+          카페24에는 세금계산서 자동발행이 기본으로 없어, 보통 둘 중 하나로 하십니다.
+          <div style="margin-top:5px;color:#64748b;font-size:13px;line-height:1.6">
+            <b>① 직원이 홈택스에서 수기 발행</b> — 새 악보몰은 관리자에 <b>요청 정보만 모아 드립니다</b>(상호 · 사업자/고유번호 · 이메일 · 담당자 · 주문번호). 발행은 지금처럼 홈택스에서. 개발이 가볍습니다.<br>
+            <b>② 발행 대행 앱(팝빌 · 바로빌 등)을 쓰는 중</b> — 그 업체 API를 새 악보몰에도 붙이면 <b>자동 발행</b>됩니다. 며칠이면 됩니다.
+          </div></td></tr>
+      </tbody>
+    </table>
+    <div class="why"><b>먼저 정해져야 하는 것</b> — 디지털 악보가 과세인지 면세인지에 따라
+      <b>세금계산서</b>를 쓸지 <b>계산서</b>를 쓸지가 갈립니다(서식과 가격 표시가 달라집니다).
+      ‘부탁드릴 일’의 <b>세무사 확인</b> 항목과 묶여 있으니, 그 답이 나온 뒤 발행 방식을 확정합니다.
+      교회는 <b>고유번호증</b>으로 요청하는 경우가 많아, 재정부 결제 비중이 높으면 ②가 편합니다.</div>
+  </div>
 </section></div>
 <section>
-  <h2><span class="no" data-doc="brief">06</span>지난 회의 뒤 바뀐 것</h2>
+  <h2><span class="no" data-doc="brief">07</span>지난 회의 뒤 바뀐 것</h2>
   <p class="lead">11월 8일 이후 시안과 문서에 반영한 것입니다. 그 전에 반영한 것은 뒤쪽 「이미 정해진 것」에 있습니다.</p>
   <table>
     <thead><tr><th style="width:22%">무엇이</th><th>어떻게 바뀌었나</th><th style="width:22%">왜</th></tr></thead>
@@ -1212,7 +1239,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
   </div>
 </section>
 <section>
-  <h2><span class="no" data-doc="brief">07</span>1차에 하는 것과 하지 않는 것</h2>
+  <h2><span class="no" data-doc="brief">08</span>1차에 하는 것과 하지 않는 것</h2>
   <p class="lead">처음부터 다 만들면 오픈이 늦어지고 오류가 늘어납니다. 팔아 보면서 데이터를 보고 넓힙니다.</p>
   <table>
     <thead><tr><th style="width:50%">1차에 하는 것</th><th>1차에 하지 않는 것 (제안)</th></tr></thead>
@@ -1226,7 +1253,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
   </table>
 </section>
 <section>
-  <h2><span class="no" data-doc="brief">08</span>일정 (안)</h2>
+  <h2><span class="no" data-doc="brief">09</span>일정 (안)</h2>
   <p class="lead">2027년 2분기 오픈을 목표로 한 안입니다. 앞 단계의 신청과 확인이 늦어지면 뒤가 함께 밀립니다. 날짜는 개발 · QA와 맞춘 뒤 확정합니다.</p>
   <div class="tl">
     <div class="tl-r hi"><div class="tl-w">2026.11</div><div class="tl-b"><b>신청과 확인 — 여기가 가장 급합니다</b>
@@ -1245,7 +1272,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
 </div>
 </section>
 <div id="decide"><section>
-  <h2><span class="no" data-doc="brief">09</span>오픈 전에 정하면 되는 것</h2>
+  <h2><span class="no" data-doc="brief">10</span>오픈 전에 정하면 되는 것</h2>
   <p class="lead">지금 정하지 않아도 개발은 시작할 수 있습니다. 개발이 진행되는 동안 정해 주시면 됩니다.</p>
   <table>
     <thead><tr><th style="width:24%">항목</th><th>지금 여쭙지 않는 이유</th><th style="width:22%">언제까지</th></tr></thead>
@@ -1258,7 +1285,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
   </table>
 </section>
 <section>
-  <h2><span class="no" data-doc="brief">10</span>이미 정해진 것</h2>
+  <h2><span class="no" data-doc="brief">11</span>이미 정해진 것</h2>
   <p class="lead">다시 논의하지 않으셔도 됩니다. 이견이 있으실 때만 말씀해 주세요.</p>
 
   <h3 style="font-size:15px;margin:22px 0 8px">지난 협의에서 정해진 것</h3>
@@ -1313,7 +1340,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
   </div>
 </section>
 <section>
-  <h2><span class="no" data-doc="brief">11</span>논의점 목록</h2>
+  <h2><span class="no" data-doc="brief">12</span>논의점 목록</h2>
   <p class="lead">기획 문서에서 아직 정해지지 않은 곳에 <span class="disc">논의 D-00</span> 표시를 달았습니다.
   번호가 같으면 같은 논의입니다. 정해지면 표시를 지우고 문서를 고칩니다.</p>
   <table>
@@ -1337,7 +1364,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
   </table>
 </section></div>
 <section>
-  <h2><span class="no" data-doc="brief">12</span>오픈 전 점검표</h2>
+  <h2><span class="no" data-doc="brief">13</span>오픈 전 점검표</h2>
   <p class="lead">개발이 끝났다고 바로 열 수는 없습니다. 기획 · 운영이 직접 확인할 항목입니다.</p>
   <table>
     <thead><tr><th style="width:6%" class="c">#</th><th style="width:24%">항목</th>
@@ -1381,7 +1408,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
   </div>
 </section>
 <section>
-  <h2><span class="no" data-doc="brief">13</span>오픈 이후 준비</h2>
+  <h2><span class="no" data-doc="brief">14</span>오픈 이후 준비</h2>
   <h3>무엇을 성공으로 볼 것인가</h3>
   <p class="lead">기준이 없으면 매출 숫자만 보고 흔들립니다. 오픈 전에 함께 정해 두면 좋겠습니다.</p>
   <table>
