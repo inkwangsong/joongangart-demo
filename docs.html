@@ -501,6 +501,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
 .ui-shots figcaption{font-size:12px;color:var(--tx2);margin-top:10px;line-height:1.75;word-break:keep-all;}
 .ui-shots figcaption b{color:var(--ink);}
 @media (max-width:900px){.ui-grid,.ui-shots{grid-template-columns:1fr;}}
+#decide .opt-b span b,.opt-b span b,.q-h span b{display:inline;font-size:inherit;margin:0;}
 </style></head>
 <body>
 <button class="menu-btn" id="menuBtn" aria-label="목차 열기"><svg viewBox="0 0 24 24"><path d="M4 7h16 M4 12h16 M4 17h16"/></svg></button>
@@ -868,8 +869,10 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
     <p>화면과 기획 문서는 거의 끝났습니다. 고객 사이트와 관리자 페이지 모두 실제로 눌러 보실 수 있고, 휴대폰에서도 동작합니다.
     <b>개발은 사람을 구하면 2~3개월이면 됩니다.</b>
     문제는 그 앞에 붙는 <b>저작권 확인 · 카페24 앱 등록 · 결제 심사</b>입니다. 이건 우리가 서둘러도 기간을 줄일 수 없고, 하나라도 늦으면 개발이 끝나도 못 엽니다.</p>
-    <p>목표는 <b>2027년 1분기</b>입니다. 1~2월에 열면 <b>2027 부활절(3월 28일)</b>에 맞출 수 있고,
-    3월로 밀리면 2027 성탄에 맞추게 됩니다. 정확한 날짜는 개발 · QA와 맞춰 다시 보고드리겠습니다.</p>
+    <p>목표는 <b>2027년 2분기(4~6월)</b>입니다. 채용 1개월 · 개발 2~3개월 · QA 1개월이라
+    <b>착수 후 3~4개월, 채용까지 더하면 4~5개월</b>이 걸립니다. 12월에 채용을 시작하면 4월 말~5월에 열립니다.
+    1분기로 당기려면 QA를 2~3주로 줄여야 하는데, 돈이 오가고 저작물이 나가는 서비스라 권하지 않습니다.
+    정확한 날짜는 개발 · QA를 뽑은 뒤 확정해 다시 보고드리겠습니다.</p>
   </div>
 
   <table>
@@ -899,7 +902,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
       <tr><td class="c mono"><b>Q3</b></td><td><b>결제 수단</b><br>KG이니시스에 신청할 1차 목록</td><td>카드 · 계좌이체 · 가상계좌 · 카카오페이 · 네이버페이</td><td></td></tr>
       <tr><td class="c mono"><b>Q4</b></td><td><b>워터마크 문구</b><br>전체 문구 / 짧게 / 교회 이름 포함</td><td>전체 문구(주문번호 · 회차 · 구매자 · 부수 · 재배포 금지)</td><td></td></tr>
       <tr><td class="c mono"><b>Q5</b></td><td><b>개인정보</b><br>보호책임자는 누구로, 기존 쇼핑몰과 같은 사업자인지</td><td>소규모 사업자는 대표님 겸임 가능. 사업자 여부는 사업자등록증 기준</td><td></td></tr>
-      <tr><td class="c mono"><b>Q6</b></td><td><b>오픈 시점</b></td><td>목표 2027년 1분기. 1~2월이면 부활절, 3월이면 성탄에 맞춤 — 날짜는 개발 · QA 확인 뒤 확정</td><td></td></tr>
+      <tr><td class="c mono"><b>Q6</b></td><td><b>오픈 시점</b></td><td>2분기(권장) 또는 1분기. 착수 후 3~4개월 — 날짜는 개발 · QA 확인 뒤 확정</td><td></td></tr>
     </tbody>
   </table>
 
@@ -1072,19 +1075,30 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
 
   <div class="q">
     <div class="q-h"><span class="q-n">Q6</span><div>
-      <b>오픈 목표를 <strong>2027년 1분기</strong>로 잡으려 합니다. 괜찮으실까요?</b>
-      <span>정확한 날짜는 기획이 개발 · QA와 맞춰 다시 보고드리겠습니다. 여기서는 <b>어느 시즌에 맞출지</b>만 정해 주시면 됩니다.</span></div></div>
+      <b>오픈 시점을 어디까지 잡을까요?</b>
+      <span>절기에 맞추는 이야기는 뺐습니다. 기간이 맞지 않습니다. 아래는 날짜 계산입니다.</span></div></div>
     <div class="q-b">
-      <div class="opt"><span class="opt-k">A</span><div class="opt-b"><b>1~2월 — 2027 부활절(3월 28일)에 맞춰서</b>
-        <span>성가대가 부활절 칸타타를 고르는 때가 1~2월입니다. 여기에 맞추면 <b>여는 해부터 바로 판매가 일어납니다.</b>
-        대신 카페24 앱 심사 · 결제 심사 중 하나만 늦어도 어려워, 11월 안에 신청이 모두 들어가야 합니다.</span></div></div>
-      <div class="opt"><span class="opt-k">B</span><div class="opt-b"><b>3월 — 1분기 안에 열고 안정화 우선</b>
-        <span>부활절 곡 선정은 지나가므로 <b>2027 성탄 칸타타(9~10월 곡 선정)</b>에 맞추게 됩니다.
-        봄여름 동안 실제 주문을 받아보며 다듬을 시간이 생깁니다.</span></div></div>
-      <div class="rec"><b>실무 의견</b> — 목표는 <b>1분기</b>로 두고, A안을 겨냥하되 B안을 바닥선으로 봅니다.
-        가능하면 부활절 준비 전에 여는 것이 좋지만, 첫 시즌에 오류가 나면 신뢰를 잃으므로 무리해서 당기지는 않겠습니다.
-        <b>날짜는 개발 · QA와 확인한 뒤 확정해 다시 말씀드리겠습니다.</b></div>
-      <div class="why"><b>참고</b> — 앞 단계가 밀리면 전체가 밀립니다. 특히 카페24 앱 등록과 결제 심사는 우리가 기간을 줄일 수 없습니다.</div>
+      <table>
+        <thead><tr><th style="width:30%">단계</th><th style="width:22%">걸리는 기간</th><th>메모</th></tr></thead>
+        <tbody>
+          <tr><td><b>앞단 신청</b></td><td>1~2개월</td><td>저작권 확인 · 카페24 앱 등록 · 결제 심사. <b>지금 바로 시작</b>하면 개발과 겹쳐 갑니다</td></tr>
+          <tr><td><b>개발자 · QA 채용</b></td><td>약 1개월</td><td>백엔드 1 · 프론트 1 · QA 0.5</td></tr>
+          <tr><td><b>개발</b></td><td>2~3개월</td><td>서버 · 결제 · 회원 연동 · 관리자</td></tr>
+          <tr><td><b>QA · 안정화</b></td><td>약 1개월</td><td>실제 결제 시험, 악보 발급 · 환불까지</td></tr>
+          <tr><td><b>합계</b></td><td><b>착수 후 3~4개월</b></td><td>채용까지 더하면 <b>4~5개월</b></td></tr>
+        </tbody>
+      </table>
+      <div class="opt"><span class="opt-k">A</span><div class="opt-b"><b>2027년 2분기 (4~6월) — 권해 드립니다</b>
+        <span>12월에 채용을 시작하면 1~3월 개발, 4월 QA, <b>4월 말~5월 오픈</b>이 자연스럽습니다.
+        앞단 신청을 지금 시작하면 개발이 끝날 때쯤 함께 끝나 서로 기다리지 않습니다.</span></div></div>
+      <div class="opt"><span class="opt-k">B</span><div class="opt-b"><b>2027년 1분기 (3월) — 당기려면</b>
+        <span>이번 달 안에 개발자를 구하고 12월에 바로 착수해야 합니다. QA 기간이 2~3주로 줄어듭니다.
+        <b>돈이 오가고 저작물이 나가는 서비스</b>라 여기서 줄이는 것은 권하지 않습니다.</span></div></div>
+      <div class="rec"><b>실무 의견</b> — <b>2분기(4~6월)를 목표로, 1분기는 당겨지면 좋은 쪽</b>으로 두시길 권합니다.
+        2027 부활절은 3월 28일이라 지금 시작해도 맞추기 어렵습니다. 무리해서 맞추면 첫 결제 · 첫 발급에서 오류가 나고, 그 쪽 손해가 훨씬 큽니다.
+        <b>정확한 날짜는 개발 · QA를 뽑은 뒤 확정해 다시 말씀드리겠습니다.</b></div>
+      <div class="why"><b>지금 하실 수 있는 것</b> — 앞단 신청(저작권 확인 · 카페24 앱 등록 · 결제 심사)은 <b>회의 결과를 기다리지 않고 바로</b> 시작하시면 됩니다.
+        이건 우리가 서둘러도 기간을 줄일 수 없고, 하나라도 늦으면 개발이 끝나도 못 엽니다. 오픈을 당기는 가장 확실한 방법입니다.</div>
     </div>
   </div>
 </section>
@@ -1217,20 +1231,21 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
 </section>
 <section>
   <h2><span class="no" data-doc="brief">08</span>일정 (안)</h2>
-  <p class="lead">2027년 1분기 오픈을 목표로 한 안입니다. 앞 단계의 신청과 확인이 늦어지면 뒤가 함께 밀립니다. 날짜는 개발 · QA와 맞춘 뒤 확정합니다.</p>
+  <p class="lead">2027년 2분기 오픈을 목표로 한 안입니다. 앞 단계의 신청과 확인이 늦어지면 뒤가 함께 밀립니다. 날짜는 개발 · QA와 맞춘 뒤 확정합니다.</p>
   <div class="tl">
     <div class="tl-r hi"><div class="tl-w">2026.11</div><div class="tl-b"><b>신청과 확인 — 여기가 가장 급합니다</b>
       <span>카페24 앱 등록 · KG이니시스 심사 신청 · 법률 · 세무 자문 · 원본 PDF 정리 · 도메인. Q1~Q6 확정.
-      <b>심사 기간은 우리가 줄일 수 없어, 이 달에 들어가지 않으면 1분기가 어려워집니다</b></span></div></div>
-    <div class="tl-r"><div class="tl-w">2026.12</div><div class="tl-b"><b>기술 시험과 개발 착수</b>
-      <span>실제 악보로 워터마크를 넣어 종이에 인쇄 · 카페24 로그인 왕복 시험 · 서버 환경 준비 · 회원 연결 개발 시작</span></div></div>
-    <div class="tl-r"><div class="tl-w">2027.1</div><div class="tl-b"><b>개발 — 팔 수 있는 최소 구성</b>
+      <b>심사 기간은 우리가 줄일 수 없어, 이 달에 들어가지 않으면 오픈이 그만큼 밀립니다</b></span></div></div>
+    <div class="tl-r"><div class="tl-w">2026.12</div><div class="tl-b"><b>채용과 기술 시험</b>
+      <span>백엔드 1 · 프론트 1 · QA 0.5 채용(약 1개월). 그동안 실제 악보로 워터마크를 넣어 종이에 인쇄 · 카페24 로그인 왕복 시험 · 서버 환경 준비</span></div></div>
+    <div class="tl-r"><div class="tl-w">2027.1~2</div><div class="tl-b"><b>개발 — 팔 수 있는 최소 구성</b>
       <span>악보 등록 · 탐색 · 장바구니 · 결제 · 워터마크 발급 · 악보함. 이것만 되면 판매가 됩니다</span></div></div>
-    <div class="tl-r"><div class="tl-w">2027.2</div><div class="tl-b"><b>관리자 · 악보 등록 · 검수</b>
-      <span>주문 · 환불 · 정산 · 홈 편성. 1차 판매 악보를 실제로 올리고 미리보기 · 워터마크 확인. 실제 결제 시험과 담당자 교육</span></div></div>
-    <div class="tl-r"><div class="tl-w">2027 1분기</div><div class="tl-b"><b>오픈</b>
-      <span><b>1~2월에 열면 2027 부활절(3월 28일)에 맞출 수 있습니다</b> — 성가대가 부활절 칸타타를 고르는 때입니다.
-      3월로 밀리면 2027 성탄 칸타타(9~10월 곡 선정)에 맞추게 됩니다</span></div></div>
+    <div class="tl-r"><div class="tl-w">2027.3</div><div class="tl-b"><b>관리자 · 악보 등록 · 검수</b>
+      <span>주문 · 환불 · 정산 · 홈 편성. 1차 판매 악보를 실제로 올리고 미리보기 · 워터마크 확인</span></div></div>
+    <div class="tl-r"><div class="tl-w">2027.4</div><div class="tl-b"><b>QA · 안정화</b>
+      <span>실제 결제 시험, 악보 발급 · 환불까지 끝까지 돌려 봅니다. 담당자 교육. <b>여기를 줄이면 첫 결제에서 사고가 납니다</b></span></div></div>
+    <div class="tl-r"><div class="tl-w">2027.4~5</div><div class="tl-b"><b>오픈</b>
+      <span>앞단 신청을 11월에 넣어 두면 개발이 끝날 때쯤 함께 끝나, 서로 기다리지 않고 바로 열 수 있습니다</span></div></div>
 </div>
 </section>
 <div id="decide"><section>
