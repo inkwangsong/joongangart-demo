@@ -556,12 +556,28 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
   .pl-tb td::before{content:attr(data-l);display:block;font-size:11px;color:#9A9A9A;margin-bottom:2px;}
 }
 .pl-uf{background:#E4F1F3;color:#17616B;}
+
+/* ── 표지 · 최근에 바뀐 것 (2026.11) ── */
+.hub-p{font-size:13px;color:#767676;margin:-6px 0 16px;line-height:1.8;}
+.chg{margin:0 0 34px;}
+.chg-d{display:flex;align-items:baseline;gap:8px;margin:18px 0 8px;}
+.chg-d b{font-size:14px;font-weight:700;color:#1A1A1A;}
+.chg-d em{font-style:normal;font-size:12px;color:#9A9A9A;}
+.chg-d[data-new="1"]::after{content:'새로 올림';margin-left:2px;font-size:10.5px;font-weight:600;
+  background:#1A1A1A;color:#fff;padding:2px 7px;border-radius:999px;vertical-align:1px;}
+.chg-l{border-left:2px solid #E6E8EE;padding-left:16px;margin-left:2px;}
+.chg-i{margin-bottom:12px;}
+.chg-i > b{display:block;font-size:13.5px;font-weight:600;color:#1A1A1A;line-height:1.65;}
+.chg-i ul{margin:5px 0 0;padding-left:16px;}
+.chg-i li{font-size:12.5px;color:#5A5A5A;line-height:1.85;margin-bottom:1px;}
+@media (max-width:720px){ .chg-l{padding-left:12px;} }
+.hub-note p em{font-style:normal;font-weight:700;color:var(--pt);}
 </style></head>
 <body>
 <button class="menu-btn" id="menuBtn" aria-label="목차 열기"><svg viewBox="0 0 24 24"><path d="M4 7h16 M4 12h16 M4 17h16"/></svg></button>
 <div class="veil" id="veil"></div>
 <nav class="side" id="side">
-<div class="side-top"><span class="side-k">JOONGANG ART</span><b>디지털 악보몰</b><em>기획 문서 · 2026년 11월 13일</em></div>
+<div class="side-top"><span class="side-k">JOONGANG ART</span><b>디지털 악보몰</b><em>기획 문서 · 2026년 11월 15일</em></div>
 <div class="side-nav"><a role="button" tabindex="0" data-go="hub" data-sec="hub" class="side-home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 01-1 1h-5v-6H10v6H5a1 1 0 01-1-1z"/></svg><span><b>표지</b><em>문서 안내</em></span></a><div class="side-g">대표님 보실 것</div><a role="button" tabindex="0" data-go="intro" data-sec="intro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4z M9 20h6 M12 16v4 M8 12l3-3 2 2 3-4"/></svg><span><b>소개</b><em>장점과 차별화 전략</em></span></a><a role="button" tabindex="0" data-go="brief" data-sec="brief"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h6l1 2h3a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1h3l1-2z M8 11h8 M8 15h5"/></svg><span><b>회의 자료</b><em>회의 결과 · 남은 일 · 일정</em></span></a><a role="button" tabindex="0" data-go="legal" data-sec="legal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18 M5 7h14 M7 7l-3 6a3 3 0 006 0z M17 7l3 6a3 3 0 01-6 0z"/></svg><span><b>법률 자문 요청서</b><em>변호사께 드릴 문서</em></span></a><div class="side-g">개발 · QA</div><a role="button" tabindex="0" data-go="req" data-sec="req"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z M15 3v4h4 M9 12h7 M9 16h5"/></svg><span><b>요구사항정의서</b><em>왜 만드는가 · 추적표</em></span></a><a role="button" tabindex="0" data-go="func" data-sec="func"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h7v5H4z M13 6h7v5h-7z M4 13h7v5H4z M13 13h7v5h-7z"/></svg><span><b>기능명세</b><em>기능 단위로 다시 센 목록</em></span></a><a role="button" tabindex="0" data-go="flow" data-sec="flow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h6v4H5z M13 16h6v4h-6z M8 8v5a3 3 0 003 3h2 M15 10l2-2-2-2"/></svg><span><b>유저플로우</b><em>처음부터 끝까지 가는 길 7개</em></span></a><a role="button" tabindex="0" data-go="policy" data-sec="policy"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h9a3 3 0 013 3v13H8a3 3 0 01-3-3V4z M8 9h7 M8 13h7"/></svg><span><b>기본 정책서</b><em>서비스 규칙 · 번호의 출처</em></span></a><a role="button" tabindex="0" data-go="spec" data-sec="spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14 M5 11h14 M5 16h9"/></svg><span><b>상세 기획서</b><em>화면 41개 · QA 183항목</em></span></a><a role="button" tabindex="0" data-go="tech" data-sec="tech"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7l-5 5 5 5 M15 7l5 5-5 5"/></svg><span><b>기술 검토서</b><em>워터마크 · 인증 · 결제 · 시스템 구성</em></span></a><a role="button" tabindex="0" data-go="design" data-sec="design"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 100 18c1 0 1.5-.7 1.5-1.5 0-1.3-1-1.5-1-2.5s.7-1.5 1.5-1.5H16a5 5 0 005-5c0-4-4-7.5-9-7.5z"/></svg><span><b>디자인 가이드</b><em>색 · 활자 · 간격</em></span></a><a role="button" tabindex="0" data-go="privacy" data-sec="privacy"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z M9.5 12l1.8 1.8L14.8 10"/></svg><span><b>개인정보 대응</b><em>PIPA 점검표</em></span></a></div>
 <div class="side-foot"><a href="sheet.html" target="_blank" rel="noopener">고객 사이트 시안 ↗</a><br><a href="admin.html" target="_blank" rel="noopener">관리자 시안 ↗</a></div>
 </nav>
@@ -570,11 +586,40 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
 <div class="hub-cover"><span class="hub-k">PROJECT DOCUMENTATION</span>
 <h1>중앙아트<br>디지털 악보몰</h1>
 <p>대표님께 보여드릴 것과 개발 · QA가 볼 것을 나눠 한 곳에 모았습니다.</p>
-<div class="hub-meta"><div>수정<b>2026년 11월 13일</b></div><div>문서<b>11종</b></div><div>시안<b><a href="sheet.html" target="_blank" rel="noopener">고객 사이트</a> · <a href="admin.html" target="_blank" rel="noopener">관리자</a></b></div></div>
+<div class="hub-meta"><div>수정<b>2026년 11월 15일</b></div><div>문서<b>11종</b></div><div>시안<b><a href="sheet.html" target="_blank" rel="noopener">고객 사이트</a> · <a href="admin.html" target="_blank" rel="noopener">관리자</a></b></div></div>
 </div>
 <div class="hub-body">
 <h2 class="hub-t">대표님 보실 것</h2><div class="hub-grid g2"><a role="button" tabindex="0" class="hub-card" data-go="intro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4z M9 20h6 M12 16v4 M8 12l3-3 2 2 3-4"/></svg><b>소개</b><span>장점과 차별화 전략</span></a><a role="button" tabindex="0" class="hub-card" data-go="brief"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h6l1 2h3a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1h3l1-2z M8 11h8 M8 15h5"/></svg><b>회의 자료</b><span>회의 결과 · 남은 일 · 일정</span></a><a role="button" tabindex="0" class="hub-card" data-go="legal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18 M5 7h14 M7 7l-3 6a3 3 0 006 0z M17 7l3 6a3 3 0 01-6 0z"/></svg><b>법률 자문 요청서</b><span>변호사께 드릴 문서</span></a></div>
 <h2 class="hub-t">개발 · QA가 볼 것</h2><div class="hub-grid"><a role="button" tabindex="0" class="hub-card" data-go="req"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z M15 3v4h4 M9 12h7 M9 16h5"/></svg><b>요구사항정의서</b><span>왜 만드는가 · 추적표</span></a><a role="button" tabindex="0" class="hub-card" data-go="func"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h7v5H4z M13 6h7v5h-7z M4 13h7v5H4z M13 13h7v5h-7z"/></svg><b>기능명세</b><span>기능 단위로 다시 센 목록</span></a><a role="button" tabindex="0" class="hub-card" data-go="flow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h6v4H5z M13 16h6v4h-6z M8 8v5a3 3 0 003 3h2 M15 10l2-2-2-2"/></svg><b>유저플로우</b><span>처음부터 끝까지 가는 길 7개</span></a><a role="button" tabindex="0" class="hub-card" data-go="policy"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h9a3 3 0 013 3v13H8a3 3 0 01-3-3V4z M8 9h7 M8 13h7"/></svg><b>기본 정책서</b><span>서비스 규칙 · 번호의 출처</span></a><a role="button" tabindex="0" class="hub-card" data-go="spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14 M5 11h14 M5 16h9"/></svg><b>상세 기획서</b><span>화면 41개 · QA 183항목</span></a><a role="button" tabindex="0" class="hub-card" data-go="tech"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7l-5 5 5 5 M15 7l5 5-5 5"/></svg><b>기술 검토서</b><span>워터마크 · 인증 · 결제 · 시스템 구성</span></a><a role="button" tabindex="0" class="hub-card" data-go="design"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 100 18c1 0 1.5-.7 1.5-1.5 0-1.3-1-1.5-1-2.5s.7-1.5 1.5-1.5H16a5 5 0 005-5c0-4-4-7.5-9-7.5z"/></svg><b>디자인 가이드</b><span>색 · 활자 · 간격</span></a><a role="button" tabindex="0" class="hub-card" data-go="privacy"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z M9.5 12l1.8 1.8L14.8 10"/></svg><b>개인정보 대응</b><span>PIPA 점검표</span></a></div>
+<h2 class="hub-t">최근에 바뀐 것</h2>
+<p class="hub-p">마지막으로 보신 뒤 무엇이 달라졌는지입니다. 작업 기록에서 자동으로 만들어집니다.</p>
+<div class="chg">
+<div class="chg-d" data-new="1"><b>11월 15일</b><em>일</em></div>
+<div class="chg-l">
+<div class="chg-i"><b>빠져 있던 기획 문서 3종 — 요구사항정의서 · 기능명세 · 유저플로우</b>
+<ul><li>요구사항정의서 — 1차 32건 + 2차 6건. 요구사항마다 출처 · 차수 · 어느 기능으로 만들어지는지 · 확인 기준. 마지막 장에 추적표 (요구사항 → 기능 → 화면 → 정책)를 기능명세에서 자동 생성합니다.</li><li>기능명세 — 기능 38개. 화면 기준으로 흩어져 있던 것을 기능 기준으로 다시 세고, 기능마다 나타나는 화면과 따르는 정책을 적었습니다.</li><li>유저플로우 — 흐름 7개. 고객 · 시스템 · 중앙아트가 각 단계에서 무엇을 하는지와 갈림길.</li><li>정책 D(발급)와 화면 D(관리자), 논의 D가 같은 D-01을 쓰고 있었습니다. 발급 정책을 DL로 바꿔 21곳을 고쳤습니다.</li><li>P-04(악보 삭제 불가)가 번호만 있고 정책 줄이 아니었습니다. 정식 정책으로 올리고, 이를 P-05로 잘못 가리키던 참조를 고쳤습니다.</li><li>정책 90개 · 화면 41개가 모두 어떤 기능에 묶였습니다(이전에는 미연결 다수).</li></ul>
+</div>
+<div class="chg-i"><b>관리자 UX 재점검 · 인쇄 처리 다시 설계</b>
+<ul><li>안내문 ‘자세히’가 뜨지 않아 25개 안내문의 둘째 줄부터 안 보였습니다. 줄임은 안쪽 글자에 걸려 있는데 바깥 상자를 재고 있었습니다.</li><li>대시보드 기간 단추(오늘 · 이번 주 · 이번 달 · 올해)가 눌리기만 하고 숫자가 그대로였습니다. 기간별 값과 비교 대상을 붙였습니다.</li><li>대시보드 기준일이 2027년으로 적혀 있었습니다(다른 화면은 2026년).</li><li>메뉴 옆 숫자(악보 128 · 주문 3)가 실제 목록 수와 달랐습니다. 목록에서 셉니다.</li><li>‘이번 달 매출’인데 기간이 10/17~11/14였습니다.</li><li>주문 관리도 주문자 이름을 가리고, 필요할 때만 ‘이름 펼치기’로 봅니다 (다운로드 이력과 같은 규칙, 엑셀은 항상 가린 채).</li></ul>
+</div>
+<div class="chg-i"><b>낱곡 카드 썸네일 칸을 곡집 곡 카드와 같은 크기로 맞춤</b>
+</div>
+<div class="chg-i"><b>낱곡(곡집 없는 악보) 판매 — 찬양곡 · 성가곡(일반) 양쪽에 추가</b>
+<ul><li>고객: 곡집 자리에 '낱곡' 표기, 곡집 링크·'같은 곡집의 다른 곡' 숨김, 썸네일은 표지 대신 악보 1면, 분류 화면에 '낱곡' 하위 탭</li><li>찬양곡 낱곡 3곡(SG00004~6), 성가곡(일반) 낱곡 3곡(SG00001~3)</li><li>성가곡(일반) 악보 가사를 예배 표현이 아닌 것으로 분리</li><li>상단 메뉴·전체 분류를 바뀐 분류에 맞춤</li><li>관리자: 수록 곡집 '곡집 없음' 선택, SG 채번, 목록 곡집 칸 '낱곡'</li><li>검색이 곡집 없는 곡에서 멈추던 오류 수정</li></ul>
+</div>
+<div class="chg-i"><b>저작권료 명세 공개 범위 3단계(없음/교회명/이름·이메일) · 동의한 건만 제공 · 곡별 구매 내역 · 마스킹으로 갈음 불가 설명</b>
+</div>
+</div>
+<div class="chg-d"><b>11월 14일</b><em>토</em></div>
+<div class="chg-l">
+<div class="chg-i"><b>묶어받기 — 전 곡이 한 파일에 들어가도록 수정, 묶음 표지 추가 · 내려받기/바로인쇄 구분 · 안내 문구 재작성</b>
+</div>
+<div class="chg-i"><b>엑셀 내려받기 실데이터화 · 저작권료 역할별 요율/정렬/그래프 · 다운로드 이력 개인정보 가림 · 대시보드·정산 그래프 · 설정 탭과 돌아가기 줄 강조</b>
+</div>
+<div class="chg-i"><b>가상계좌 제거(낱곡 단가 대비 건당 수수료) · 최소 구매 부수 기능 · 기술검토서에 서버/운영비/준비물 장 추가</b>
+</div>
+</div>
+</div>
 <h2 class="hub-t">어떤 문서를 보시면 되나요</h2>
 <table class="hub-tb"><thead><tr><th style="width:30%">이럴 때</th><th>이 문서를</th></tr></thead><tbody>
 <tr><td><b>이 사이트가 왜 좋은지 한눈에</b></td><td><a role="button" tabindex="0" data-go="intro">소개</a> — 기존 쇼핑몰과 다르게 만든 여섯 가지와 중앙아트에 생기는 것</td></tr>
@@ -589,8 +634,8 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
 <tr><td>법률 · 세무 자문 받을 때</td><td><a role="button" tabindex="0" data-go="privacy">개인정보 대응</a> — 변호사에게 물어볼 것이 정리되어 있습니다</td></tr>
 </tbody></table>
 <div class="hub-note"><b>같은 내용은 한 곳에만 적었습니다</b>
-<p><b>왜</b>는 요구사항정의서, <b>무엇</b>은 기능명세, <b>어떤 순서</b>는 유저플로우,
-<b>화면 동작</b>은 상세 기획서, <b>규칙</b>은 기본 정책서, <b>구현 방법</b>은 기술 검토서에만 적었습니다.
+<p><em>왜</em>는 요구사항정의서, <em>무엇</em>은 기능명세, <em>어떤 순서</em>는 유저플로우,
+<em>화면 동작</em>은 상세 기획서, <em>규칙</em>은 기본 정책서, <em>구현 방법</em>은 기술 검토서에만 적었습니다.
 번호(REQ-01 · FN-13 · A-03 · DL-05)로 서로를 가리키고, 문서를 만들 때마다 그 번호가 실제로 있는지 기계가 검사합니다.</p>
 <p>
 예전의 진행 보고 · 확인사항은 <b>회의 자료</b>로, 화면 기획서 · 화면 정책서는 <b>상세 기획서</b>로, 시스템 구성은 <b>기술 검토서</b>로 합쳤습니다.</p></div>
