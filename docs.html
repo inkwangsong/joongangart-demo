@@ -596,6 +596,8 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
 <div class="chg">
 <div class="chg-d" data-new="1"><b>11월 16일</b><em>월</em></div>
 <div class="chg-l">
+<div class="chg-i"><b>껍데기 조작부 전수 점검 — 6곳이 더 있었습니다</b>
+</div>
 <div class="chg-i"><b>바로 찾기 — 조건 칩을 관리자에서 고르게, 선택지도 늘림</b>
 <ul><li>후보를 14개로 늘렸습니다 — 편성 6 · 반주 4 · 난이도 3 + 무반주. 편성·반주·난이도 코드표에서 끌어오므로 코드표를 늘리면 후보도 늘어납니다.</li><li>관리자 홈 편성 &gt; 바로 찾기에서 묶음별로 눌러 켜고 끕니다 (기본 6개 · 최대 8개, 넘기면 알림).</li><li>한 줄에 열 개를 몰면 벽이 되므로 두 줄로 나눴습니다 — 「예배로」(절기, 자동) / 「조건으로」(고른 것). 휴대폰은 줄마다 옆으로 밂.</li><li>조건 줄 맨 끝에 '조건 더 보기'를 붙였습니다. 누르면 조건 판이 펼쳐진 채로 열려, 칩을 늘리지 않고도 모든 조건에 닿습니다.</li><li>칩마다 곡 수가 붙고 0곡인 조건은 켜 두어도 숨깁니다(절기와 같은 규칙).</li></ul>
 </div>
@@ -617,8 +619,6 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
 <ul><li>어제 넣은 낱곡 넷이 홈의 '새로 올라온 곡' 네 칸을 전부 차지해 찬양곡이 한 곡도 안 보였습니다. new 표시를 둘로 줄여 찬양곡 낱곡 · 가곡집 · 부활 칸타타 · 고난주간이 섞이게 했습니다.</li><li>남은 주를 고객 화면은 올림(20주), 관리자는 19주로 적고 있었습니다. 134일은 19주 1일이므로 연습 기간 안내는 내림으로 통일했습니다.</li></ul>
 </div>
 <div class="chg-i"><b>악보함에 구입일과 받은 횟수</b>
-</div>
-<div class="chg-i"><b>표지에 「최근에 바뀐 것」 — 작업 기록에서 자동 생성</b>
 </div>
 </div>
 </div>
@@ -3331,6 +3331,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
 <div class="scr-h"><span class="id">D-01</span><b>악보 등록 · 수정</b><span>/admin/scores/new · /admin/scores/{코드}</span></div>
 <div class="scr-b">
 <div class="scr-row"><div class="scr-k">구성</div><div class="scr-v">맨 위 <b>해야 할 일 띠</b><span class="nw">정의</span>. 왼쪽: ① 악보 파일 ② 기본 정보 ③ 악보 정보 ④ 상세 페이지 내용 ⑤ 판매 설정. 오른쪽: 고객 화면 미리보기(입력하는 대로 반영)</div></div>
+<div class="scr-row"><div class="scr-k">미리보기 칸</div><div class="scr-v">오른쪽에 <b>흰 카드로 떠 있고 스크롤을 따라옵니다</b><span class="nw">정의</span>. 머리글은 「고객 화면 미리보기」 + 무엇이 반영되는지 한 줄. 폭은 화면에 맞춰 <b>358 / 420 / 500px</b>(1360px · 1700px에서 넓어짐) — 좁은 노트북에서 넓히면 왼쪽 입력 폼이 눌리기 때문입니다. 높이는 화면 높이를 따라가고(최소 360px) 넘치면 안에서 스크롤합니다. 좁은 화면(1200px 미만)에서는 폼 아래로 내려갑니다</div></div>
 <div class="scr-row"><div class="scr-k">해야 할 일 띠</div><div class="scr-v"><b>“이 3가지만 채우면 판매를 시작할 수 있습니다”</b><span class="nw">정의</span> — 악보 PDF · 곡명 · 판매가. 채운 칸에 체크가 들어오고 <b>n / 3</b>로 셉니다. 칸을 누르면 그 입력 자리로 스크롤하며 1.4초 동안 테두리로 표시합니다. 셋이 다 차면 띠가 초록으로 바뀌고 문구가 “다 채우셨습니다”로 바뀝니다. <b>수정 화면에는 나오지 않습니다</b>(이미 판매 중이므로).</div></div>
 <div class="scr-row"><div class="scr-k">접어 두는 묶음</div><div class="scr-v">지금 하지 않아도 되는 항목은 <b>기본으로 접습니다</b><span class="nw">정의</span> — 미리듣기 음원 · 조성 · 연주시간 · 지휘자 메모 · 표시 뱃지. 제목 옆에 “없어도 판매됩니다” 같은 한 줄을 붙여, 펴지 않아도 무엇인지 알 수 있게 합니다.</div></div>
 <div class="scr-row"><div class="scr-k">작성 중 보관</div><div class="scr-v">새 악보는 곡명이나 파일이 있으면 쓰던 값을 기억. 다른 메뉴에 다녀오면 “작성 중이던 악보를 불러왔습니다”. 판매 시작 · 임시 저장 · 취소하면 지움.</div></div>
