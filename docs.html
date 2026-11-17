@@ -596,6 +596,9 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
 <div class="chg">
 <div class="chg-d" data-new="1"><b>11월 17일</b><em>화</em></div>
 <div class="chg-l">
+<div class="chg-i"><b>배너의 곡 수를 단추처럼 보이지 않게</b>
+<ul><li>분류 머리의 「전체 9곡」 흰 알약을 「— 악보 9곡」 글자로</li><li>컬렉션 머리의 「4곡 · 부활절」도 알약 배경을 빼고 듣기 단추 옆 글자로</li><li>고객 화면 전체에서 누를 수 없는 알약 모양이 남았는지 검사</li></ul>
+</div>
 <div class="chg-i"><b>관리자 로고를 누르면 대시보드로</b>
 <ul><li>왼쪽 메뉴 맨 위 로고를 단추로 바꿔 어느 메뉴에서든 대시보드로 이동</li><li>휴대폰 위 띠에서도 같은 동작</li></ul>
 </div>
@@ -617,13 +620,11 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
 <div class="chg-i"><b>곡집 수정은 오른쪽 서랍으로 · 삭제 규칙</b>
 <ul><li>곡집 수정을 목록 아래 펼침에서 오른쪽 서랍으로 옮김, 아래에 곡집 삭제와 저장하고 닫기</li><li>곡집 삭제는 수록곡 0곡이고 판매 기록이 없을 때만, 아니면 자물쇠와 잠긴 이유</li><li>악보 삭제는 팔린 적 없는 악보만 열림, 팔린 악보는 판매 중지 안내</li><li>편성 · 반주 · 절기도 쓰는 악보가 있으면 지우기 잠금, 절기에 지우기 칸 추가</li><li>지운 직후 되돌리기 알림</li><li>문서: 정책 P-11, 곡집 관리 · 분류 관리 · 악보 등록 명세</li></ul>
 </div>
-<div class="chg-i"><b>기획 문서 표지 갱신</b>
-</div>
 </div>
 </div>
 <h2 class="hub-t">어떤 문서를 보시면 되나요</h2>
 <table class="hub-tb"><thead><tr><th style="width:30%">이럴 때</th><th>이 문서를</th></tr></thead><tbody>
-<tr><td><b>이 사이트가 왜 좋은지 한눈에</b></td><td><a role="button" tabindex="0" data-go="intro">소개</a> — 기존 쇼핑몰과 다르게 만든 여섯 가지와 중앙아트에 생기는 것</td></tr>
+<tr><td><b>이 사이트가 왜 좋은지 한눈에</b></td><td><a role="button" tabindex="0" data-go="intro">소개</a> — 기존 쇼핑몰과 다르게 만든 아홉 가지와 중앙아트에 생기는 것</td></tr>
 <tr><td><b>회의를 시작할 때</b></td><td><a role="button" tabindex="0" data-go="brief">회의 자료</a> — 한 장 요약 → 오늘 정해 주실 것 → 부탁드릴 일 → 일정</td></tr>
 <tr><td><b>“왜 이걸 만들죠?”</b></td><td><a role="button" tabindex="0" data-go="req">요구사항정의서</a> — 요구사항마다 어디서 나온 이야기인지와 확인 기준이 있습니다</td></tr>
 <tr><td><b>“무엇을 만들죠?”</b></td><td><a role="button" tabindex="0" data-go="func">기능명세</a> — 기능 단위 목록. 개발 일감을 나눌 때 씁니다</td></tr>
@@ -691,7 +692,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
 <section class="pt pt-alt">
   <span class="pt-no">02</span>
   <h2 class="pt-h">기존 쇼핑몰과 이렇게 다르게 만들었습니다</h2>
-  <p class="pt-sub">차별화 전략 여섯 가지 — 모두 시안에서 직접 눌러 보실 수 있습니다.</p>
+  <p class="pt-sub">차별화 전략 아홉 가지 — 모두 시안에서 직접 눌러 보실 수 있습니다.</p>
 
   <div class="pt-st">
     <div class="pt-st-tx">
@@ -702,10 +703,11 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
       <ul>
         <li>10 · 20 · 30 · 40부 빠른 선택, 1~999부 직접 입력</li>
         <li>곡집 화면에서는 필요한 곡만 골라 한꺼번에 담기</li>
+        <li><b>곡마다 최소 구매 부수</b>를 정할 수 있습니다 — 관리자에서 10부로 정하면 “이 곡은 10부부터”라고 안내하고, 그 아래로는 내려가지 않습니다</li>
         <li>단원이 늘면 같은 곡을 부수만 더 사면 됩니다</li>
       </ul>
     </div>
-    <figure class="pt-shot"><img src="shots/detail.jpg" alt="악보 상세 — 부수 선택과 금액"><figcaption>악보 상세 · 부수를 고르는 자리</figcaption></figure>
+    <figure class="pt-shot"><img src="shots/minqty.jpg" alt="악보 상세 — 부수 선택, 최소 부수 안내, 금액"><figcaption>악보 상세 · 부수를 고르면 금액 · 인쇄 권한이 바로 계산</figcaption></figure>
   </div>
 
   <div class="pt-st rev">
@@ -716,7 +718,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
         남은 날짜, 중앙아트가 고른 곡, 부를 순서까지.</p>
       <ul>
         <li>‘이번 절기 준비’는 절기 14~16주 전부터 저절로 나타나고, 지나면 사라집니다</li>
-        <li>고난주간은 <b>버건디</b>, 부활절은 <b>하늘색 · 흰색</b> — 전례색을 따릅니다</li>
+        <li>고난주간은 <b>붉은 버건디</b>, 부활절은 <b>하늘색 · 흰색</b>, 대림절 <b>보라</b>, 성탄절 <b>빨강</b>, 연중 <b>초록</b> — 전례색을 따릅니다</li>
         <li>컬렉션 기획전은 미리 만들어 공개일을 예약해 둡니다</li>
       </ul>
     </div>
@@ -742,8 +744,8 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
     <div class="pt-st-tx">
       <span class="pt-tag">전략 4 · 저작권</span>
       <h3>잠그지 않습니다. 대신 <em>누구 것인지</em> 남깁니다</h3>
-      <p>파일에 암호를 걸거나 인쇄를 막지 않습니다. 그렇게 하면 정작 제대로 사신 분이 불편하고,
-        마음먹고 퍼뜨리는 사람은 어차피 뚫습니다.</p>
+      <p>인쇄를 막지 않습니다. 막으면 정작 제대로 사신 분이 부수만큼 뽑지 못하고,
+        마음먹고 퍼뜨리는 사람은 어차피 뚫습니다. 파일에는 <b>여는 암호</b>(기본: 주문번호 뒤 6자리)만 걸어, 파일만 넘겨받은 사람이 바로 열지 못하게 합니다.</p>
       <p>대신 내려받기를 누르면 그 자리에서 사본을 새로 만들어 드립니다 —
         모든 면 아래에 <b>주문번호 · 구매자 · 부수</b>가 찍힌 PDF입니다.
         유출된 악보가 돌아다녀도 <b>어느 주문에서 나간 것인지 바로 확인됩니다.</b></p>
@@ -778,13 +780,58 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
       <h3>개발자를 부르지 않고 <em>직접 운영</em>합니다</h3>
       <p>고객 화면에 보이는 것은 모두 관리자에서 바꿉니다 — 배너, 홈 순서, 메뉴, 곡집 표지, 추천 검색어, 약관까지.</p>
       <ul>
-        <li>악보 등록: PDF를 올리면 용량 · 해상도 · 여백을 바로 검사</li>
+        <li>악보 등록: PDF를 올리면 형식 · 용량 · 암호 · 면수 · 용지를 바로 검사하고, 1면 미리보기와 파트별 음역까지 채웁니다</li>
         <li>메인 배너 5장, 노출 기간 예약, 이미지 규격 안내</li>
         <li>주문 · 환불 · 재발급 · 월별 정산 · 엑셀 내려받기</li>
         <li>관리자도 휴대폰에서 쓸 수 있습니다</li>
       </ul>
     </div>
     <figure class="pt-shot"><img src="shots/a-home.jpg" alt="관리자 — 홈 편성"><figcaption>관리자 · 홈 편성 (오른쪽이 고객 화면 미리보기)</figcaption></figure>
+  </div>
+
+  <div class="pt-st">
+    <div class="pt-st-tx">
+      <span class="pt-tag">전략 7 · 사기 전에 판단</span>
+      <h3>우리 성가대가 <em>부를 수 있을까</em>, 미리 압니다</h3>
+      <p>지휘자가 곡을 고르며 가장 먼저 보는 것은 “소프라노가 어디까지 올라가나”입니다.
+        곡 화면에 <b>파트마다 가장 낮은 음 ~ 높은 음</b>을 막대로 보여 주고, 아마추어 성가대에게 높은 음은 붉게 표시합니다.</p>
+      <ul>
+        <li>음역은 <b>올린 악보 PDF에서 저절로 읽어</b> 채우고, 관리자가 ‘맞습니다’를 눌러야 고객에게 보입니다</li>
+        <li><b>성경 본문</b>도 곡마다 적어 둡니다 — “요한복음 19:30 · 가사 인용”처럼 장절과 관계까지</li>
+        <li>설교 본문에 맞는 곡을 고를 근거가 됩니다. 본문으로 곡을 찾는 기능은 본문이 쌓인 뒤(2차)에 엽니다</li>
+      </ul>
+    </div>
+    <figure class="pt-shot"><img src="shots/range.jpg" alt="악보 상세 — 파트별 음역 막대와 성경 본문"><figcaption>악보 상세 · 파트별 음역과 성경 본문</figcaption></figure>
+  </div>
+
+  <div class="pt-st rev">
+    <div class="pt-st-tx">
+      <span class="pt-tag">전략 8 · 받기</span>
+      <h3>여러 곡을 <em>PDF 한 파일로</em></h3>
+      <p>주일에 부를 곡 서너 개를 따로따로 열어 인쇄하지 않아도 됩니다. 악보함에서 곡을 골라 ‘묶어서 내려받기’를 누르면
+        <b>한 파일</b>로 만들어 드리고, 그대로 한 번에 인쇄합니다.</p>
+      <ul>
+        <li>고른 순서대로 이어 붙이고, 맨 앞에 <b>수록 곡 목록 한 장</b>을 넣습니다(뺄 수도 있습니다)</li>
+        <li>곡마다 <b>그 곡의 부수로 워터마크</b>를 따로 찍고, 쪽번호는 곡마다 1면부터</li>
+        <li>한 번에 최대 20곡. 정산과 저작권료는 곡마다 따로 기록됩니다</li>
+      </ul>
+    </div>
+    <figure class="pt-shot"><img src="shots/merge.jpg" alt="세 곡을 묶은 PDF — 목록 장과 각 곡 첫 면"><figcaption>3곡을 묶은 PDF · 24장(악보 23면 + 목록 1장)</figcaption></figure>
+  </div>
+
+  <div class="pt-st">
+    <div class="pt-st-tx">
+      <span class="pt-tag">전략 9 · 저작권료</span>
+      <h3>저작권료가 <em>저절로 계산</em>됩니다</h3>
+      <p>매달 주문을 ERP에 옮겨 적고 곡별로 나누던 일이 없어집니다. 내려받을 때마다 남는 <b>발급 기록이 그대로 장부</b>가 되고,
+        악보 등록 때 적은 권리자 · 역할별 요율로 지급액을 나눕니다.</p>
+      <ul>
+        <li>달을 고르면 권리자별 · 곡별 금액이 바로 나옵니다 — 작곡 8 · 작사 2 · 편곡 5 · 원곡 3(%)</li>
+        <li><b>엑셀 내려받기</b>(권리자별 → 곡별), <b>지급명세서</b>는 권리자 한 분당 A4 한 장으로 인쇄</li>
+        <li>파일로 나가는 구매자 정보는 <b>가려서</b>(김*윤) 나갑니다. 명세서를 만들면 그달 금액이 확정됩니다</li>
+      </ul>
+    </div>
+    <figure class="pt-shot"><img src="shots/royalty.jpg" alt="관리자 — 저작권료 정산"><figcaption>관리자 · 저작권료 정산 (10월분)</figcaption></figure>
   </div>
 </section>
 
@@ -927,11 +974,13 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
       <tr><td>파는 것</td><td>곡집 · 음반 · 도서, 권 단위</td><td class="hi"><b>낱곡 × 인쇄 부수</b> (PDF)</td></tr>
       <tr><td>받기까지</td><td>택배 배송</td><td class="hi"><b>결제 즉시</b> 내려받아 인쇄</td></tr>
       <tr><td>찾는 길</td><td>분류 → 상품 목록</td><td class="hi">절기 · 편성 · 반주 · 난이도, 컬렉션, 검색어 추천</td></tr>
-      <tr><td>고르는 근거</td><td>상품 설명</td><td class="hi">악보 1면 + 듣기 + 지휘자 메모 + 많이 부른 곡</td></tr>
+      <tr><td>고르는 근거</td><td>상품 설명</td><td class="hi">악보 1면 + 듣기 + <b>파트별 음역 · 성경 본문</b> + 지휘자 메모 + 많이 부른 곡</td></tr>
+      <tr><td>여러 곡 받기</td><td>곡집을 통째로</td><td class="hi">고른 곡을 <b>PDF 한 파일</b>로 — 목록 장 · 곡별 워터마크</td></tr>
       <tr><td>저작권</td><td>구매 뒤 복사는 알 수 없음</td><td class="hi">부수 라이선스 · 면마다 구매자 표기 · 내려받기 감시</td></tr>
       <tr><td>재고 · 물류</td><td>인쇄 · 재고 · 포장 · 택배</td><td class="hi">없음</td></tr>
       <tr><td>회원</td><td>카페24 회원</td><td class="hi">같은 아이디 그대로</td></tr>
       <tr><td>화면 운영</td><td>카페24 관리자 · 스킨</td><td class="hi">전용 관리자 — 홈 · 배너 · 메뉴 · 컬렉션을 직접</td></tr>
+      <tr><td>저작권료</td><td>매달 ERP에 옮겨 적고 곡별로 나눔</td><td class="hi">발급 기록으로 <b>자동 계산</b> — 엑셀 · 지급명세서</td></tr>
     </tbody>
   </table>
 </section>
@@ -941,7 +990,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
   <h2 class="pt-h">중앙아트에 생기는 것</h2>
   <div class="pt-gain">
     <div><b>매달 하시던 일이 없어집니다</b><span>주문을 ERP에 옮겨 적고, 개인정보를 빼고, 곡별로 나눠 작곡 · 편곡자에게 지급하시던 일.
-      디지털은 <b>어느 곡이 몇 부 나갔는지가 이미 기록</b>이라 그 네 단계가 필요 없습니다. 월말에 표만 확인하시면 됩니다.</span></div>
+      디지털은 <b>어느 곡이 몇 부 나갔는지가 이미 기록</b>이라 그 네 단계가 필요 없습니다. 월말에 표를 확인하고 <b>엑셀 · 지급명세서</b>를 내려받으시면 됩니다.</span></div>
     <div><b>새 매출 자리</b><span>곡집 한 권을 사기엔 부담스럽던 한두 곡 수요, 주일 직전의 급한 주문을 받습니다.</span></div>
     <div><b>재고 · 배송 0</b><span>인쇄 · 포장 · 택배가 없습니다. 주문이 늘어도 일이 늘지 않고, 절판된 곡도 계속 팝니다.</span></div>
     <div><b>지켜지는 저작권</b><span>“몇 부까지 인쇄해도 되나”가 구매 기록으로 남습니다. 작곡 · 편곡자에게도 설명할 근거가 생깁니다.</span></div>
@@ -955,7 +1004,7 @@ a.sref{color:var(--pt);text-decoration:none;border-bottom:1px dotted currentColo
   <h2 class="pt-h">지금 준비된 것</h2>
   <div class="pt-nums">
     <div><b>23</b><span>고객 화면<br>홈에서 인쇄까지 이어짐</span></div>
-    <div><b>15</b><span>관리자 메뉴<br>단추 251개 눌러서 점검</span></div>
+    <div><b>15</b><span>관리자 메뉴<br>단추 278개 눌러서 점검</span></div>
     <div><b>360<small>px</small></b><span>휴대폰 대응<br>가로 넘침 0건</span></div>
     <div><b>142</b><span>QA 확인 항목<br>개발 · 검수 기준 문서</span></div>
   </div>
