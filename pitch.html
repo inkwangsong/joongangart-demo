@@ -320,6 +320,20 @@ img{display:block;max-width:100%}
 .dshot{position:relative;max-width:1160px;margin:40px auto 0;aspect-ratio:16/9}
 .dshot .dl{position:absolute;inset:0;width:100%;height:100%;will-change:transform,opacity}
 .dshot .dl[data-k="ph"]{z-index:4}.dshot .dl[data-k="tab"],.dshot .dl[data-k="fold"]{z-index:3}
+.specl{text-align:center;font-size:12.5px;color:var(--tx3);margin:-70px auto 0;padding-bottom:80px}
+.spot.dk .specl{color:rgba(255,255,255,.5)}
+.specl a{display:inline-flex;gap:5px;align-items:center;border:1px solid var(--ln);border-radius:999px;padding:4px 11px;margin-left:4px;color:var(--tx2);background:#fff}
+.spot.dk .specl a{background:transparent;border-color:#2A3943;color:rgba(255,255,255,.75)}
+.specl a b{color:var(--blue);font-weight:800}.spot.dk .specl a b{color:var(--lime)}
+.specl a:hover{border-color:var(--blue)}
+.sec .specl{margin:28px auto 0;padding-bottom:0}
+.totop{position:fixed;right:22px;bottom:22px;z-index:60;width:52px;height:52px;border-radius:50%;border:0;cursor:pointer;background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(18,41,45,.28);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .25s,transform .25s,background .15s}
+.totop[data-on="1"]{opacity:1;transform:none;pointer-events:auto}
+.totop:hover{background:var(--blue)}
+.totop svg{width:22px;height:22px}
+@media (max-width:600px){.totop{right:14px;bottom:14px;width:46px;height:46px}}
+
 .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
@@ -441,6 +455,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>교회명 받지 않음</b><p>회의 결정대로 받는 정보를 하나 줄였습니다.</p></div>
     <div class="spec"><b>로그인 상태 유지</b><p>한 번 로그인하면 다음에 와도 그대로입니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#B-01" target="_blank" rel="noopener"><b>B-01</b> 로그인</a> · <a href="docs.html#B-02" target="_blank" rel="noopener"><b>B-02</b> 최초 동의</a></p>
 </section>
 
 <section class="spot" id="s-home">
@@ -453,6 +468,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>배너에서 바로 듣기</b><p>배너 곡집의 수록 곡을 그 자리에서 들어 봅니다.</p></div>
     <div class="spec"><b>쇼핑몰 · 파트연습실 연결</b><p>맨 위 줄에서 실물 악보 쇼핑몰과 파트연습실로 오갑니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#A-01" target="_blank" rel="noopener"><b>A-01</b> 홈</a></p>
 </section>
 
 <section class="spot gy" id="s-season">
@@ -465,6 +481,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>추천 곡 바로 듣기</b><p>중앙아트가 고른 곡을 홈에서 바로 들어 봅니다.</p></div>
     <div class="spec"><b>전례색</b><p>대림절은 보라, 성탄과 고난주간은 붉은색, 부활절은 하늘색입니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#A-01" target="_blank" rel="noopener"><b>A-01</b> 홈</a></p>
 </section>
 
 <section class="spot" id="s-search">
@@ -477,6 +494,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>최근 검색어</b><p>지난번에 찾던 말을 다시 누릅니다.</p></div>
     <div class="spec"><b>인기 검색어</b><p>지금 다른 성가대가 무엇을 찾는지 순위로 보여 줍니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#A-00" target="_blank" rel="noopener"><b>A-00</b> 검색 패널</a></p>
 </section>
 
 <section class="spot gy" id="s-list">
@@ -489,6 +507,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>정렬</b><p>신상품 · 낮은 가격 · 쉬운 순 · 인기 순.</p></div>
     <div class="spec"><b>메뉴 나눔</b><p>회의에서 정한 대로 찬양곡과 성가곡(일반)을 나눴습니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#A-02" target="_blank" rel="noopener"><b>A-02</b> 목록 · 조건</a></p>
 </section>
 
 <section class="spot dk" id="s-range">
@@ -502,6 +521,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>PDF에서 자동으로</b><p>관리자가 악보를 올리면 음역을 읽어 채웁니다. 담당자는 확인만 합니다.</p></div>
   </div>
   <p class="memo rv">음역과 성경 본문으로 <b>찾기</b>는 값이 충분히 쌓인 뒤 2차에 엽니다.</p>
+  <p class="specl rv">화면 명세 <a href="docs.html#A-03" target="_blank" rel="noopener"><b>A-03</b> 악보 상세</a></p>
 </section>
 
 <section class="spot" id="s-qty">
@@ -514,6 +534,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>한 번에 고르기</b><p>10 · 20 · 30 · 40부는 버튼 하나로 고릅니다.</p></div>
     <div class="spec"><b>관심 악보</b><p>담아 둔 곡들의 연주 시간 합계와 부수별 금액을 함께 봅니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#A-03" target="_blank" rel="noopener"><b>A-03</b> 악보 상세</a></p>
 </section>
 
 <section class="spot gy" id="s-order">
@@ -526,6 +547,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>이용 범위 동의</b><p>“산 부수 안에서만 인쇄”에 결제 전에 동의를 받습니다.</p></div>
     <div class="spec"><b>안내 메일 · 알림톡</b><p>발급 안내는 메일로 늘 보내고, 번호를 준 분께는 알림톡도 보냅니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#B-04" target="_blank" rel="noopener"><b>B-04</b> 주문서</a></p>
 </section>
 
 <section class="spot dk" id="s-lib">
@@ -541,6 +563,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>수록 곡 목록</b><p>묶은 파일 맨 앞에 곡 목록 한 장이 붙습니다.</p></div>
     <div class="spec"><b>곡마다 워터마크</b><p>묶어 받아도 곡마다 그 곡의 구매 부수가 찍힙니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#C-03" target="_blank" rel="noopener"><b>C-03</b> 내 악보함 · 내려받기</a></p>
 </section>
 
 <!-- ───────── 인쇄 · 저작권 ───────── -->
@@ -562,6 +585,7 @@ img{display:block;max-width:100%}
       </div>
     </div>
   </div>
+    <p class="specl rv">화면 명세 <a href="docs.html#C-03" target="_blank" rel="noopener"><b>C-03</b> 내려받기 창</a> · <a href="docs.html#D-16" target="_blank" rel="noopener"><b>D-16</b> PDF 보호 설정</a></p>
 </section>
 
 <section class="spot" id="devices">
@@ -597,6 +621,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>5회 실패 잠금</b><p>비밀번호를 5번 틀리면 30분 동안 잠깁니다.</p></div>
     <div class="spec"><b>권한 나눔</b><p>대표 · 전체 권한과 일반 담당자 권한을 나눕니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#D-00" target="_blank" rel="noopener"><b>D-00</b> 관리자 로그인</a></p>
 </section>
 
 <section class="spot gy" id="a-dash">
@@ -609,6 +634,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>절기 알림</b><p>“부활절까지 19주 남았습니다”처럼, 기획전을 미리 열 때를 알려 줍니다.</p></div>
     <div class="spec"><b>최근 등록한 악보</b><p>곡마다 내려받기 · 매출 누적을 바로 봅니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#D-07" target="_blank" rel="noopener"><b>D-07</b> 대시보드</a></p>
 </section>
 
 <section class="spot dk" id="a-reg">
@@ -622,6 +648,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>표지 자동</b><p>PDF 1면을 미리보기 그림으로 씁니다.</p></div>
     <div class="spec"><b>옆에서 미리보기</b><p>고치는 대로 고객 화면이 옆에서 바뀝니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#D-01" target="_blank" rel="noopener"><b>D-01</b> 악보 등록</a></p>
 </section>
 
 <section class="spot gy" id="a-range">
@@ -634,6 +661,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>사보 원본이 있으면</b><p>MusicXML 파일이 있으면 더 정확하고 빠릅니다.</p></div>
     <div class="spec"><b>시안 안내</b><p>시안에는 예시 값이 들어갑니다. 실제 읽기는 개발 때 붙입니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#D-01" target="_blank" rel="noopener"><b>D-01</b> 악보 등록</a></p>
 </section>
 
 <section class="spot" id="a-home">
@@ -646,6 +674,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>전례색 8가지</b><p>컬렉션 배경을 절기 색에서 고릅니다.</p></div>
     <div class="spec"><b>지우기 잠금</b><p>팔린 악보는 지워지지 않습니다. 구매자 악보함과 정산 장부를 지킵니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#D-13" target="_blank" rel="noopener"><b>D-13</b> 홈 편성</a></p>
 </section>
 
 <section class="spot gy" id="a-order">
@@ -658,6 +687,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>재발급</b><p>메일을 못 받았으면 새 발급 주소와 안내 메일을 다시 보냅니다.</p></div>
     <div class="spec"><b>환불</b><p>내려받기 전 주문은 여기서 바로 환불합니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#D-02" target="_blank" rel="noopener"><b>D-02</b> 주문 관리</a></p>
 </section>
 
 <section class="spot" id="a-down">
@@ -670,6 +700,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>주의만 모아 보기</b><p>탭 하나로 ‘주의’ 줄만 봅니다.</p></div>
     <div class="spec"><b>엑셀 내려받기</b><p>이름을 가린 채로 내보냅니다.</p></div>
   </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#D-12" target="_blank" rel="noopener"><b>D-12</b> 다운로드 이력</a></p>
 </section>
 
 <section class="spot dk" id="royalty">
@@ -683,6 +714,7 @@ img{display:block;max-width:100%}
     <div class="spec"><b>권리자 한 번에 등록</b><p>곡별 권리자 · 지분을 엑셀 한 장으로 주시면 한 번에 올립니다.</p></div>
   </div>
   <p class="memo rv">전화 · 카톡으로 받은 종이 주문을 함께 합산하는 기능은 2차 계획입니다.</p>
+  <p class="specl rv">화면 명세 <a href="docs.html#D-17" target="_blank" rel="noopener"><b>D-17</b> 저작권료 정산</a></p>
 </section>
 
 <!-- ───────── 로고 ───────── -->
@@ -737,6 +769,7 @@ img{display:block;max-width:100%}
   </div>
 </section>
 
+<button class="totop" id="totop" type="button" aria-label="맨 위로"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <footer class="foot">
   <b>중앙아트 디지털 악보몰</b> · 기획 시안 2026.11<br>
   <a href="sheet.html">고객 사이트</a> · <a href="admin.html">관리자</a> · <a href="docs.html">기획 문서</a>
@@ -757,6 +790,10 @@ img{display:block;max-width:100%}
     links.forEach(function(a){a.setAttribute('data-on', a.getAttribute('href')===cur?'1':'0');});
   }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  var tt=document.getElementById('totop');
+  if(tt){ var tshow=function(){tt.setAttribute('data-on',window.scrollY>600?'1':'0');}; window.addEventListener('scroll',tshow,{passive:true}); tshow();
+    tt.addEventListener('click',function(){window.scrollTo({top:0,behavior:(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)?'auto':'smooth'});}); }
+
   /* 기기 모였다가 펼쳐지기 — 스크롤에 맞춰 */
   var fan=document.getElementById('dfan');
   if(fan){
