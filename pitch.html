@@ -317,7 +317,9 @@ img{display:block;max-width:100%}
 .hero .sub{font-size:clamp(20px,2.6vw,28px);font-weight:800;color:var(--ink);letter-spacing:-.6px;margin-top:6px}
 .sub-en{margin:8px 0 0;font-size:14px;font-weight:600;letter-spacing:.3px;color:var(--tx3)}
 .end-en{display:block;margin-top:10px;font-size:14px;font-weight:600;letter-spacing:.3px;color:rgba(255,255,255,.55)}
-.dshot{max-width:1160px;margin:40px auto 0;padding:0 20px}.dshot img{width:100%;height:auto}
+.dshot{position:relative;max-width:1160px;margin:40px auto 0;aspect-ratio:16/9}
+.dshot .dl{position:absolute;inset:0;width:100%;height:100%;will-change:transform,opacity}
+.dshot .dl[data-k="ph"]{z-index:4}.dshot .dl[data-k="tab"],.dshot .dl[data-k="fold"]{z-index:3}
 .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
@@ -566,7 +568,12 @@ img{display:block;max-width:100%}
   <span class="eb rv">어디서나</span>
   <h2 class="rv">휴대폰, 태블릿, 컴퓨터.<br>어디서나 똑같이.</h2>
   <p class="lede rv">휴대폰에서 찾고, 태블릿으로 펼쳐 보고, 교회 컴퓨터에서 인쇄합니다.<br>접는 폰까지, 화면 크기에 맞춰 알아서 바뀝니다.<br>어느 기기에서 열어도 같은 악보몰입니다.</p>
-  <div class="dshot rv"><img src="shots/devices.jpg" alt="컴퓨터, 태블릿, 휴대폰, 접는 폰에 띄운 악보몰 화면" loading="lazy"></div>
+  <div class="dshot" id="dfan" role="img" aria-label="컴퓨터, 태블릿, 휴대폰, 접는 폰에 띄운 악보몰 화면">
+    <img class="dl" data-k="desk" src="shots/dev-desk.webp" alt="" loading="lazy">
+    <img class="dl" data-k="tab" src="shots/dev-tab.webp" alt="" loading="lazy">
+    <img class="dl" data-k="fold" src="shots/dev-fold.webp" alt="" loading="lazy">
+    <img class="dl" data-k="ph" src="shots/dev-ph.webp" alt="" loading="lazy">
+  </div>
   <p class="memo rv" style="padding-bottom:110px;margin-top:6px">기기 그림 위에 실제 시안 화면을 각 기기 크기로 열어 얹었습니다.</p>
 </section>
 
@@ -750,6 +757,23 @@ img{display:block;max-width:100%}
     links.forEach(function(a){a.setAttribute('data-on', a.getAttribute('href')===cur?'1':'0');});
   }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  /* 기기 모였다가 펼쳐지기 — 스크롤에 맞춰 */
+  var fan=document.getElementById('dfan');
+  if(fan){
+    var L=[].slice.call(fan.querySelectorAll('.dl'));
+    var OFF={desk:[0,0,.92],tab:[28,-4,.8],fold:[-30.6,-5.5,.8],ph:[-2.2,-4.4,.9]};
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ez=function(x){return x<0?0:x>1?1:1-Math.pow(1-x,3);};
+    var draw=function(){
+      var r=fan.getBoundingClientRect(), vh=window.innerHeight||800;
+      var p=reduce?1:ez((vh*0.78-r.top)/(vh*0.58));
+      L.forEach(function(el){var o=OFF[el.getAttribute('data-k')];var q=1-p;
+        el.style.transform='translate('+(o[0]*q)+'%,'+(o[1]*q)+'%) scale('+(o[2]+(1-o[2])*p)+')';
+        el.style.opacity=el.getAttribute('data-k')==='desk'?1:Math.min(1,.35+p*1.3);});
+    };
+    window.addEventListener('scroll',draw,{passive:true});window.addEventListener('resize',draw);draw();
+  }
+
 })();
 </script>
 </body>
