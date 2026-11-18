@@ -37,6 +37,8 @@ img{display:block;max-width:100%}
 .pill-nav a.m{font-size:13px;color:var(--tx2);padding:6px 10px;border-radius:999px}
 .pill-nav a.m:hover{background:var(--gray);color:var(--ink)}
 .pill-nav a.m[data-on="1"]{background:var(--ink);color:#fff}
+.pill-nav a.doc{font-size:13px;color:var(--ink);font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--ln);margin-left:4px}
+.pill-nav a.doc:hover{background:var(--gray)}
 .pill-nav .go{background:var(--lime);color:var(--ink);font-weight:800;font-size:13px;padding:7px 14px;border-radius:999px;margin-left:4px}
 
 /* ── 첫 화면 ── */
@@ -374,6 +376,11 @@ img{display:block;max-width:100%}
   .pill-nav .brand span{display:none}
   .pill-nav a.m{padding:6px 7px;font-size:12px}
   .pill-nav .go{padding:7px 10px;font-size:12px}
+  .pill-nav .brand{padding:4px 4px 4px 4px;flex-shrink:0}
+  .pill-nav .brand .tw{flex-shrink:0}
+  .pill-nav .brand .tw img{width:22px;height:22px;flex-shrink:0}
+  .pill-nav a.doc{padding:6px 9px;font-size:12px;margin-left:2px;white-space:nowrap}
+  .pill-nav .go{white-space:nowrap}
   .sec{padding:72px 0}
   .rows{gap:60px}
 }
@@ -385,6 +392,7 @@ img{display:block;max-width:100%}
   <a class="brand" href="#top"><span class="tw"><img src="shots/ci-old.png" alt="중앙아트 CI"><img src="shots/logo-mall.svg" alt="디지털 악보몰 로고"></span><span>디지털 악보몰</span></a>
   <a class="m" href="#cust">악보몰</a>
   <a class="m" href="#admin">관리자</a>
+  <a class="doc" href="docs.html#hub" target="_blank" rel="noopener">기획 문서 ↗</a>
   <a class="go" href="sheet.html" target="_blank" rel="noopener">시안 열기</a>
 </nav>
 
