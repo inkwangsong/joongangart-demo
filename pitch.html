@@ -6,7 +6,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>중앙아트 디지털 악보몰</title>
-<meta name="description" content="필요한 한 곡을, 성가대 인원만큼, 오늘 바로. 중앙아트 디지털 악보몰 소개">
+<meta name="description" content="필요한 한 곡을, 성가대 인원만큼, 오늘 바로. 중앙아트 디지털 악보몰 시안 소개">
 <meta property="og:title" content="중앙아트 디지털 악보몰">
 <meta property="og:description" content="필요한 한 곡을, 성가대 인원만큼, 오늘 바로.">
 <meta property="og:image" content="shots/intro-poster.jpg">
@@ -17,24 +17,24 @@
   --ln:#E3E8E9; --bg:#FFFFFF; --gray:#F3F5F6; --card:#FFFFFF;
   --blue:#203BA1; --blue2:#16297C; --blue-tint:#EEF0FA;
   --lime:#C7F04A; --lime2:#B5DE36; --lime-soft:#F1F9DA;
-  --dark:#14212A; --slate:#3E4C52;
+  --dark:#14212A; --slate:#3E4C52; --red:#C0392B;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--tx);font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
-  -webkit-font-smoothing:antialiased;letter-spacing:-.2px;line-height:1.6}
+  -webkit-font-smoothing:antialiased;letter-spacing:-.2px;line-height:1.6;word-break:keep-all}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
-.w{max-width:1040px;margin:0 auto;padding:0 20px}
+.w{max-width:1080px;margin:0 auto;padding:0 20px}
 
 /* ── 위에 떠 있는 메뉴(알약) ── */
-.pill-nav{position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:4px;
-  background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1px solid var(--ln);border-radius:999px;padding:5px 6px 5px 6px;
-  box-shadow:0 6px 24px rgba(18,41,45,.10);white-space:nowrap;transition:opacity .25s,transform .25s}
+.pill-nav{position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:2px;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1px solid var(--ln);border-radius:999px;padding:5px 6px;
+  box-shadow:0 6px 24px rgba(18,41,45,.10);white-space:nowrap;transition:opacity .25s,transform .25s;max-width:calc(100vw - 20px)}
 .pill-nav[data-hide="1"]{opacity:0;transform:translate(-50%,-14px);pointer-events:none}
 .pill-nav .brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:13.5px;padding:4px 10px 4px 4px}
 .pill-nav .brand i{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-style:normal;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;letter-spacing:-.5px}
-.pill-nav a.m{font-size:13px;color:var(--tx2);padding:6px 11px;border-radius:999px}
+.pill-nav a.m{font-size:13px;color:var(--tx2);padding:6px 10px;border-radius:999px}
 .pill-nav a.m:hover{background:var(--gray);color:var(--ink)}
 .pill-nav a.m[data-on="1"]{background:var(--ink);color:#fff}
 .pill-nav .go{background:var(--lime);color:var(--ink);font-weight:800;font-size:13px;padding:7px 14px;border-radius:999px;margin-left:4px}
@@ -44,8 +44,8 @@ img{display:block;max-width:100%}
 .badge{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:#fff;font-weight:900;font-size:13px;letter-spacing:.5px;padding:6px 14px;border-radius:999px}
 .badge b{color:var(--lime)}
 .hero h1{font-size:clamp(40px,7vw,76px);font-weight:900;letter-spacing:-.055em;line-height:1.05;margin:18px 0 10px}
-.hero .sub{font-size:18px;color:var(--tx2);font-weight:600;margin:0}
-.hero .box{max-width:560px;margin:22px auto 0;background:var(--gray);border-radius:14px;padding:14px 20px;font-size:14px;color:var(--tx2);line-height:1.75}
+.hero .sub{font-size:19px;color:var(--tx2);font-weight:650;margin:0}
+.hero .box{max-width:640px;margin:24px auto 0;background:var(--gray);border-radius:16px;padding:18px 24px;font-size:15px;color:var(--tx2);line-height:1.85;text-align:left}
 .hero .box b{color:var(--ink)}
 .cta{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:var(--ink);font-weight:800;font-size:15px;padding:13px 26px;border-radius:999px;transition:transform .15s,background .15s}
 .cta:hover{background:var(--lime2);transform:translateY(-2px)}
@@ -57,25 +57,27 @@ img{display:block;max-width:100%}
 .stats b{color:var(--ink)}
 
 /* ── 영상 ── */
-.vid{max-width:1040px;margin:30px auto 0;padding:0 20px}
+.vid{max-width:1080px;margin:30px auto 0;padding:0 20px}
 .vid-in{position:relative;border-radius:22px;overflow:hidden;background:var(--dark);box-shadow:0 30px 70px rgba(18,41,45,.25);border:6px solid var(--blue)}
 .vid video{display:block;width:100%;aspect-ratio:16/9;background:#0b1430}
 .vid-cap{text-align:center;font-size:12.5px;color:var(--tx3);margin-top:12px}
 
 /* ── 공통 장 ── */
-.sec{padding:96px 0}
+.sec{padding:100px 0}
 .sec.gray{background:var(--gray)}
-.sec h2{text-align:center;font-size:clamp(26px,4vw,38px);font-weight:850;letter-spacing:-.045em;line-height:1.3;margin:0}
-.sec .lead{text-align:center;font-size:15.5px;color:var(--tx2);margin:12px 0 0}
+.sec h2{text-align:center;font-size:clamp(26px,4vw,40px);font-weight:850;letter-spacing:-.045em;line-height:1.3;margin:0}
+.sec .lead{text-align:center;font-size:16px;color:var(--tx2);margin:14px auto 0;max-width:720px;line-height:1.8}
 .kick{display:block;text-align:center;font-size:12.5px;font-weight:800;color:var(--blue);letter-spacing:.5px;margin-bottom:10px}
+.kick em{font-style:normal;display:inline-block;background:var(--blue);color:#fff;border-radius:6px;padding:1px 7px;margin-right:6px}
 
 /* ── 이런 순간 — 기울어진 카드 ── */
-.moments{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:880px;margin:44px auto 0}
-.mo{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:168px;border-radius:16px;padding:20px 20px 16px;
+.moments{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:900px;margin:44px auto 0}
+.mo{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:176px;border-radius:16px;padding:20px 20px 16px;
   box-shadow:0 10px 26px rgba(18,41,45,.10);transition:transform .2s,box-shadow .2s;cursor:pointer}
 .mo:hover{transform:rotate(0) translateY(-4px)!important;box-shadow:0 18px 36px rgba(18,41,45,.16)}
-.mo b{font-size:16.5px;font-weight:800;line-height:1.45;letter-spacing:-.4px;word-break:keep-all}
-.mo .ft{display:flex;justify-content:space-between;align-items:center;margin-top:18px;font-size:12px;opacity:.75}
+.mo b{font-size:16.5px;font-weight:800;line-height:1.45;letter-spacing:-.4px}
+.mo small{display:block;font-size:12.5px;line-height:1.6;margin-top:8px;opacity:.8}
+.mo .ft{display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-size:12px;font-weight:700;opacity:.8}
 .mo .ft i{font-style:normal;font-size:15px}
 .mo.w1{background:#fff;transform:rotate(-2deg)}
 .mo.l1{background:var(--lime);transform:rotate(1.5deg)}
@@ -83,36 +85,90 @@ img{display:block;max-width:100%}
 .mo.l2{background:var(--lime-soft);transform:rotate(1.2deg)}
 .mo.d2{background:var(--slate);color:#fff;transform:rotate(-1.8deg)}
 .mo.w2{background:#fff;transform:rotate(2deg)}
-.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:1000px;margin:56px auto 0}
-.fact{position:relative;background:#fff;border-radius:14px;padding:18px 14px;text-align:center}
-.fact span{display:block;font-size:12px;color:var(--tx3)}
-.fact b{display:block;font-size:15px;font-weight:800;margin-top:4px;letter-spacing:-.3px}
-.fact em{position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-style:normal;font-size:11px;font-weight:800;color:var(--blue);background:var(--blue-tint);border-radius:999px;padding:2px 9px;white-space:nowrap}
 
-/* ── 네 단계 ── */
-.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:46px 0 0}
-.steps::before{content:"";position:absolute;left:12%;right:12%;top:22px;height:2px;background:var(--ln)}
-.st{position:relative;text-align:center}
-.st .pin{position:relative;z-index:1;width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:16px;border:4px solid #fff;box-shadow:0 0 0 1px var(--ln)}
-.st:last-child .pin{background:var(--lime);color:var(--ink)}
-.st b{display:block;font-size:16px;font-weight:800}
-.st span{display:block;font-size:13px;color:var(--tx2);margin-top:4px;line-height:1.6;word-break:keep-all}
-.st figure{margin:16px 0 0;border-radius:14px;overflow:hidden;border:1px solid var(--ln);background:#fff;aspect-ratio:4/3}
-.st figure img{width:100%;height:100%;object-fit:cover;object-position:top}
+/* 지금 → 바뀌면 */
+.vs{max-width:900px;margin:64px auto 0;background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--ln)}
+.vs-h,.vs-r{display:grid;grid-template-columns:150px 1fr 1fr}
+.vs-h div{padding:14px 18px;font-size:13px;font-weight:800;color:var(--tx3);background:#FAFBFB;border-bottom:1px solid var(--ln)}
+.vs-h div:last-child{color:var(--blue)}
+.vs-r div{padding:15px 18px;font-size:14px;line-height:1.65;border-bottom:1px solid var(--ln);color:var(--tx2)}
+.vs-r:last-child div{border-bottom:0}
+.vs-r div:first-child{font-weight:800;color:var(--ink)}
+.vs-r div:last-child{color:var(--ink);font-weight:600;background:linear-gradient(90deg,var(--lime-soft),#fff 70%)}
 
-/* ── 장점 세 카드 ── */
-.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:46px 0 0}
-.feat{background:var(--gray);border-radius:20px;padding:10px 10px 24px;text-align:center}
-.feat figure{margin:0;background:#fff;border-radius:14px;overflow:hidden;aspect-ratio:16/11;position:relative}
-.feat figure img{width:100%;height:100%;object-fit:cover;object-position:top center}
-.feat .tip{position:absolute;top:12px;left:12px;background:var(--ink);color:#fff;font-size:11.5px;font-weight:700;border-radius:999px;padding:5px 11px}
-.feat b{display:block;font-size:19px;font-weight:850;letter-spacing:-.6px;margin:20px 0 6px}
-.feat span{display:block;font-size:13.5px;color:var(--tx2);line-height:1.7;padding:0 14px;word-break:keep-all}
-.center{text-align:center;margin-top:30px}
+/* ── 화면 한 장씩: 그림 + 설명 ── */
+.rows{margin-top:56px;display:grid;gap:72px}
+.row{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center}
+.row.flip{grid-template-columns:1fr 1.15fr}
+.row.flip .shot{order:2}
+.shot{position:relative}
+.frame{border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--ln);box-shadow:0 22px 50px rgba(18,41,45,.13)}
+.frame .bar{display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;background:#F6F7F8;border-bottom:1px solid var(--ln)}
+.frame .bar i{width:9px;height:9px;border-radius:50%;background:#D9DEE0}
+.frame .bar span{margin-left:10px;font-size:11px;color:var(--tx3);background:#fff;border:1px solid var(--ln);border-radius:6px;padding:1px 10px}
+.frame img{width:100%;height:auto}
+.frame.crop img{aspect-ratio:16/10;object-fit:cover;object-position:top}
+.shot .tag{position:absolute;left:-10px;top:44px;background:var(--ink);color:#fff;font-size:12px;font-weight:800;border-radius:8px;padding:6px 11px;box-shadow:0 8px 18px rgba(18,41,45,.2)}
+.shot .tag.lime{background:var(--lime);color:var(--ink)}
+.shot .sub-shot{position:absolute;right:-14px;bottom:-26px;width:46%;border-radius:12px;overflow:hidden;border:4px solid #fff;box-shadow:0 16px 36px rgba(18,41,45,.22);background:#fff}
+.phones{display:flex;gap:18px;justify-content:center}
+.phone{width:min(46%,230px);border-radius:30px;padding:9px;background:var(--dark);box-shadow:0 22px 50px rgba(18,41,45,.22)}
+.phone img{border-radius:22px;width:100%;aspect-ratio:780/1500;object-fit:cover;object-position:top}
+.phone:nth-child(2){margin-top:40px}
+.txt .no{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;font-weight:900;font-size:14px}
+.txt h3{font-size:clamp(22px,2.8vw,28px);font-weight:850;letter-spacing:-.04em;line-height:1.35;margin:14px 0 12px}
+.txt p{font-size:15px;color:var(--tx2);line-height:1.85;margin:0 0 14px}
+.txt p b{color:var(--ink)}
+.txt ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.txt li{position:relative;padding:11px 14px 11px 38px;background:var(--gray);border-radius:10px;font-size:14px;line-height:1.6;color:var(--tx2)}
+.sec.gray .txt li{background:#fff}
+.txt li::before{content:"";position:absolute;left:14px;top:15px;width:14px;height:14px;border-radius:50%;background:var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M3.5 7.2l2.3 2.2 4.7-4.8' fill='none' stroke='%2312292D' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat}
+.txt li b{color:var(--ink)}
+.txt .why{margin-top:14px;font-size:13.5px;color:var(--blue);background:var(--blue-tint);border-radius:10px;padding:11px 14px;line-height:1.65}
+.txt .why b{font-weight:800}
+
+/* ── 저작권 네 장치 ── */
+.guard{display:grid;grid-template-columns:300px 1fr;gap:44px;align-items:start;margin-top:52px}
+.guard .pdf{position:sticky;top:90px}
+.guard .pdf .frame img{max-height:620px;width:100%;object-fit:cover;object-position:top}
+.guard .pdf p{font-size:12.5px;color:var(--tx3);text-align:center;margin:10px 0 0}
+.g-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g{background:#fff;border-radius:18px;padding:22px 22px 20px;border:1px solid var(--ln)}
+.g .n{display:inline-block;font-size:12px;font-weight:900;color:var(--blue);background:var(--blue-tint);border-radius:6px;padding:2px 8px}
+.g b{display:block;font-size:17.5px;font-weight:850;letter-spacing:-.4px;margin:12px 0 8px}
+.g p{margin:0;font-size:14px;color:var(--tx2);line-height:1.8}
+.g p b{display:inline;font-size:inherit;margin:0;color:var(--ink);font-weight:800}
+.g.wide{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.1fr;gap:20px;align-items:center}
+.g.wide .frame{box-shadow:none}
+.note{margin-top:14px;background:var(--dark);color:#fff;border-radius:18px;padding:20px 22px;font-size:14px;line-height:1.8}
+.note b{color:var(--lime)}
+
+/* ── 어디까지 와 있나 ── */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:48px}
+.num{background:var(--gray);border-radius:18px;padding:24px 20px}
+.num b{display:block;font-size:40px;font-weight:900;letter-spacing:-.05em;line-height:1}
+.num b small{font-size:16px;font-weight:800;margin-left:3px}
+.num span{display:block;font-size:14px;font-weight:800;margin-top:10px}
+.num p{margin:6px 0 0;font-size:13px;color:var(--tx2);line-height:1.65}
+.num.dk{background:var(--blue);color:#fff}.num.dk p{color:rgba(255,255,255,.78)}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.ck{border:1px solid var(--ln);border-radius:18px;padding:24px}
+.ck h4{margin:0 0 4px;font-size:17px;font-weight:850;letter-spacing:-.3px;display:flex;align-items:center;gap:8px}
+.ck h4 i{font-style:normal;font-size:11.5px;font-weight:800;border-radius:999px;padding:3px 9px;background:var(--lime);color:var(--ink)}
+.ck h4 i.wait{background:#FDECEA;color:var(--red)}
+.ck > p{margin:0 0 14px;font-size:13.5px;color:var(--tx3)}
+.ck ul{margin:0;padding:0;list-style:none;display:grid;gap:0}
+.ck li{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:11px 0;border-top:1px solid var(--ln);font-size:14px;line-height:1.65;color:var(--tx2)}
+.ck li b{color:var(--ink);font-weight:800}
+.dec{margin-top:20px;background:var(--lime-soft);border-radius:18px;padding:24px}
+.dec h4{margin:0 0 14px;font-size:17px;font-weight:850}
+.dec-g{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.dec-g div{background:#fff;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.55;color:var(--tx2)}
+.dec-g b{display:block;color:var(--ink);font-size:13.5px}
 
 /* ── 중앙아트에 생기는 것 ── */
-.gain{max-width:840px;margin:0 auto;background:var(--gray);border-radius:28px;padding:44px 28px 46px;text-align:center;overflow:hidden}
-.fan{display:flex;justify-content:center;gap:0;margin:0 -40px 34px;height:150px}
+.gain{max-width:900px;margin:0 auto;background:var(--gray);border-radius:28px;padding:44px 28px 46px;text-align:center;overflow:hidden}
+.fan{display:flex;justify-content:center;margin:0 -40px 34px;height:150px}
 .fan div{width:150px;height:126px;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 10px 24px rgba(18,41,45,.16);margin:0 -6px;border:3px solid #fff}
 .fan div img{width:100%;height:100%;object-fit:cover;object-position:top}
 .fan div:nth-child(1){transform:rotate(-12deg) translateY(18px)}
@@ -122,79 +178,161 @@ img{display:block;max-width:100%}
 .fan div:nth-child(5){transform:rotate(12deg) translateY(18px)}
 .gain h2{font-size:clamp(24px,3.6vw,34px)}
 .gain h2 mark{background:var(--lime);padding:0 8px;border-radius:8px}
-.gain-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:640px;margin:26px auto 0;text-align:left}
-.gain-list div{background:#fff;border-radius:14px;padding:16px 18px}
-.gain-list b{display:block;font-size:14.5px;font-weight:800}
-.gain-list span{display:block;font-size:13px;color:var(--tx2);margin-top:3px;line-height:1.65;word-break:keep-all}
+.gain-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:720px;margin:26px auto 0;text-align:left}
+.gain-list div{background:#fff;border-radius:14px;padding:18px 20px}
+.gain-list b{display:block;font-size:15px;font-weight:800}
+.gain-list span{display:block;font-size:13.5px;color:var(--tx2);margin-top:5px;line-height:1.75}
+
+/* ── 일정 ── */
+.tl{position:relative;max-width:820px;margin:48px auto 0;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:var(--ln)}
+.tl-i{position:relative;padding:0 0 26px}
+.tl-i::before{content:"";position:absolute;left:-27px;top:6px;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--blue)}
+.tl-i.now::before{background:var(--lime);border-color:var(--ink)}
+.tl-i.open::before{background:var(--blue)}
+.tl-i time{font-size:13px;font-weight:900;color:var(--blue)}
+.tl-i b{display:block;font-size:16.5px;font-weight:850;margin:2px 0 4px}
+.tl-i p{margin:0;font-size:14px;color:var(--tx2);line-height:1.75}
+.tl-i .now-t{display:inline-block;margin-left:6px;font-size:11px;font-weight:800;background:var(--lime);color:var(--ink);border-radius:999px;padding:1px 8px;vertical-align:2px}
 
 /* ── 자주 묻는 질문 ── */
-.faq{max-width:640px;margin:40px auto 0;display:grid;gap:10px}
+.faq{max-width:720px;margin:40px auto 0;display:grid;gap:10px}
 .faq details{background:var(--gray);border-radius:12px;padding:0 18px}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-size:14.5px;font-weight:800}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-size:15px;font-weight:800}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"";width:8px;height:8px;border-right:2px solid var(--tx2);border-bottom:2px solid var(--tx2);transform:rotate(45deg);margin:-4px 4px 0 12px;transition:transform .2s;flex-shrink:0}
 .faq details[open] summary::after{transform:rotate(-135deg);margin-top:4px}
-.faq p{margin:0 0 16px;font-size:14px;color:var(--tx2);line-height:1.8;word-break:keep-all}
+.faq p{margin:0 0 16px;font-size:14.5px;color:var(--tx2);line-height:1.85}
 .faq p b{color:var(--ink)}
 
 /* ── 맺음 ── */
-.end{max-width:1000px;margin:0 auto;background:var(--dark);color:#fff;border-radius:26px;padding:62px 24px;text-align:center}
+.end{max-width:1040px;margin:0 auto;background:var(--dark);color:#fff;border-radius:26px;padding:62px 24px;text-align:center}
 .end h2{color:#fff}
-.end p{color:rgba(255,255,255,.72);margin:12px 0 26px;font-size:15px}
+.end p{color:rgba(255,255,255,.72);margin:14px auto 28px;font-size:15px;max-width:560px;line-height:1.8}
 .end .ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .end .cta.ghost{color:#fff;border-color:rgba(255,255,255,.3)}
 .end .cta.ghost:hover{background:rgba(255,255,255,.08)}
 .foot{text-align:center;font-size:12px;color:var(--tx3);padding:40px 20px 60px;line-height:1.9}
 .foot a{text-decoration:underline;text-underline-offset:3px}
 
+
+/* ── 기능 하나 = 장 하나 (제품 소개식) ── */
+.spot{padding:120px 0 0;text-align:center;overflow:hidden;background:#fff}
+.spot.gy{background:var(--gray)}
+.spot.dk{background:#0E1A22;color:#fff}
+.spot .eb{display:inline-block;font-size:16px;font-weight:800;color:var(--blue);margin-bottom:14px}
+.spot.dk .eb{color:var(--lime)}
+.spot .eb .new{display:inline-block;font-size:11.5px;font-weight:900;background:var(--lime);color:var(--ink);border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:2px}
+.spot h2{font-size:clamp(34px,6vw,62px);font-weight:900;letter-spacing:-.055em;line-height:1.14;margin:0}
+.spot .lede{font-size:clamp(17px,2.1vw,21px);color:var(--tx2);max-width:640px;margin:22px auto 0;line-height:1.65;font-weight:500}
+.spot.dk .lede{color:rgba(255,255,255,.72)}
+.spot .lede b{color:var(--ink);font-weight:750}
+.spot.dk .lede b{color:#fff}
+.stage{max-width:1000px;margin:56px auto 0;padding:0 20px}
+.stage .frame{box-shadow:0 30px 70px rgba(18,41,45,.16)}
+.spot.dk .stage .frame{border-color:#26343D;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.stage.narrow{max-width:760px}
+.stage.duo{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;align-items:end;max-width:1040px}
+.specs{display:grid;grid-template-columns:repeat(3,1fr);max-width:1000px;margin:0 auto;padding:60px 20px 120px;text-align:left}
+.specs.four{grid-template-columns:repeat(4,1fr)}
+.spec{padding:4px 22px;border-left:1px solid var(--ln)}
+.spot.dk .spec{border-color:#2A3943}
+.spec b{display:block;font-size:24px;font-weight:900;letter-spacing:-.04em;line-height:1.25}
+.spot.dk .spec b{color:#fff}
+.spec p{margin:8px 0 0;font-size:14.5px;color:var(--tx2);line-height:1.7}
+.spot.dk .spec p{color:rgba(255,255,255,.66)}
+.spec small{display:block;margin-top:8px;font-size:12px;color:var(--tx3)}
+.chap{padding:120px 0 40px;text-align:center}
+.chap .eb{font-size:15px;font-weight:800;color:var(--blue)}
+.chap h2{font-size:clamp(40px,7.5vw,80px);font-weight:900;letter-spacing:-.06em;line-height:1.08;margin:12px 0 0}
+.chap p{font-size:clamp(17px,2vw,21px);color:var(--tx2);margin:20px auto 0;max-width:620px;line-height:1.65}
+.chap.dk{background:#0E1A22;color:#fff}.chap.dk p{color:rgba(255,255,255,.7)}.chap.dk .eb{color:var(--lime)}
+.specs + .memo{margin-top:-84px;padding-bottom:110px}
+.memo{max-width:640px;margin:0 auto;font-size:13px;color:var(--tx3);padding:0 20px 40px;text-align:center}
+.spot.dk .memo{color:rgba(255,255,255,.5)}
+@media (max-width:900px){.specs.four{grid-template-columns:1fr 1fr;row-gap:28px}.stage.duo{grid-template-columns:1fr}}
+@media (max-width:600px){
+  .spot{padding-top:84px}.chap{padding-top:84px}
+  .specs,.specs.four{grid-template-columns:1fr;row-gap:24px;padding:44px 20px 84px}
+  .spec{border-left:0;border-top:1px solid var(--ln);padding:18px 0 0}
+  .spot.dk .spec{border-color:#2A3943}
+  .specs + .memo{margin-top:-50px;padding-bottom:84px}
+}
+
 .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
-@media (max-width:860px){
+@media (max-width:900px){
   .moments{grid-template-columns:1fr 1fr}
-  .facts{grid-template-columns:1fr 1fr;row-gap:20px}
-  .steps{grid-template-columns:1fr 1fr;row-gap:30px}
-  .steps::before{display:none}
-  .feats{grid-template-columns:1fr}
+  .row,.row.flip{grid-template-columns:1fr;gap:28px}
+  .row.flip .shot{order:0}
+  .guard{grid-template-columns:1fr}
+  .guard .pdf{position:static;max-width:300px;margin:0 auto}
+  .nums{grid-template-columns:1fr 1fr}
+  .checks{grid-template-columns:1fr}
+  .dec-g{grid-template-columns:1fr 1fr}
   .pill-nav a.m.opt{display:none}
 }
-@media (max-width:560px){
+@media (max-width:600px){
   .hero{padding-top:84px}
   .moments{grid-template-columns:1fr}
   .mo{min-height:0}
+  .vs-h{display:none}
+  .vs-r{grid-template-columns:1fr}
+  .vs-r div{border-bottom:0;padding:8px 16px}
+  .vs-r div:first-child{padding-top:16px}
+  .vs-r div:nth-child(2)::before{content:"지금  ";font-weight:800;color:var(--tx3)}
+  .vs-r div:last-child{border-bottom:1px solid var(--ln);padding-bottom:16px}
+  .vs-r div:last-child::before{content:"바뀌면  ";font-weight:800;color:var(--blue)}
+  .g-list{grid-template-columns:1fr}
+  .g.wide{grid-template-columns:1fr}
+  .nums{grid-template-columns:1fr 1fr}
+  .num b{font-size:32px}
+  .ck li{grid-template-columns:1fr;gap:2px}
+  .dec-g{grid-template-columns:1fr}
   .gain-list{grid-template-columns:1fr}
   .fan{height:110px}
   .fan div{width:96px;height:84px}
+  .shot .tag{left:8px;top:40px}
+  .shot .sub-shot{right:-4px;bottom:-18px}
   .pill-nav .brand span{display:none}
-  .pill-nav a.m{padding:6px 8px;font-size:12.5px}
+  .pill-nav a.m{padding:6px 7px;font-size:12px}
+  .pill-nav .go{padding:7px 10px;font-size:12px}
   .sec{padding:72px 0}
+  .rows{gap:60px}
 }
 </style>
 </head>
 <body>
 
 <nav class="pill-nav" id="nav" aria-label="이 페이지 안 이동">
-  <a class="brand" href="#top"><i>JA</i><span>중앙아트 디지털 악보몰</span></a>
-  <a class="m" href="#why">소개</a>
-  <a class="m" href="#steps">네 단계</a>
-  <a class="m opt" href="#more">장점</a>
-  <a class="m" href="#faq">질문</a>
-  <a class="go" href="try.html">직접 써 보기</a>
+  <a class="brand" href="#top"><i>JA</i><span>디지털 악보몰</span></a>
+  <a class="m" href="#cust">고르기</a>
+  <a class="m" href="#buy">사기 · 인쇄</a>
+  <a class="m opt" href="#guard">저작권</a>
+  <a class="m" href="#admin">관리자</a>
+  <a class="m opt" href="#ready">준비 상태</a>
+  <a class="m opt" href="#plan">일정</a>
+  <a class="go" href="sheet.html" target="_blank" rel="noopener">시안 열기</a>
 </nav>
 
 <header class="hero w" id="top">
   <span class="badge">J&amp;A <b>MUSIC</b></span>
   <h1>중앙아트 디지털 악보몰</h1>
-  <p class="sub">필요한 한 곡을, 성가대 인원만큼, 오늘 바로.</p>
-  <div class="box">기존 쇼핑몰은 그대로 두고, 그 옆에 <b>낱곡 악보를 PDF로 파는 사이트</b>를 엽니다.<br>
-    지휘자는 곡을 골라 <b>단원 수만큼</b> 사고, 결제 직후 내려받아 인쇄합니다.</div>
+  <p class="sub">필요한 한 곡을. 성가대 인원만큼. 오늘 바로.</p>
+  <div class="box">
+    지금 쇼핑몰은 그대로 둡니다.<br>
+    그 옆에 <b>낱곡 악보를 PDF로 파는 사이트</b>를 하나 더 엽니다.<br>
+    지휘자는 필요한 곡만, <b>단원 수만큼</b> 삽니다.<br>
+    결제가 끝나면 바로 내려받아 인쇄합니다.
+  </div>
   <div class="ctas">
-    <a class="cta" href="try.html">대표님, 직접 써 보기 →</a>
-    <a class="cta ghost" href="sheet.html" target="_blank" rel="noopener">고객 사이트 열기</a>
+    <a class="cta" href="sheet.html" target="_blank" rel="noopener">고객 화면 시안 열기 →</a>
+    <a class="cta ghost" href="admin.html" target="_blank" rel="noopener">관리자 화면 시안 열기</a>
   </div>
   <div class="stats">
-    <span>고객 화면 <b>23</b></span><span>관리자 메뉴 <b>15</b></span><span>눌러서 점검한 단추 <b>278</b>개</span><span>휴대폰 <b>360px</b>까지</span>
+    <span>고객 화면 <b>23</b>개</span><span>관리자 메뉴 <b>15</b>개</span><span>11/14 회의 결정 <b>12</b>건 반영</span><span>점검한 단추 <b>278</b>개</span>
   </div>
 </header>
 
@@ -205,58 +343,263 @@ img{display:block;max-width:100%}
   <p class="vid-cap">71초 소개 영상 · 소리를 켜면 배경 음악이 나옵니다</p>
 </div>
 
+<!-- 왜 -->
 <section class="sec gray" id="why" style="margin-top:80px">
   <div class="w">
-    <h2 class="rv">이런 순간, 있지 않나요?</h2>
-    <p class="lead rv">성가대 지휘자와 중앙아트가 매주, 매달 겪는 일입니다. 카드를 누르면 해결하는 기능으로 갑니다.</p>
+    <span class="kick rv">왜 만드는가</span>
+    <h2 class="rv">이런 순간에서 출발했습니다</h2>
+    <p class="lead rv">지휘자와 중앙아트에게서 직접 들은 불편입니다.<br>카드를 누르면 그 불편을 푸는 기능으로 갑니다.</p>
     <div class="moments rv">
-      <a class="mo w1" href="#s3"><b>이번 주일엔 한 곡만 필요한데,<br>곡집을 통째로 사야 하나?</b><span class="ft">낱곡 × 부수로 삽니다<i>→</i></span></a>
-      <a class="mo l1" href="#s1"><b>부활절에 뭘 부르지?<br>어디서부터 찾아야 할지…</b><span class="ft">절기 달력으로 찾습니다<i>→</i></span></a>
-      <a class="mo d1" href="#s2"><b>우리 소프라노가<br>이 음까지 올라갈 수 있을까?</b><span class="ft">파트별 음역을 봅니다<i>→</i></span></a>
-      <a class="mo l2" href="#s4"><b>네 곡을 하나하나 열어서<br>인쇄하기 번거로워</b><span class="ft">PDF 한 파일로 받습니다<i>→</i></span></a>
-      <a class="mo d2" href="#f2"><b>우리 악보가<br>카톡방에 돌면 어떡하지?</b><span class="ft">모든 면에 구매 표기<i>→</i></span></a>
-      <a class="mo w2" href="#f3"><b>매달 저작권료 계산,<br>손으로 하기 지쳤어</b><span class="ft">자동으로 계산합니다<i>→</i></span></a>
-    </div>
-    <div class="facts rv">
-      <div class="fact"><span>파는 단위</span><b>낱곡 × 인쇄 부수</b></div>
-      <div class="fact"><em>배송 0</em><span>받는 방법</span><b>결제 직후 PDF</b></div>
-      <div class="fact"><span>회원</span><b>쓰던 쇼핑몰 아이디 그대로</b></div>
-      <div class="fact"><span>오픈 목표</span><b>2027년 6~7월</b></div>
+      <a class="mo w1" href="#buy"><b>한 곡만 필요한데<br>곡집을 통째로 사야 하나?</b><span class="ft">낱곡을 부수만큼 삽니다<i>→</i></span></a>
+      <a class="mo l1" href="#cust"><b>부활절에 뭘 부르지?<br>어디서부터 찾지?</b><span class="ft">홈이 절기를 먼저 알려 줍니다<i>→</i></span></a>
+      <a class="mo d1" href="#range"><b>우리 소프라노가<br>이 음까지 올라갈까?</b><span class="ft">파트별 음역을 봅니다<i>→</i></span></a>
+      <a class="mo l2" href="#merge"><b>네 곡을 하나씩 열어<br>인쇄하기 번거로워</b><span class="ft">PDF 한 파일로 받습니다<i>→</i></span></a>
+      <a class="mo d2" href="#guard"><b>우리 악보가<br>카톡방에 돌면 어떡하지?</b><span class="ft">모든 면에 구매자를 찍습니다<i>→</i></span></a>
+      <a class="mo w2" href="#royalty"><b>매달 저작권료 계산,<br>손으로 하기 지쳤어</b><span class="ft">자동으로 계산합니다<i>→</i></span></a>
     </div>
   </div>
 </section>
 
-<section class="sec" id="steps">
+<!-- ───────── 고르기 ───────── -->
+<div class="chap" id="cust">
+  <span class="eb rv">지휘자 화면 ①</span>
+  <h2 class="rv">고르기</h2>
+  <p class="rv">사기 전에 충분히 봅니다.<br>절기, 악보, 소리, 음역, 성경 본문까지.</p>
+</div>
+
+<section class="spot">
+  <span class="eb rv">홈 · 이번 절기 준비</span>
+  <h2 class="rv">다음 절기까지 몇 주.<br>홈이 먼저 알려 줍니다.</h2>
+  <p class="lede rv">성가대는 절기에 맞춰 곡을 준비합니다.<br>그래서 홈 첫 줄에 <b>다음 절기와 남은 기간</b>을 놓았습니다.<br>그 절기에 부를 곡이 바로 아래 이어집니다.</p>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>홈</span></div><img src="shots/season.jpg" alt="홈 — 다가오는 절기와 남은 기간, 추천 곡" loading="lazy"></div></div>
+  <div class="specs rv">
+    <div class="spec"><b>남은 기간</b><p>“6주 남음”처럼 보여 줍니다. 연습을 언제 시작할지 정하기 쉽습니다.</p></div>
+    <div class="spec"><b>전례색</b><p>대림절은 보라, 성탄과 고난주간은 붉은색, 부활절은 하늘색입니다.</p></div>
+    <div class="spec"><b>바로 찾기</b><p>“부활절 · SATB · 쉬움” 같은 조건을 한 번에 누릅니다. 관리자가 8개까지 골라 둡니다.</p></div>
+  </div>
+</section>
+
+<section class="spot gy">
+  <span class="eb rv">곡 화면 · 미리보기</span>
+  <h2 class="rv">악보를 펼쳐 보고,<br>소리로 들어 봅니다.</h2>
+  <p class="lede rv">곡 화면에서 <b>악보 1면</b>을 크게 봅니다.<br><b>미리 듣기</b>로 분위기를 확인합니다.<br>편성 · 조성 · 연주 시간 · 면수도 한 줄에 있습니다.</p>
+  <div class="stage narrow rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>악보 미리보기</span></div><img src="shots/preview.jpg" alt="악보 미리보기 — 1면 보기와 듣기" loading="lazy"></div></div>
+  <div class="specs rv">
+    <div class="spec"><b>편곡자의 한마디</b><p>작곡자와 편곡자가 곡에 대해 직접 쓴 글을 싣습니다.</p></div>
+    <div class="spec"><b>연주 시간 합계</b><p>관심 악보에 담은 곡들의 시간을 더해 줍니다. 예배 순서에 맞는지 바로 봅니다.</p></div>
+    <div class="spec"><b>카톡 공유</b><p>링크를 붙이면 표지와 곡명이 카드로 뜹니다. 받는 사람은 로그인 없이 봅니다.</p></div>
+  </div>
+  <p class="memo rv">시안에는 녹음이 없어 기계음으로 들려 드립니다. 오픈 때는 중앙아트 음원을 씁니다.</p>
+</section>
+
+<section class="spot dk" id="range">
+  <span class="eb rv">파트별 음역 · 성경 본문<span class="new">새 기능</span></span>
+  <h2 class="rv">우리 성가대가 부를 수 있는지,<br>사기 전에 압니다.</h2>
+  <p class="lede rv">소프라노 · 알토 · 테너 · 베이스.<br>파트마다 <b>가장 낮은 음부터 가장 높은 음</b>까지 막대로 보여 줍니다.<br>아마추어 성가대에 높은 음은 붉게 표시합니다.</p>
+  <div class="stage narrow rv"><div class="frame"><img src="shots/range.jpg" alt="파트별 음역 막대와 성경 본문" loading="lazy" style="padding:12px 8px"></div></div>
+  <div class="specs rv">
+    <div class="spec"><b>4파트 음역</b><p>지금은 곡집을 사서 펼쳐 봐야 알았습니다. 이제 곡 화면에서 바로 봅니다.</p></div>
+    <div class="spec"><b>성경 본문</b><p>가사가 나온 말씀을 장절로 적습니다. 설교 본문에 맞는 곡을 고르기 쉽습니다.</p></div>
+    <div class="spec"><b>PDF에서 자동으로</b><p>관리자가 악보를 올리면 음역을 읽어 채웁니다. 담당자는 확인만 합니다.</p></div>
+  </div>
+  <p class="memo rv">음역과 성경 본문으로 <b>찾기</b>는 값이 충분히 쌓인 뒤 2차에 엽니다.</p>
+</section>
+
+<!-- ───────── 사기 · 인쇄 ───────── -->
+<div class="chap" id="buy">
+  <span class="eb rv">지휘자 화면 ②</span>
+  <h2 class="rv">사기 · 인쇄</h2>
+  <p class="rv">필요한 곡만, 단원 수만큼.<br>결제가 끝나면 바로 인쇄합니다.</p>
+</div>
+
+<section class="spot">
+  <span class="eb rv">부수 고르기 · 최소 구매 부수<span class="new">새 기능</span></span>
+  <h2 class="rv">단원이 20명이면 20부.<br>금액은 저절로 나옵니다.</h2>
+  <p class="lede rv">디지털 악보는 <b>“몇 부까지 인쇄할 수 있는지”</b>를 삽니다.<br>부수를 고르면 <b>한 부 가격 × 부수</b>로 금액이 바로 바뀝니다.<br>산 부수는 PDF에 그대로 찍힙니다.</p>
+  <div class="stage narrow rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>곡 화면 · 구매</span></div><img src="shots/minqty.jpg" alt="부수를 고르면 금액이 계산되는 화면" loading="lazy"></div></div>
+  <div class="specs rv">
+    <div class="spec"><b>최소 부수</b><p>곡마다 “10부부터”처럼 정합니다. 1부만 사서 복사하는 일을 막습니다.</p></div>
+    <div class="spec"><b>한 번에 고르기</b><p>10 · 20 · 30부는 단추 하나로 고릅니다.</p></div>
+    <div class="spec"><b>결제 수단 6가지</b><p>카드 · 계좌이체 · 가상계좌 · 카카오페이 · 네이버페이. 해외는 PayPal.</p></div>
+  </div>
+</section>
+
+<section class="spot gy">
+  <span class="eb rv">로그인 · 결제</span>
+  <h2 class="rv">새로 가입하지 않습니다.<br>쓰던 아이디 그대로.</h2>
+  <p class="lede rv">지금 쇼핑몰(카페24) 아이디로 로그인합니다.<br>동의는 <b>처음 한 번</b>만 받습니다.<br>둘러보기 · 미리보기 · 듣기는 로그인 없이 됩니다.</p>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>주문 · 결제</span></div><img src="shots/order.jpg" alt="주문 · 결제 화면" loading="lazy"></div></div>
+  <div class="specs rv">
+    <div class="spec"><b>개인정보 보관 없음</b><p>회원 정보는 카페24에 둡니다. 따로 관리할 직원이 필요 없습니다.</p></div>
+    <div class="spec"><b>교회명 받지 않음</b><p>회의 결정대로 받는 정보를 하나 줄였습니다.</p></div>
+    <div class="spec"><b>알림톡</b><p>주문 · 입금 · 발급 안내를 카카오 알림톡으로 보냅니다.</p></div>
+  </div>
+</section>
+
+<section class="spot dk" id="merge">
+  <span class="eb rv">내 악보함 · 묶어 받기<span class="new">새 기능</span></span>
+  <h2 class="rv">네 곡. 파일 하나.<br>인쇄는 한 번.</h2>
+  <p class="lede rv">산 곡은 <b>내 악보함</b>에 모입니다.<br>이번 주일에 부를 곡을 골라 <b>“한 파일로 받기”</b>를 누릅니다.<br>고른 순서대로 이어 붙인 PDF 하나가 나옵니다.</p>
+  <div class="stage duo rv">
+    <div class="frame"><div class="bar"><i></i><i></i><i></i><span>내 악보함</span></div><img src="shots/library.jpg" alt="내 악보함 — 여러 곡을 골라 한 파일로 받기" loading="lazy"></div>
+    <div class="frame"><div class="bar"><i></i><i></i><i></i><span>묶은 PDF</span></div><img src="shots/merge.jpg" alt="여러 곡이 한 PDF로 묶인 결과" loading="lazy"></div>
+  </div>
+  <div class="specs rv">
+    <div class="spec"><b>언제든 다시 받기</b><p>파일을 잃어버려도 악보함에서 다시 받습니다.</p></div>
+    <div class="spec"><b>파트연습실 연결</b><p>곡마다 “파트연습실에서 연습하기” 링크가 있습니다. 단원에게 그대로 보냅니다.</p></div>
+    <div class="spec"><b>직접 환불</b><p>아직 내려받지 않은 주문은 고객이 직접 환불합니다.</p></div>
+  </div>
+</section>
+
+<section class="spot">
+  <span class="eb rv">휴대폰</span>
+  <h2 class="rv">휴대폰에서도<br>똑같이 됩니다.</h2>
+  <p class="lede rv">지휘자는 이동 중에 곡을 찾는 일이 많습니다.<br>모든 고객 화면을 <b>휴대폰 폭(360px)</b>까지 맞췄습니다.<br>휴대폰으로 사고, 교회 컴퓨터에서 인쇄합니다.</p>
+  <div class="stage rv" style="padding-bottom:110px"><div class="phones"><div class="phone"><img src="shots/m-home.jpg" alt="휴대폰 홈 화면" loading="lazy"></div><div class="phone"><img src="shots/m-detail.jpg" alt="휴대폰 곡 화면" loading="lazy"></div></div></div>
+</section>
+
+<!-- ───────── 저작권 ───────── -->
+<section class="sec gray" id="guard">
   <div class="w">
-    <span class="kick rv">지휘자가 곡을 사기까지</span>
-    <h2 class="rv">찾고, 확인하고, 사고, 인쇄합니다<br>네 단계면 끝납니다</h2>
-    <p class="lead rv">결제부터 인쇄까지 몇 분. 택배를 기다리지 않습니다.</p>
-    <div class="steps rv">
-      <div class="st" id="s1"><div class="pin">1</div><b>찾기</b><span>다가오는 절기와 남은 기간, 추천 곡을 홈에서 먼저</span><figure><img src="shots/season.jpg" alt="홈 — 이번 절기 준비" loading="lazy"></figure></div>
-      <div class="st" id="s2"><div class="pin">2</div><b>확인하기</b><span>악보 1면 · 듣기 · 파트별 음역 · 성경 본문</span><figure><img src="shots/range.jpg" alt="파트별 음역과 성경 본문" loading="lazy" style="object-fit:contain;background:#fff"></figure></div>
-      <div class="st" id="s3"><div class="pin">3</div><b>사기</b><span>부수를 고르면 금액과 인쇄 권한이 함께. 곡마다 최소 부수</span><figure><img src="shots/minqty.jpg" alt="부수 고르기" loading="lazy"></figure></div>
-      <div class="st" id="s4"><div class="pin">4</div><b>받아서 인쇄</b><span>여러 곡을 PDF 한 파일로, 한 번에 인쇄</span><figure><img src="shots/merge.jpg" alt="여러 곡을 묶은 PDF" loading="lazy"></figure></div>
+    <span class="kick rv">악보를 지키는 방법</span>
+    <h2 class="rv">인쇄는 자유롭게.<br>복사는 어렵게.</h2>
+    <p class="lead rv">파일 복사를 완전히 막을 수는 없습니다.<br>대신 <b>누가 산 파일인지 늘 드러나게</b> 했습니다.<br>정직하게 사는 성가대는 불편하지 않습니다.</p>
+    <div class="guard rv">
+      <div class="pdf">
+        <div class="frame"><img src="shots/down.jpg" alt="모든 면 아래에 구매 정보가 찍힌 PDF" loading="lazy"></div>
+        <p>내려받은 PDF · 면마다 아래쪽에 구매 정보가 찍힙니다</p>
+      </div>
+      <div class="g-list">
+        <div class="g"><span class="n">하나</span><b>원본은 나가지 않습니다</b><p>받는 순간 <b>새로 만든 사본</b>이 나갑니다. 원본은 서버에만 둡니다.</p></div>
+        <div class="g"><span class="n">둘</span><b>모든 면에 구매자</b><p>면마다 <b>주문번호 · 구매자 · 부수</b>를 찍습니다. 복사본이 어느 주문에서 나왔는지 바로 압니다.</p></div>
+        <div class="g"><span class="n">셋</span><b>여는 암호</b><p>파일을 열 때 <b>주문번호 뒤 6자리</b>를 넣습니다. 인쇄는 막지 않습니다.</p></div>
+        <div class="g"><span class="n">넷</span><b>내려받기 감시</b><p>산 부수에 비해 너무 자주 받거나, 여러 지역에서 받으면 <b>‘주의’</b>로 뜹니다.</p></div>
+        <div class="g wide">
+          <div><span class="n">관리자 화면</span><b>모든 발급이 기록에 남습니다</b><p>언제, 누가, 어느 곡을, 몇 부로 받았는지 한 줄씩 쌓입니다. 밖으로 내보낼 때는 이름을 <b>김*윤</b>처럼 가립니다.</p></div>
+          <div class="frame"><img src="shots/a-down.jpg" alt="관리자 — 다운로드 이력" loading="lazy"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="sec gray" id="more">
+<!-- ───────── 관리자 ───────── -->
+<div class="chap dk" id="admin">
+  <span class="eb rv">중앙아트 화면</span>
+  <h2 class="rv">운영은 쉽게.</h2>
+  <p class="rv">회의에서 “올릴 것이 많아 부담된다”고 하셨습니다.<br>꼭 할 일은 줄이고, 나머지는 컴퓨터가 채웁니다.</p>
+</div>
+
+<section class="spot dk">
+  <span class="eb rv">악보 등록</span>
+  <h2 class="rv">PDF, 곡명, 판매가.<br>세 칸이면 판매 시작.</h2>
+  <p class="lede rv">필수 칸을 4개에서 <b>3개</b>로 줄였습니다.<br>PDF를 고르면 <b>파일을 바로 검사</b>합니다.<br>문제가 있으면 ‘판매 시작’ 단추가 잠깁니다.</p>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>관리자 · 악보 관리</span></div><img src="shots/a-edit.jpg" alt="관리자 — 악보 등록" loading="lazy"></div></div>
+  <div class="specs four rv">
+    <div class="spec"><b>파일 검사</b><p>형식 · 용량 · 암호 · 면수 · 용지 크기를 확인합니다.</p></div>
+    <div class="spec"><b>곡명 채우기</b><p>파일 이름에서 곡명을 미리 채웁니다.</p></div>
+    <div class="spec"><b>표지 자동</b><p>PDF 1면을 미리보기 그림으로 씁니다.</p></div>
+    <div class="spec"><b>옆에서 미리보기</b><p>고치는 대로 고객 화면이 옆에서 바뀝니다.</p></div>
+  </div>
+</section>
+
+<section class="spot gy">
+  <span class="eb rv">음역 자동 읽기<span class="new">새 기능</span></span>
+  <h2 class="rv">음역은 적지 않습니다.<br>PDF에서 읽어 옵니다.</h2>
+  <p class="lede rv">올린 악보에서 파트별 최저음 · 최고음을 읽어 채웁니다.<br>담당자는 <b>맞는지 보고 확인</b>만 누릅니다.<br>확인한 값만 고객에게 보입니다.</p>
+  <div class="stage narrow rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>관리자 · 음역</span></div><img src="shots/a-range.jpg" alt="관리자 — PDF에서 음역 자동 읽기" loading="lazy"></div></div>
+  <div class="specs rv">
+    <div class="spec"><b>너무 높거나 낮으면</b><p>아마추어 성가대에 어려운 음을 미리 표시합니다.</p></div>
+    <div class="spec"><b>사보 원본이 있으면</b><p>MusicXML 파일이 있으면 더 정확하고 빠릅니다.</p></div>
+    <div class="spec"><b>시안 안내</b><p>시안에는 예시 값이 들어갑니다. 실제 읽기는 개발 때 붙입니다.</p></div>
+  </div>
+</section>
+
+<section class="spot">
+  <span class="eb rv">화면 관리</span>
+  <h2 class="rv">홈도, 배너도, 메뉴도.<br>개발자 없이 바꿉니다.</h2>
+  <p class="lede rv">절기가 바뀌면 홈을 직접 바꿉니다.<br>어떤 줄을 어떤 순서로 놓을지 고릅니다.<br>배너 · 상단 메뉴 · 컬렉션 기획전도 같습니다.</p>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>관리자 · 홈 편성</span></div><img src="shots/a-home.jpg" alt="관리자 — 홈 편성" loading="lazy"></div></div>
+  <div class="specs rv">
+    <div class="spec"><b>줄을 누르면 열림</b><p>모든 목록이 같습니다. 한 번 익히면 어느 메뉴든 씁니다.</p></div>
+    <div class="spec"><b>전례색 8가지</b><p>컬렉션 배경을 절기 색에서 고릅니다.</p></div>
+    <div class="spec"><b>지우기 잠금</b><p>팔린 악보는 지워지지 않습니다. 구매자 악보함과 정산 장부를 지킵니다.</p></div>
+  </div>
+</section>
+
+<section class="spot dk" id="royalty">
+  <span class="eb rv">저작권료 정산<span class="new">새 기능</span></span>
+  <h2 class="rv">매달 하던 저작권료 계산.<br>이제 단추 하나.</h2>
+  <p class="lede rv">팔릴 때마다 <b>어느 곡이, 몇 부, 얼마에</b> 팔렸는지 남습니다.<br>이 기록이 그대로 장부가 됩니다.<br>권리자별 이번 달 지급액이 계산됩니다.</p>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>관리자 · 저작권료 정산</span></div><img src="shots/royalty.jpg" alt="관리자 — 저작권료 정산" loading="lazy"></div></div>
+  <div class="specs rv">
+    <div class="spec"><b>역할별 요율</b><p>작곡 · 작사 · 편곡 · 원곡 요율을 따로 둡니다.</p><small>시안 값: 8% · 2% · 5% · 3% · 변호사 확인 뒤 확정</small></div>
+    <div class="spec"><b>엑셀 · 지급명세서</b><p>단추 하나로 만듭니다. 밖으로 나가는 파일은 이름을 가립니다.</p></div>
+    <div class="spec"><b>권리자 한 번에 등록</b><p>곡별 권리자 · 지분을 엑셀 한 장으로 주시면 한 번에 올립니다.</p></div>
+  </div>
+  <p class="memo rv">전화 · 카톡으로 받은 종이 주문을 함께 합산하는 기능은 2차 계획입니다.</p>
+</section>
+
+<section class="spot gy">
+  <span class="eb rv">대시보드</span>
+  <h2 class="rv">어느 절기에 어떤 곡이 팔렸는지.<br>처음으로 숫자로 봅니다.</h2>
+  <p class="lede rv">오늘 매출, 이번 달 매출, 많이 팔린 곡, 처리할 일.<br>관리자 첫 화면에 모았습니다.<br>곡 단위 판매 기록은 다음 곡집을 기획할 근거가 됩니다.</p>
+  <div class="stage rv" style="padding-bottom:110px"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>관리자 · 대시보드</span></div><img src="shots/a-dash2.jpg" alt="관리자 — 대시보드" loading="lazy"></div></div>
+</section>
+
+<!-- ───────── 준비 상태 ───────── -->
+<section class="sec" id="ready">
   <div class="w">
-    <span class="kick rv">기존 쇼핑몰에 없던 것</span>
-    <h2 class="rv">사기 전에 판단하고, 산 뒤에 지키고,<br>중앙아트의 일은 줄입니다</h2>
-    <div class="feats rv">
-      <div class="feat" id="f1"><figure><span class="tip">사기 전에 판단</span><img src="shots/range.jpg" alt="음역" loading="lazy" style="object-fit:contain;padding:14px"></figure>
-        <b>음역 · 성경 본문</b><span>파트마다 가장 낮은 음 ~ 높은 음을 막대로, 높은 음은 붉게. 가사가 나온 말씀도 장절로 적습니다. 음역은 올린 PDF에서 저절로 읽습니다.</span></div>
-      <div class="feat" id="f2"><figure><span class="tip">저작권 보호</span><img src="shots/down.jpg" alt="구매 표기" loading="lazy" style="object-fit:cover;object-position:center 30%"></figure>
-        <b>모든 면에 구매 표기</b><span>받는 PDF는 모두 새로 만든 사본이고, 면마다 주문번호 · 구매자 · 부수가 찍힙니다. 여는 암호와 내려받기 감시도 함께.</span></div>
-      <div class="feat" id="f3"><figure><span class="tip">일이 줄어듭니다</span><img src="shots/royalty.jpg" alt="저작권료 정산" loading="lazy"></figure>
-        <b>저작권료 자동 정산</b><span>내려받을 때마다 남는 기록이 그대로 장부. 권리자별 지급액을 계산하고 엑셀 · 지급명세서를 만듭니다.</span></div>
+    <span class="kick rv">시안이 어디까지 와 있나</span>
+    <h2 class="rv">그림이 아닙니다.<br>눌러 보고 확인한 시안입니다.</h2>
+    <p class="lead rv">오늘 보신 화면은 모두 실제로 움직입니다.<br>개발에 넘길 기획 문서도 함께 만들었습니다.<br>다 된 것과 남은 것을 그대로 적습니다.</p>
+
+    <div class="nums rv">
+      <div class="num dk"><b>23<small>화면</small></b><span>고객 화면</span><p>홈부터 결제 · 악보함 · 휴대폰까지 열어 볼 수 있습니다</p></div>
+      <div class="num dk"><b>15<small>메뉴</small></b><span>관리자 화면</span><p>악보 등록부터 저작권료 정산까지 움직입니다</p></div>
+      <div class="num"><b>278<small>개</small></b><span>점검한 단추</span><p>단추를 하나씩 눌러 화면이 바뀌는지 확인했습니다</p></div>
+      <div class="num"><b>95<small>개</small></b><span>운영 정책</span><p>요구사항 46 · 기능 43 · 화면 명세 41과 번호로 이어집니다</p></div>
     </div>
-    <div class="center rv"><a class="cta" href="admin.html" target="_blank" rel="noopener">관리자 화면 열어 보기 →</a></div>
+
+    <div class="checks rv">
+      <div class="ck">
+        <h4>다 된 것 <i>완료</i></h4><p>시안과 문서에 반영했습니다</p>
+        <ul>
+          <li><b>회의 결정</b><span>11월 14일 결정 12건을 모두 넣었습니다</span></li>
+          <li><b>실제 파일 검사</b><span>관리자에서 고른 PDF · 그림 · 음원을 실제로 읽습니다</span></li>
+          <li><b>워터마크</b><span>인쇄를 누르면 모든 면에 구매 정보가 찍힙니다</span></li>
+          <li><b>문서 번호 검사</b><span>요구사항 → 기능 → 화면 → 정책 번호가 어긋나면 문서가 만들어지지 않습니다</span></li>
+        </ul>
+      </div>
+      <div class="ck">
+        <h4>남은 것 <i class="wait">밖에서 받을 답</i></h4><p>기다리는 기간이 있어 이번 달에 시작합니다</p>
+        <ul>
+          <li><b>카페24 앱 등록</b><span>같은 아이디 로그인에 필요합니다. 가장 먼저 신청합니다</span></li>
+          <li><b>결제 심사</b><span>KG이니시스 새 도메인 심사, 해외결제(PayPal) 신청</span></li>
+          <li><b>변호사 자문</b><span>디지털 · 해외 판매 범위, 약관 문구, 저작권료 요율</span></li>
+          <li><b>세무사 확인</b><span>낱곡 PDF가 면세 전자출판물에 해당하는지</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="dec rv">
+      <h4>11월 14일 회의에서 정한 것 · 모두 시안에 들어가 있습니다</h4>
+      <div class="dec-g">
+        <div><b>회원</b>카페24 연동, 새 가입 없음</div>
+        <div><b>알림</b>카카오 알림톡</div>
+        <div><b>해외 판매</b>PayPal 추가</div>
+        <div><b>워터마크</b>A안 문구, 교회명 제외</div>
+        <div><b>메뉴</b>찬양곡 / 성가곡(일반) 분리</div>
+        <div><b>곡 화면</b>편곡자의 한마디</div>
+        <div><b>PDF</b>여는 암호 · 묶어 받기</div>
+        <div><b>정산</b>저작권료 정산 메뉴</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="sec">
+<!-- ───────── 생기는 것 ───────── -->
+<section class="sec" style="padding-top:0">
   <div class="w">
     <div class="gain rv">
       <div class="fan">
@@ -266,39 +609,61 @@ img{display:block;max-width:100%}
         <div><img src="shots/royalty.jpg" alt="" loading="lazy"></div>
         <div><img src="shots/library.jpg" alt="" loading="lazy"></div>
       </div>
-      <h2>재고 · 배송 없이<br><mark>새 매출</mark>이 생깁니다</h2>
-      <p class="lead">곡집 한 권은 부담스럽던 한두 곡 수요, 주일 직전의 급한 주문을 받습니다.</p>
+      <h2>재고도 배송도 없이<br><mark>새 매출</mark>이 생깁니다</h2>
+      <p class="lead">곡집 한 권은 부담스럽던 한두 곡 수요를 받습니다.<br>실물 곡집과 겹치지 않게 낱곡만 팝니다.</p>
       <div class="gain-list">
-        <div><b>새 매출</b><span>한두 곡 수요와 급한 주문. 음역 · 말씀이 붙은 성가 악보는 다른 곳에 없습니다</span></div>
-        <div><b>줄어드는 일</b><span>재고 · 포장 · 배송이 없고, 매달 하던 저작권료 계산이 자동으로</span></div>
-        <div><b>저작권의 근거</b><span>성가대마다 몇 부까지 인쇄할 수 있는지 구매 기록으로 남습니다</span></div>
-        <div><b>처음 갖는 데이터</b><span>어느 절기에 어떤 곡이 몇 부 팔렸는지 — 다음 곡집 기획의 근거</span></div>
+        <div><b>새 매출</b><span>놓치던 한두 곡 수요와 주일 직전 급한 주문. 해외 교회 주문도 받습니다.</span></div>
+        <div><b>줄어드는 일</b><span>재고 · 포장 · 배송이 없습니다. 저작권료 계산이 자동이 됩니다.</span></div>
+        <div><b>저작권의 근거</b><span>성가대마다 몇 부까지 인쇄할 수 있는지 기록으로 남습니다.</span></div>
+        <div><b>처음 갖는 데이터</b><span>어느 절기에 어떤 곡이 몇 부 팔렸는지 쌓입니다.</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="faq" style="padding-top:20px">
+<!-- ───────── 일정 ───────── -->
+<section class="sec gray" id="plan">
   <div class="w">
-    <h2 class="rv">자주 묻는 질문</h2>
-    <div class="faq rv">
-      <details><summary>Q. 기존 쇼핑몰은 어떻게 되나요?</summary><p>그대로 둡니다. 실물 곡집 · 음반 · 도서는 지금처럼 팔고, 디지털 악보몰은 <b>낱곡 PDF만</b> 팝니다. 두 사이트는 같은 아이디로 오가고, 디지털 곡집 화면에는 ‘실물 곡집으로 구매’ 단추가 있습니다.</p></details>
-      <details><summary>Q. 실물 곡집 매출이 줄지 않을까요?</summary><p>곡집을 통째로 파는 대신 <b>낱곡만</b> 팔아 겹침을 줄였습니다. 실물로는 받지 못하던 한두 곡 · 급한 주문이 대상입니다. 오픈 뒤 6개월 동안 실물 매출 변화를 함께 지켜보고 가격 · 범위를 조정합니다.</p></details>
-      <details><summary>Q. PDF가 퍼지면 어떡하나요?</summary><p>인쇄는 막지 않되, 모든 면에 <b>주문번호 · 구매자 · 부수</b>가 찍힌 사본만 나갑니다. 파일에는 여는 암호(주문번호 뒤 6자리)를 걸고, 산 부수에 비해 내려받기가 지나치게 잦으면 관리자 화면에 ‘주의’로 뜹니다.</p></details>
-      <details><summary>Q. 성가대가 새로 가입해야 하나요?</summary><p>아닙니다. 기존 쇼핑몰(카페24) 아이디로 로그인하고, 처음 한 번만 동의합니다. 둘러보기 · 미리보기 · 듣기는 로그인 없이 됩니다.</p></details>
-      <details><summary>Q. 대표님이 직접 운영할 수 있나요?</summary><p>네. 악보는 <b>PDF · 곡명 · 판매가 세 칸</b>이면 판매를 시작합니다. 홈 · 배너 · 메뉴 · 컬렉션도 관리자 화면에서 직접 바꾸고, 고치는 동안 고객 화면이 옆에 함께 보입니다.</p></details>
-      <details><summary>Q. 언제 열 수 있나요?</summary><p>개발 1명 + QA 1명 기준 <b>2027년 6~7월</b>입니다. 카페24 앱 등록 · 결제 심사 · 변호사 자문 · 세무사 확인은 기다리는 기간이 있어, 이번 달에 시작할수록 앞당겨집니다. 자세한 일정은 <a href="docs.html#brief" style="text-decoration:underline">회의 자료</a>에 있습니다.</p></details>
+    <span class="kick rv">앞으로의 일정</span>
+    <h2 class="rv">2027년 6~7월에 엽니다</h2>
+    <p class="lead rv">개발 1명과 QA 1명 기준입니다.<br>기다리는 기간이 있는 신청은 이번 달에 시작합니다.<br>그러면 개발이 끝날 때 승인도 끝나 있습니다.</p>
+    <div class="tl rv">
+      <div class="tl-i now"><time>2026.11</time><span class="now-t">지금</span><b>신청 · 자문</b><p>카페24 앱 등록, 결제 심사 · 해외결제 신청, 변호사 자문, 세무사 확인.</p></div>
+      <div class="tl-i"><time>2026.12</time><b>개발 준비 · 기술 시험</b><p>실제 악보에 워터마크를 넣어 종이에 인쇄해 봅니다. 카페24 로그인도 시험합니다.</p></div>
+      <div class="tl-i"><time>2027.1 ~ 2</time><b>팔 수 있는 최소 기능</b><p>로그인 · 악보 · 장바구니 · 결제 · 워터마크 발급 · 악보함.</p></div>
+      <div class="tl-i"><time>2027.3 ~ 4</time><b>관리자와 나머지 기능</b><p>관리자 전체, 해외결제, 알림톡, PDF 암호, 묶어 받기, 저작권료 정산, 음역. 3월부터 QA가 함께합니다.</p></div>
+      <div class="tl-i"><time>2027.5</time><b>악보 등록 · 검수</b><p>1차 판매 악보와 곡별 권리자 · 지분을 올립니다. 미리보기와 워터마크를 눈으로 확인합니다.</p></div>
+      <div class="tl-i"><time>2027.6</time><b>QA · 안정화 · 담당자 교육</b><p>결제부터 발급 · 환불 · 정산까지 끝까지 돌려 봅니다.</p></div>
+      <div class="tl-i open"><time>2027.6 ~ 7</time><b>오픈</b><p>이후 6개월 동안 실물 매출 변화를 함께 보고 가격과 범위를 조정합니다.</p></div>
     </div>
   </div>
 </section>
 
-<section class="sec" style="padding-top:20px">
+<!-- ───────── 질문 ───────── -->
+<section class="sec" id="faq">
+  <div class="w">
+    <h2 class="rv">자주 묻는 질문</h2>
+    <div class="faq rv">
+      <details><summary>Q. 기존 쇼핑몰은 어떻게 되나요?</summary><p>그대로 둡니다. 실물 곡집 · 음반 · 도서는 지금처럼 팝니다. 디지털 악보몰은 <b>낱곡 PDF만</b> 팝니다. 두 사이트는 같은 아이디로 오갑니다.</p></details>
+      <details><summary>Q. 실물 곡집 매출이 줄지 않을까요?</summary><p>곡집 통째가 아니라 <b>낱곡만</b> 팝니다. 실물로는 받지 못하던 한두 곡 주문이 대상입니다. 오픈 뒤 6개월 동안 실물 매출을 함께 보고 조정합니다.</p></details>
+      <details><summary>Q. PDF가 퍼지면 어떡하나요?</summary><p>모든 면에 <b>주문번호 · 구매자 · 부수</b>가 찍힌 사본만 나갑니다. 여는 암호도 겁니다. 너무 자주 받으면 관리자 화면에 ‘주의’로 뜹니다.</p></details>
+      <details><summary>Q. 성가대가 새로 가입해야 하나요?</summary><p>아닙니다. 쓰던 쇼핑몰 아이디로 로그인합니다. 동의는 처음 한 번만 받습니다.</p></details>
+      <details><summary>Q. 악보 올리는 일이 많지 않을까요?</summary><p>한 곡은 <b>PDF · 곡명 · 판매가</b> 세 칸이면 됩니다. 미리보기 그림과 음역은 PDF에서 채웁니다. 담당자는 확인만 합니다.</p></details>
+      <details><summary>Q. 어떤 곡을 팔 수 있나요?</summary><p>기존 계약이 디지털 판매를 허용하는 곡부터 팝니다. 변호사 자문으로 정합니다. 악보를 올리는 2027년 5월 전까지 정하면 됩니다.</p></details>
+      <details><summary>Q. 1차에 하지 않는 것은?</summary><p>적립금 · 쿠폰, 교회 단체 계정, 구독, 오케스트라 파트보, 영문 사이트입니다. 팔아 보고 데이터를 본 뒤 넓힙니다.</p></details>
+      <details><summary>Q. 더 빨리 열 수 있나요?</summary><p>세 가지 방법이 있습니다. 1차 범위를 줄이거나, 개발자를 한 명 더 두거나, 바깥 신청을 지금 시작하는 것입니다. 마지막이 가장 확실하고 돈이 들지 않습니다. 자세한 내용은 <a href="docs.html#brief" style="text-decoration:underline">회의 자료</a>에 있습니다.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
   <div class="w">
     <div class="end rv">
       <h2>필요한 한 곡을, 오늘 바로.</h2>
-      <p>시안은 실제로 눌러 볼 수 있습니다. 순서대로 따라 해 보세요.</p>
+      <p>오늘 보신 화면은 모두 열어 볼 수 있습니다.<br>동작과 정책은 기획 문서에, 결정과 일정은 회의 자료에 있습니다.</p>
       <div class="ctas">
-        <a class="cta" href="try.html">직접 써 보기 →</a>
+        <a class="cta" href="sheet.html" target="_blank" rel="noopener">고객 화면 시안 →</a>
+        <a class="cta ghost" href="admin.html" target="_blank" rel="noopener">관리자 화면 시안</a>
         <a class="cta ghost" href="docs.html#intro">소개 문서</a>
         <a class="cta ghost" href="docs.html#brief">회의 자료</a>
       </div>
@@ -313,13 +678,11 @@ img{display:block;max-width:100%}
 
 <script>
 (function(){
-  /* 나타나기 */
   var els=[].slice.call(document.querySelectorAll('.rv'));
   if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08});
     els.forEach(function(e){io.observe(e);});
   } else els.forEach(function(e){e.classList.add('in');});
-  /* 메뉴: 첫 화면에서는 숨기고, 내리면 보임. 지금 보는 장 표시 */
   var nav=document.getElementById('nav'), links=[].slice.call(nav.querySelectorAll('a.m'));
   function onScroll(){
     nav.setAttribute('data-hide', window.scrollY<380?'1':'0');
@@ -328,7 +691,6 @@ img{display:block;max-width:100%}
     links.forEach(function(a){a.setAttribute('data-on', a.getAttribute('href')===cur?'1':'0');});
   }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
-  /* 영상: 화면에 들어오면 소리 없이 재생 */
   var v=document.getElementById('v');
   if(v&&'IntersectionObserver' in window){
     var played=false;
