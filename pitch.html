@@ -145,7 +145,7 @@ img{display:block;max-width:100%}
 
 /* ── 어디까지 와 있나 ── */
 .nums{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:48px}
-.num{background:var(--gray);border-radius:18px;padding:24px 20px}
+.num{background:#fff;border-radius:18px;padding:24px 20px}
 .num b{display:block;font-size:40px;font-weight:900;letter-spacing:-.05em;line-height:1}
 .num b small{font-size:16px;font-weight:800;margin-left:3px}
 .num span{display:block;font-size:14px;font-weight:800;margin-top:10px}
@@ -259,6 +259,24 @@ img{display:block;max-width:100%}
   .specs + .memo{margin-top:-50px;padding-bottom:84px}
 }
 
+/* ── 로고 쌍둥이 ── */
+.twin{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--ln);border-radius:999px;padding:6px 14px 6px 6px;font-size:13px;font-weight:800;color:var(--tx2)}
+.twin img{width:34px;height:34px;border-radius:7px;display:block}
+.twin i{font-style:normal;color:var(--tx3);font-weight:600}
+.pill-nav .brand .tw{display:flex;gap:3px}
+.pill-nav .brand .tw img{width:24px;height:24px;border-radius:5px}
+.logos{display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:center;max-width:860px;margin:56px auto 0}
+.lgc{background:var(--gray);border:1px solid var(--ln);border-radius:24px;padding:40px 24px 30px;text-align:center}
+.lgc img{width:168px;height:168px;margin:0 auto;border-radius:12px;box-shadow:0 18px 40px rgba(32,59,161,.18)}
+.lgc b{display:block;font-size:19px;font-weight:850;margin-top:24px;letter-spacing:-.4px}
+.lgc span{display:block;font-size:14px;color:var(--tx2);margin-top:6px;line-height:1.6}
+.lg-eq{width:58px;height:58px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:var(--ink);text-align:center;line-height:1.1}
+.lg-uses2{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:860px;margin:18px auto 0}
+.lg-uses2 figure{margin:0;background:var(--gray);border:1px solid var(--ln);border-radius:16px;padding:18px;text-align:center}
+.lg-uses2 img{height:58px;width:auto;margin:6px auto 12px;object-fit:contain}
+.lg-uses2 figcaption{font-size:13px;color:var(--tx3)}
+@media (max-width:600px){.logos{grid-template-columns:1fr}.lg-eq{margin:0 auto}.lg-uses2{grid-template-columns:1fr}.lgc img{width:132px;height:132px}.lg-uses2 img{height:44px}}
+
 .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
@@ -307,24 +325,25 @@ img{display:block;max-width:100%}
 <body>
 
 <nav class="pill-nav" id="nav" aria-label="이 페이지 안 이동">
-  <a class="brand" href="#top"><i>JA</i><span>디지털 악보몰</span></a>
+  <a class="brand" href="#top"><span class="tw"><img src="shots/ci-old.png" alt="중앙아트 CI"><img src="shots/logo-mall.svg" alt="디지털 악보몰 로고"></span><span>디지털 악보몰</span></a>
   <a class="m" href="#cust">고르기</a>
-  <a class="m" href="#buy">사기 · 인쇄</a>
+  <a class="m" href="#buy">구매 · 인쇄</a>
   <a class="m opt" href="#guard">저작권</a>
   <a class="m" href="#admin">관리자</a>
+  <a class="m opt" href="#logo">로고</a>
   <a class="m opt" href="#ready">준비 상태</a>
   <a class="m opt" href="#plan">일정</a>
   <a class="go" href="sheet.html" target="_blank" rel="noopener">시안 열기</a>
 </nav>
 
 <header class="hero w" id="top">
-  <span class="badge">J&amp;A <b>MUSIC</b></span>
+  <span class="twin"><img src="shots/ci-old.png" alt="중앙아트 CI"><img src="shots/logo-mall.svg" alt="디지털 악보몰 로고">J&amp;A MUSIC <i>·</i> 디지털 악보몰</span>
   <h1>중앙아트 디지털 악보몰</h1>
   <p class="sub">필요한 한 곡을. 성가대 인원만큼. 오늘 바로.</p>
   <div class="box">
     지금 쇼핑몰은 그대로 둡니다.<br>
     그 옆에 <b>낱곡 악보를 PDF로 파는 사이트</b>를 하나 더 엽니다.<br>
-    지휘자는 필요한 곡만, <b>단원 수만큼</b> 삽니다.<br>
+    성가대는 필요한 곡만, <b>단원 수만큼</b> 구매합니다.<br>
     결제가 끝나면 바로 내려받아 인쇄합니다.
   </div>
   <div class="ctas">
@@ -348,9 +367,9 @@ img{display:block;max-width:100%}
   <div class="w">
     <span class="kick rv">왜 만드는가</span>
     <h2 class="rv">이런 순간에서 출발했습니다</h2>
-    <p class="lead rv">지휘자와 중앙아트에게서 직접 들은 불편입니다.<br>카드를 누르면 그 불편을 푸는 기능으로 갑니다.</p>
+    <p class="lead rv">성가대와 중앙아트에서 직접 들은 불편입니다.<br>카드를 누르면 그 불편을 푸는 기능으로 갑니다.</p>
     <div class="moments rv">
-      <a class="mo w1" href="#buy"><b>한 곡만 필요한데<br>곡집을 통째로 사야 하나?</b><span class="ft">낱곡을 부수만큼 삽니다<i>→</i></span></a>
+      <a class="mo w1" href="#buy"><b>한 곡만 필요한데<br>곡집을 통째로 사야 하나?</b><span class="ft">낱곡을 부수만큼 구매합니다<i>→</i></span></a>
       <a class="mo l1" href="#cust"><b>부활절에 뭘 부르지?<br>어디서부터 찾지?</b><span class="ft">홈이 절기를 먼저 알려 줍니다<i>→</i></span></a>
       <a class="mo d1" href="#range"><b>우리 소프라노가<br>이 음까지 올라갈까?</b><span class="ft">파트별 음역을 봅니다<i>→</i></span></a>
       <a class="mo l2" href="#merge"><b>네 곡을 하나씩 열어<br>인쇄하기 번거로워</b><span class="ft">PDF 한 파일로 받습니다<i>→</i></span></a>
@@ -362,9 +381,9 @@ img{display:block;max-width:100%}
 
 <!-- ───────── 고르기 ───────── -->
 <div class="chap" id="cust">
-  <span class="eb rv">지휘자 화면 ①</span>
+  <span class="eb rv">성가대 화면 ①</span>
   <h2 class="rv">고르기</h2>
-  <p class="rv">사기 전에 충분히 봅니다.<br>절기, 악보, 소리, 음역, 성경 본문까지.</p>
+  <p class="rv">구매 전에 충분히 봅니다.<br>절기, 악보, 소리, 음역, 성경 본문까지.</p>
 </div>
 
 <section class="spot">
@@ -373,7 +392,7 @@ img{display:block;max-width:100%}
   <p class="lede rv">성가대는 절기에 맞춰 곡을 준비합니다.<br>그래서 홈 첫 줄에 <b>다음 절기와 남은 기간</b>을 놓았습니다.<br>그 절기에 부를 곡이 바로 아래 이어집니다.</p>
   <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>홈</span></div><img src="shots/season.jpg" alt="홈 — 다가오는 절기와 남은 기간, 추천 곡" loading="lazy"></div></div>
   <div class="specs rv">
-    <div class="spec"><b>남은 기간</b><p>“6주 남음”처럼 보여 줍니다. 연습을 언제 시작할지 정하기 쉽습니다.</p></div>
+    <div class="spec"><b>남은 기간</b><p>“19주 남았습니다”처럼 보여 줍니다. 연습을 언제 시작할지 정하기 쉽습니다.</p></div>
     <div class="spec"><b>전례색</b><p>대림절은 보라, 성탄과 고난주간은 붉은색, 부활절은 하늘색입니다.</p></div>
     <div class="spec"><b>바로 찾기</b><p>“부활절 · SATB · 쉬움” 같은 조건을 한 번에 누릅니다. 관리자가 8개까지 골라 둡니다.</p></div>
   </div>
@@ -394,7 +413,7 @@ img{display:block;max-width:100%}
 
 <section class="spot dk" id="range">
   <span class="eb rv">파트별 음역 · 성경 본문<span class="new">새 기능</span></span>
-  <h2 class="rv">우리 성가대가 부를 수 있는지,<br>사기 전에 압니다.</h2>
+  <h2 class="rv">우리 성가대가 부를 수 있는지,<br>구매 전에 압니다.</h2>
   <p class="lede rv">소프라노 · 알토 · 테너 · 베이스.<br>파트마다 <b>가장 낮은 음부터 가장 높은 음</b>까지 막대로 보여 줍니다.<br>아마추어 성가대에 높은 음은 붉게 표시합니다.</p>
   <div class="stage narrow rv"><div class="frame"><img src="shots/range.jpg" alt="파트별 음역 막대와 성경 본문" loading="lazy" style="padding:12px 8px"></div></div>
   <div class="specs rv">
@@ -405,17 +424,17 @@ img{display:block;max-width:100%}
   <p class="memo rv">음역과 성경 본문으로 <b>찾기</b>는 값이 충분히 쌓인 뒤 2차에 엽니다.</p>
 </section>
 
-<!-- ───────── 사기 · 인쇄 ───────── -->
+<!-- ───────── 구매 · 인쇄 ───────── -->
 <div class="chap" id="buy">
-  <span class="eb rv">지휘자 화면 ②</span>
-  <h2 class="rv">사기 · 인쇄</h2>
+  <span class="eb rv">성가대 화면 ②</span>
+  <h2 class="rv">구매 · 인쇄</h2>
   <p class="rv">필요한 곡만, 단원 수만큼.<br>결제가 끝나면 바로 인쇄합니다.</p>
 </div>
 
 <section class="spot">
   <span class="eb rv">부수 고르기 · 최소 구매 부수<span class="new">새 기능</span></span>
   <h2 class="rv">단원이 20명이면 20부.<br>금액은 저절로 나옵니다.</h2>
-  <p class="lede rv">디지털 악보는 <b>“몇 부까지 인쇄할 수 있는지”</b>를 삽니다.<br>부수를 고르면 <b>한 부 가격 × 부수</b>로 금액이 바로 바뀝니다.<br>산 부수는 PDF에 그대로 찍힙니다.</p>
+  <p class="lede rv">디지털 악보는 <b>“몇 부까지 인쇄할 수 있는지”</b>를 구매합니다.<br>부수를 고르면 <b>한 부 가격 × 부수</b>로 금액이 바로 바뀝니다.<br>구매한 부수는 PDF에 그대로 찍힙니다.</p>
   <div class="stage narrow rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>곡 화면 · 구매</span></div><img src="shots/minqty.jpg" alt="부수를 고르면 금액이 계산되는 화면" loading="lazy"></div></div>
   <div class="specs rv">
     <div class="spec"><b>최소 부수</b><p>곡마다 “10부부터”처럼 정합니다. 1부만 사서 복사하는 일을 막습니다.</p></div>
@@ -439,7 +458,7 @@ img{display:block;max-width:100%}
 <section class="spot dk" id="merge">
   <span class="eb rv">내 악보함 · 묶어 받기<span class="new">새 기능</span></span>
   <h2 class="rv">네 곡. 파일 하나.<br>인쇄는 한 번.</h2>
-  <p class="lede rv">산 곡은 <b>내 악보함</b>에 모입니다.<br>이번 주일에 부를 곡을 골라 <b>“한 파일로 받기”</b>를 누릅니다.<br>고른 순서대로 이어 붙인 PDF 하나가 나옵니다.</p>
+  <p class="lede rv">구매한 곡은 <b>내 악보함</b>에 모입니다.<br>이번 주일에 부를 곡을 골라 <b>“한 파일로 받기”</b>를 누릅니다.<br>고른 순서대로 이어 붙인 PDF 하나가 나옵니다.</p>
   <div class="stage duo rv">
     <div class="frame"><div class="bar"><i></i><i></i><i></i><span>내 악보함</span></div><img src="shots/library.jpg" alt="내 악보함 — 여러 곡을 골라 한 파일로 받기" loading="lazy"></div>
     <div class="frame"><div class="bar"><i></i><i></i><i></i><span>묶은 PDF</span></div><img src="shots/merge.jpg" alt="여러 곡이 한 PDF로 묶인 결과" loading="lazy"></div>
@@ -454,7 +473,7 @@ img{display:block;max-width:100%}
 <section class="spot">
   <span class="eb rv">휴대폰</span>
   <h2 class="rv">휴대폰에서도<br>똑같이 됩니다.</h2>
-  <p class="lede rv">지휘자는 이동 중에 곡을 찾는 일이 많습니다.<br>모든 고객 화면을 <b>휴대폰 폭(360px)</b>까지 맞췄습니다.<br>휴대폰으로 사고, 교회 컴퓨터에서 인쇄합니다.</p>
+  <p class="lede rv">곡은 이동 중에 찾는 일이 많습니다.<br>모든 고객 화면을 <b>휴대폰 폭(360px)</b>까지 맞췄습니다.<br>휴대폰으로 구매하고, 교회 컴퓨터에서 인쇄합니다.</p>
   <div class="stage rv" style="padding-bottom:110px"><div class="phones"><div class="phone"><img src="shots/m-home.jpg" alt="휴대폰 홈 화면" loading="lazy"></div><div class="phone"><img src="shots/m-detail.jpg" alt="휴대폰 곡 화면" loading="lazy"></div></div></div>
 </section>
 
@@ -463,7 +482,7 @@ img{display:block;max-width:100%}
   <div class="w">
     <span class="kick rv">악보를 지키는 방법</span>
     <h2 class="rv">인쇄는 자유롭게.<br>복사는 어렵게.</h2>
-    <p class="lead rv">파일 복사를 완전히 막을 수는 없습니다.<br>대신 <b>누가 산 파일인지 늘 드러나게</b> 했습니다.<br>정직하게 사는 성가대는 불편하지 않습니다.</p>
+    <p class="lead rv">파일 복사를 완전히 막을 수는 없습니다.<br>대신 <b>누가 구매한 파일인지 늘 드러나게</b> 했습니다.<br>정직하게 구매한 성가대는 불편하지 않습니다.</p>
     <div class="guard rv">
       <div class="pdf">
         <div class="frame"><img src="shots/down.jpg" alt="모든 면 아래에 구매 정보가 찍힌 PDF" loading="lazy"></div>
@@ -473,7 +492,7 @@ img{display:block;max-width:100%}
         <div class="g"><span class="n">하나</span><b>원본은 나가지 않습니다</b><p>받는 순간 <b>새로 만든 사본</b>이 나갑니다. 원본은 서버에만 둡니다.</p></div>
         <div class="g"><span class="n">둘</span><b>모든 면에 구매자</b><p>면마다 <b>주문번호 · 구매자 · 부수</b>를 찍습니다. 복사본이 어느 주문에서 나왔는지 바로 압니다.</p></div>
         <div class="g"><span class="n">셋</span><b>여는 암호</b><p>파일을 열 때 <b>주문번호 뒤 6자리</b>를 넣습니다. 인쇄는 막지 않습니다.</p></div>
-        <div class="g"><span class="n">넷</span><b>내려받기 감시</b><p>산 부수에 비해 너무 자주 받거나, 여러 지역에서 받으면 <b>‘주의’</b>로 뜹니다.</p></div>
+        <div class="g"><span class="n">넷</span><b>내려받기 감시</b><p>구매한 부수에 비해 너무 자주 받거나, 여러 지역에서 받으면 <b>‘주의’</b>로 뜹니다.</p></div>
         <div class="g wide">
           <div><span class="n">관리자 화면</span><b>모든 발급이 기록에 남습니다</b><p>언제, 누가, 어느 곡을, 몇 부로 받았는지 한 줄씩 쌓입니다. 밖으로 내보낼 때는 이름을 <b>김*윤</b>처럼 가립니다.</p></div>
           <div class="frame"><img src="shots/a-down.jpg" alt="관리자 — 다운로드 이력" loading="lazy"></div>
@@ -547,8 +566,27 @@ img{display:block;max-width:100%}
   <div class="stage rv" style="padding-bottom:110px"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>관리자 · 대시보드</span></div><img src="shots/a-dash2.jpg" alt="관리자 — 대시보드" loading="lazy"></div></div>
 </section>
 
+<!-- ───────── 로고 ───────── -->
+<section class="sec" id="logo">
+  <div class="w">
+    <span class="kick rv">로고</span>
+    <h2 class="rv">기존 CI와 쌍둥이입니다</h2>
+    <p class="lead rv">JA 글자와 두 실선은 그대로 두었습니다.<br>바탕만 흰색으로 바꾸고 <b>오선</b>을 더했습니다.<br>실물 곡집과 한 집안이고, 악보를 파는 곳이라는 것이 함께 보입니다.</p>
+    <div class="logos rv">
+      <div class="lgc"><img src="shots/ci-old.png" alt="중앙아트 기존 CI"><b>중앙아트 CI</b><span>실물 곡집 쇼핑몰<br>파란 바탕 · 흰 JA</span></div>
+      <div class="lg-eq">쌍둥이</div>
+      <div class="lgc"><img src="shots/logo-mall.svg" alt="디지털 악보몰 로고"><b>디지털 악보몰</b><span>새 사이트<br>흰 바탕 · 오선 · 파란 JA</span></div>
+    </div>
+    <div class="lg-uses2 rv">
+      <figure><img src="shots/logo-head.jpg" alt="고객 사이트 머리의 로고"><figcaption>고객 사이트 머리</figcaption></figure>
+      <figure><img src="shots/logo-admin.jpg" alt="관리자 화면의 로고"><figcaption>관리자 화면 · 같은 로고에 「관리자」 표시만 더합니다</figcaption></figure>
+    </div>
+    <p class="lead rv" style="font-size:14px">CI 원본 벡터 파일을 주시면 선 굵기와 비율을 실제 CI에 더 정확히 맞추겠습니다.</p>
+  </div>
+</section>
+
 <!-- ───────── 준비 상태 ───────── -->
-<section class="sec" id="ready">
+<section class="sec gray" id="ready">
   <div class="w">
     <span class="kick rv">시안이 어디까지 와 있나</span>
     <h2 class="rv">그림이 아닙니다.<br>눌러 보고 확인한 시안입니다.</h2>
