@@ -30,7 +30,8 @@ img{display:block;max-width:100%}
 /* ── 위에 떠 있는 메뉴(알약) ── */
 .pill-nav{position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:2px;
   background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1px solid var(--ln);border-radius:999px;padding:5px 6px;
-  box-shadow:0 6px 24px rgba(18,41,45,.10);white-space:nowrap;transition:opacity .25s,transform .25s;max-width:calc(100vw - 20px)}
+  box-shadow:0 6px 24px rgba(18,41,45,.10);white-space:nowrap;transition:opacity .25s,transform .25s;width:max-content;max-width:calc(100vw - 20px)}
+.pill-nav>*{flex-shrink:0}.pill-nav .brand .tw img{flex-shrink:0}
 .pill-nav[data-hide="1"]{opacity:0;transform:translate(-50%,-14px);pointer-events:none}
 .pill-nav .brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:13.5px;padding:4px 10px 4px 4px}
 .pill-nav .brand i{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-style:normal;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;letter-spacing:-.5px}
