@@ -63,7 +63,8 @@ img{display:block;max-width:100%}
 .vid{max-width:1080px;margin:30px auto 0;padding:0 20px}
 .vid-in{position:relative;border-radius:22px;overflow:hidden;background:var(--dark);box-shadow:0 30px 70px rgba(18,41,45,.25);border:6px solid var(--blue)}
 .vid video{display:block;width:100%;aspect-ratio:16/9;background:#0b1430}
-.vid-cap{text-align:center;font-size:12.5px;color:var(--tx3);margin-top:12px}
+.vid-cap{text-align:center;font-size:13px;color:var(--tx3);margin-top:12px}
+.vid-cap a{display:inline-block;padding:6px 4px;text-decoration:underline;text-underline-offset:3px;color:var(--tx2)}
 
 /* ── 공통 장 ── */
 .sec{padding:100px 0}
@@ -216,7 +217,12 @@ img{display:block;max-width:100%}
 .end .cta.ghost{color:#fff;border-color:rgba(255,255,255,.3)}
 .end .cta.ghost:hover{background:rgba(255,255,255,.08)}
 .foot{text-align:center;font-size:12px;color:var(--tx3);padding:40px 20px 60px;line-height:1.9}
-.foot a{text-decoration:underline;text-underline-offset:3px}
+.foot a{display:inline-block;padding:6px 4px;text-decoration:underline;text-underline-offset:3px}
+/* 키보드로 다닐 때 어디에 있는지 보이게 */
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
+.pill-nav a:focus-visible,.cta:focus-visible,.totop:focus-visible{outline-offset:2px}
+/* 메뉴로 이동했을 때 제목이 위쪽 고정 메뉴에 가리지 않게 */
+.spot,.sec,.chap,[id]{scroll-margin-top:72px}
 
 
 /* ── 기능 하나 = 장 하나 (제품 소개식) ── */
@@ -395,7 +401,7 @@ img{display:block;max-width:100%}
 <body>
 
 <nav class="pill-nav" id="nav" aria-label="이 페이지 안 이동">
-  <a class="brand" href="#top"><span class="tw"><img src="shots/ci-old.png" alt="중앙아트 CI"><img src="shots/logo-mall.svg" alt="디지털 악보몰 로고"></span><span>디지털 악보몰</span></a>
+  <a class="brand" href="#top"><span class="tw"><img src="shots/ci-old.png" alt="중앙아트 CI" width="185" height="185"><img src="shots/logo-mall.svg" alt="디지털 악보몰 로고"></span><span>디지털 악보몰</span></a>
   <a class="m" href="#cust">악보몰</a>
   <a class="m" href="#admin">관리자</a>
   <a class="doc" href="docs.html#hub" target="_blank" rel="noopener">기획 문서 ↗</a>
@@ -403,7 +409,7 @@ img{display:block;max-width:100%}
 </nav>
 
 <header class="hero w" id="top">
-  <span class="twin"><img src="shots/ci-old.png" alt="중앙아트 CI"><img src="shots/logo-mall.svg" alt="디지털 악보몰 로고">J&amp;A MUSIC <i>·</i> 디지털 악보몰</span>
+  <span class="twin"><img src="shots/ci-old.png" alt="중앙아트 CI" width="185" height="185"><img src="shots/logo-mall.svg" alt="디지털 악보몰 로고">J&amp;A MUSIC <i>·</i> 디지털 악보몰</span>
   <p class="kick">중앙아트 디지털 악보몰</p>
   <h1 class="tag"><span>필요한 악보를,</span> <span class="hl">바로 지금,</span> <span>내 손 안에.</span></h1>
   <p class="sub-en">The music you need. Right now. In your hands.</p>
@@ -424,9 +430,9 @@ img{display:block;max-width:100%}
 
 <div class="vid">
   <div class="vid-in">
-    <video id="v" src="shots/intro.mp4" poster="shots/intro-poster.jpg" controls playsinline muted preload="metadata"></video>
+    <video id="v" src="shots/intro.mp4" poster="shots/intro-poster.jpg" controls playsinline preload="metadata"></video>
   </div>
-  <p class="vid-cap">1분 소개 영상 · 새 기능만 모았습니다 · 소리를 켜면 배경 음악이 나옵니다 · <a href="shots/intro-full.mp4" target="_blank" rel="noopener" style="text-decoration:underline">전체판(2분 17초) 보기</a></p>
+  <p class="vid-cap">1분 소개 영상 · 새 기능만 모았습니다 · 배경 음악이 있습니다 · <a href="shots/intro-full.mp4" target="_blank" rel="noopener">전체판(2분 17초) 보기</a></p>
 </div>
 
 <!-- 왜 -->
@@ -460,7 +466,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">1</i>로그인</span>
   <h2 class="rv">새로 가입하지 않습니다.<br>쓰던 아이디 그대로.</h2>
   <p class="lede rv">지금 쇼핑몰(카페24) 아이디로 로그인합니다.<br>동의는 <b>처음 한 번</b>만 받습니다.<br>둘러보기 · 미리보기 · 듣기는 로그인 없이 됩니다.</p>
-  <div class="stage slim rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>로그인</span></div><img src="shots/login-c.jpg" alt="로그인 화면 — 중앙아트 쇼핑몰 계정 그대로" loading="lazy"></div></div>
+  <div class="stage slim rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>로그인</span></div><img src="shots/login-c.jpg" alt="로그인 화면 — 중앙아트 쇼핑몰 계정 그대로" loading="lazy" width="510" height="1060"></div></div>
   <div class="specs rv">
     <div class="spec"><b>개인정보 보관 없음</b><p>회원 정보는 카페24에 둡니다. 따로 관리할 직원이 필요 없습니다.</p></div>
     <div class="spec"><b>교회명 받지 않음</b><p>회의 결정대로 받는 정보를 하나 줄였습니다.</p></div>
@@ -473,7 +479,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">2</i>홈 · 첫 화면</span>
   <h2 class="rv">첫 화면에서 한 번에,<br>원하는 곡 목록으로.</h2>
   <p class="lede rv">맨 위에 <b>통합 검색</b>, 그 아래 지금 소개할 곡집 배너.<br>배너 아래 <b>바로 찾기</b>에 예배 · 편성 · 난이도 조건이 버튼으로 놓여 있습니다.<br>메뉴를 뒤지지 않고 한 번에 원하는 곡 목록으로 갑니다.</p>
-  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>홈</span></div><img src="shots/hero.jpg" alt="홈 첫 화면 — 검색, 배너, 바로 찾기" loading="lazy"></div></div>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>홈</span></div><img src="shots/hero.jpg" alt="홈 첫 화면 — 검색, 배너, 바로 찾기" loading="lazy" width="1500" height="802"></div></div>
   <div class="specs rv">
     <div class="spec"><b>바로 찾기</b><p>“부활절 · 무반주 · 쉬운 곡” 같은 조건을 한 번에 누릅니다. 관리자가 8개까지 골라 둡니다.</p></div>
     <div class="spec"><b>배너에서 바로 듣기</b><p>배너 곡집의 수록 곡을 그 자리에서 들어 봅니다.</p></div>
@@ -486,7 +492,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">2</i>홈 · 절기 준비</span>
   <h2 class="rv">다음 절기까지 몇 주.<br>홈이 먼저 알려 줍니다.</h2>
   <p class="lede rv">성가대는 절기에 맞춰 곡을 준비합니다.<br>그래서 홈 첫 줄에 <b>다음 절기와 남은 기간</b>을 놓았습니다.<br>그 절기에 부를 곡이 바로 아래 이어집니다.</p>
-  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>홈</span></div><img src="shots/season.jpg" alt="홈 — 다가오는 절기와 남은 기간, 추천 곡" loading="lazy"></div></div>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>홈</span></div><img src="shots/season.jpg" alt="홈 — 다가오는 절기와 남은 기간, 추천 곡" loading="lazy" width="1500" height="638"></div></div>
   <div class="specs rv">
     <div class="spec"><b>남은 기간</b><p>“19주 남았습니다”처럼 보여 줍니다. 연습을 언제 시작할지 정하기 쉽습니다.</p></div>
     <div class="spec"><b>추천 곡 바로 듣기</b><p>중앙아트가 고른 곡을 홈에서 바로 들어 봅니다.</p></div>
@@ -499,7 +505,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">3</i>검색</span>
   <h2 class="rv">기존 쇼핑몰에 없던 검색,<br>곡 고르기를 돕는 정보까지.</h2>
   <p class="lede rv">곡명 · 곡집 · 편곡자로 찾는 <b>통합 검색</b>을 새로 넣었습니다.<br>검색창을 누르면 <b>추천 검색어</b>, <b>지금 많이 찾는 악보</b>, <b>인기 검색어</b>가 함께 보입니다.<br>곡명을 몰라도, 다른 성가대가 찾는 곡을 보며 고를 수 있습니다.</p>
-  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>통합 검색</span></div><img src="shots/search.jpg" alt="통합 검색 — 추천 검색어, 최근 검색어, 지금 많이 찾는 악보, 인기 검색어" loading="lazy"></div></div>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>통합 검색</span></div><img src="shots/search.jpg" alt="통합 검색 — 추천 검색어, 최근 검색어, 지금 많이 찾는 악보, 인기 검색어" loading="lazy" width="1500" height="938"></div></div>
   <div class="specs rv">
     <div class="spec"><b>추천 검색어</b><p>“성탄 칸타타 · 대림절 · 무반주 · SAB”처럼 자주 찾는 말을 버튼으로.</p></div>
     <div class="spec"><b>최근 검색어</b><p>지난번에 찾던 말을 다시 누릅니다.</p></div>
@@ -512,7 +518,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">4</i>목록</span>
   <h2 class="rv">여러 조건으로,<br>우리 성가대에 꼭 맞는 악보를 찾습니다.</h2>
   <p class="lede rv"><b>절기 · 편성 · 반주 · 난이도</b>를 겹쳐 골라 목록을 좁힙니다.<br>“부활절 · 혼성 4부 · 반주 · 쉬움”처럼 우리 성가대에 맞는 곡만 남습니다.<br>목록에서 바로 <b>악보 1면 · 듣기</b>로 비교할 수 있습니다.</p>
-  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>찬양곡 · 조건 검색</span></div><img src="shots/list.jpg" alt="찬양곡 목록 — 조건 검색과 곡 카드" loading="lazy"></div></div>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>찬양곡 · 조건 검색</span></div><img src="shots/list.jpg" alt="찬양곡 목록 — 조건 검색과 곡 카드" loading="lazy" width="1500" height="938"></div></div>
   <div class="specs rv">
     <div class="spec"><b>조건 검색</b><p>여러 조건을 겹쳐 골라 곡을 좁힙니다.</p></div>
     <div class="spec"><b>정렬</b><p>신상품 · 낮은 가격 · 쉬운 순 · 인기 순.</p></div>
@@ -525,7 +531,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">5</i>곡 화면 · 음역 · 성경 본문<span class="new">새 기능</span></span>
   <h2 class="rv">우리 성가대가 부를 수 있는지,<br>구매 전에 압니다.</h2>
   <p class="lede rv">소프라노 · 알토 · 테너 · 베이스.<br>파트마다 <b>가장 낮은 음부터 가장 높은 음</b>까지 막대로 보여 줍니다.<br>아마추어 성가대에 높은 음은 붉게 표시합니다.</p>
-  <div class="stage narrow rv"><div class="frame"><img src="shots/range.jpg" alt="파트별 음역 막대와 성경 본문" loading="lazy" style="padding:12px 8px"></div></div>
+  <div class="stage narrow rv"><div class="frame"><img src="shots/range.jpg" alt="파트별 음역 막대와 성경 본문" loading="lazy" style="padding:12px 8px" width="1100" height="384"></div></div>
   <div class="specs rv">
     <div class="spec"><b>4파트 음역</b><p>지금은 곡집을 사서 펼쳐 봐야 알았습니다. 이제 곡 화면에서 바로 봅니다.</p></div>
     <div class="spec"><b>성경 본문</b><p>가사가 나온 말씀을 장절로 적습니다. 설교 본문에 맞는 곡을 고르기 쉽습니다.</p></div>
@@ -539,7 +545,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">5</i>곡 화면 · 부수 · 최소 구매 부수<span class="new">새 기능</span></span>
   <h2 class="rv">단원이 20명이면 20부.<br>금액은 저절로 나옵니다.</h2>
   <p class="lede rv">디지털 악보는 <b>“몇 부까지 인쇄할 수 있는지”</b>를 구매합니다.<br>부수를 고르면 <b>한 부 가격 × 부수</b>로 금액이 바로 바뀝니다.<br>구매한 부수는 PDF에 그대로 찍힙니다.</p>
-  <div class="stage narrow rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>곡 화면 · 구매</span></div><img src="shots/minqty.jpg" alt="부수를 고르면 금액이 계산되는 화면" loading="lazy"></div></div>
+  <div class="stage narrow rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>곡 화면 · 구매</span></div><img src="shots/minqty.jpg" alt="부수를 고르면 금액이 계산되는 화면" loading="lazy" width="1000" height="683"></div></div>
   <div class="specs rv">
     <div class="spec"><b>최소 부수</b><p>곡마다 “10부부터”처럼 정합니다. 1부만 사서 복사하는 일을 막습니다.</p></div>
     <div class="spec"><b>한 번에 고르기</b><p>10 · 20 · 30 · 40부는 버튼 하나로 고릅니다.</p></div>
@@ -552,7 +558,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">6</i>주문 · 결제</span>
   <h2 class="rv">곡 · 부수 · 금액을 한 번 더 확인하고,<br>바로 결제합니다.</h2>
   <p class="lede rv">주문서 한 장에 고른 곡, 인쇄 부수, 금액이 정리됩니다.<br>배송지를 적을 일이 없고, 이름 · 이메일은 쇼핑몰 계정에서 가져옵니다.<br>결제가 끝나면 바로 내 악보함으로 갑니다.</p>
-  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>주문서 작성</span></div><img src="shots/order-top.jpg" alt="주문서 작성 화면 — 곡, 인쇄 부수, 금액, 주문자 정보" loading="lazy"></div></div>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>주문서 작성</span></div><img src="shots/order-top.jpg" alt="주문서 작성 화면 — 곡, 인쇄 부수, 금액, 주문자 정보" loading="lazy" width="1500" height="938"></div></div>
   <div class="specs rv">
     <div class="spec"><b>결제 수단 6가지</b><p>카드 · 계좌이체 · 가상계좌 · 카카오페이 · 네이버페이. 해외는 PayPal.</p></div>
     <div class="spec"><b>이용 범위 동의</b><p>“산 부수 안에서만 인쇄”에 결제 전에 동의를 받습니다.</p></div>
@@ -566,8 +572,8 @@ img{display:block;max-width:100%}
   <h2 class="rv">여러 개의 악보를<br>하나의 PDF 파일로.</h2>
   <p class="lede rv">구매한 곡은 <b>내 악보함</b>에 모입니다.<br>이번 주일에 부를 곡을 골라 <b>“한 파일로 받기”</b>를 누릅니다.<br>고른 순서대로 이어 붙인 PDF 하나가 나옵니다.</p>
   <div class="stage duo rv">
-    <div class="frame"><div class="bar"><i></i><i></i><i></i><span>내 악보함</span></div><img src="shots/library.jpg" alt="내 악보함 — 여러 곡을 골라 한 파일로 받기" loading="lazy"></div>
-    <div class="frame"><div class="bar"><i></i><i></i><i></i><span>묶은 PDF</span></div><img src="shots/merge.jpg" alt="여러 곡이 한 PDF로 묶인 결과" loading="lazy"></div>
+    <div class="frame"><div class="bar"><i></i><i></i><i></i><span>내 악보함</span></div><img src="shots/library.jpg" alt="내 악보함 — 여러 곡을 골라 한 파일로 받기" loading="lazy" width="1440" height="900"></div>
+    <div class="frame"><div class="bar"><i></i><i></i><i></i><span>묶은 PDF</span></div><img src="shots/merge.jpg" alt="여러 곡이 한 PDF로 묶인 결과" loading="lazy" width="1160" height="740"></div>
   </div>
   <div class="specs rv">
     <div class="spec"><b>언제든 다시 받기</b><p>파일을 잃어버려도 악보함에서 다시 받습니다.</p></div>
@@ -585,7 +591,7 @@ img{display:block;max-width:100%}
     <p class="lead rv">다운로드하는 PDF의 모든 면 아래에 <b>주문번호 · 구매자 · 부수</b>가 워터마크로 찍힙니다.<br>어느 주문에서 나온 악보인지 늘 드러나, 함부로 복사해 돌리기 어렵습니다.<br>정직하게 구매한 성가대는 인쇄에 아무 불편이 없습니다.</p>
     <div class="guard rv">
       <div class="pdf">
-        <div class="frame"><img src="shots/down.jpg" alt="모든 면 아래에 구매 정보가 찍힌 PDF" loading="lazy"></div>
+        <div class="frame"><img src="shots/down.jpg" alt="모든 면 아래에 구매 정보가 찍힌 PDF" loading="lazy" width="588" height="1578"></div>
         <p>내 악보함 › 다운로드 창. 면마다 아래쪽에 구매 정보가 찍히고, 창 아래 자물쇠 칸에 여는 암호가 보입니다</p>
       </div>
       <div class="g-list">
@@ -604,10 +610,10 @@ img{display:block;max-width:100%}
   <h2 class="rv">휴대폰, 태블릿, 컴퓨터.<br>어디서나 똑같이.</h2>
   <p class="lede rv">휴대폰에서 찾고, 태블릿으로 펼쳐 보고, 교회 컴퓨터에서 인쇄합니다.<br>접는 폰까지, 화면 크기에 맞춰 알아서 바뀝니다.<br>어느 기기에서 열어도 같은 악보몰입니다.</p>
   <div class="dshot" id="dfan" role="img" aria-label="컴퓨터, 태블릿, 휴대폰, 접는 폰에 띄운 악보몰 화면">
-    <img class="dl" data-k="desk" src="shots/dev-desk.webp" alt="" loading="lazy">
-    <img class="dl" data-k="tab" src="shots/dev-tab.webp" alt="" loading="lazy">
-    <img class="dl" data-k="fold" src="shots/dev-fold.webp" alt="" loading="lazy">
-    <img class="dl" data-k="ph" src="shots/dev-ph.webp" alt="" loading="lazy">
+    <img class="dl" data-k="desk" src="shots/dev-desk.webp" alt="" loading="lazy" width="2400" height="1350">
+    <img class="dl" data-k="tab" src="shots/dev-tab.webp" alt="" loading="lazy" width="2400" height="1350">
+    <img class="dl" data-k="fold" src="shots/dev-fold.webp" alt="" loading="lazy" width="2400" height="1350">
+    <img class="dl" data-k="ph" src="shots/dev-ph.webp" alt="" loading="lazy" width="2400" height="1350">
   </div>
   <p class="memo rv" style="padding-bottom:110px;margin-top:6px">기기 그림 위에 실제 시안 화면을 각 기기 크기로 열어 얹었습니다.</p>
 </section>
@@ -626,7 +632,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">1</i>관리자 로그인</span>
   <h2 class="rv">관리자 계정은 따로.<br>들어온 기록은 모두 남습니다.</h2>
   <p class="lede rv">고객용 쇼핑몰 계정과 <b>별도의 관리자 계정</b>을 씁니다.<br>언제 어디서 로그인했는지 기록됩니다.<br>환불과 정산은 전체 권한을 가진 담당자만 봅니다.</p>
-  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 로그인</span></div><img src="shots/a-login.jpg" alt="관리자 로그인 화면" loading="lazy"></div></div>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 로그인</span></div><img src="shots/a-login.jpg" alt="관리자 로그인 화면" loading="lazy" width="1500" height="938"></div></div>
   <div class="specs rv">
     <div class="spec"><b>낯선 곳 알림</b><p>처음 보는 곳에서 접속하면 등록된 메일로 알립니다.</p></div>
     <div class="spec"><b>5회 실패 잠금</b><p>비밀번호를 5번 틀리면 30분 동안 잠깁니다.</p></div>
@@ -639,7 +645,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">2</i>대시보드</span>
   <h2 class="rv">들어오면 먼저,<br>매출과 판매 흐름을 봅니다.</h2>
   <p class="lede rv">이번 달 매출 · 주문 · 다운로드를 <b>지난달 같은 기간</b>과 비교해 보여 줍니다.<br>월별 · 분류별 매출로 어느 절기에 무엇이 팔리는지 보입니다.<br>곡 단위 판매 기록은 다음 곡집 기획의 근거가 됩니다.</p>
-  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 대시보드</span></div><img src="shots/a-dash2.jpg" alt="관리자 — 대시보드" loading="lazy"></div></div>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 대시보드</span></div><img src="shots/a-dash2.jpg" alt="관리자 — 대시보드" loading="lazy" width="1440" height="900"></div></div>
   <div class="specs rv">
     <div class="spec"><b>기간 버튼</b><p>오늘 · 이번 주 · 이번 달 · 올해를 버튼 하나로 바꿔 봅니다.</p></div>
     <div class="spec"><b>절기 알림</b><p>“부활절까지 19주 남았습니다”처럼, 기획전을 미리 열 때를 알려 줍니다.</p></div>
@@ -652,7 +658,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">3</i>악보 등록</span>
   <h2 class="rv">PDF, 곡명, 판매가.<br>세 칸이면 판매 시작.</h2>
   <p class="lede rv">필수 칸을 4개에서 <b>3개</b>로 줄였습니다.<br>PDF를 고르면 <b>파일을 바로 검사</b>합니다.<br>문제가 있으면 ‘판매 시작’ 버튼이 잠깁니다.</p>
-  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 악보 관리</span></div><img src="shots/a-edit.jpg" alt="관리자 — 악보 등록" loading="lazy"></div></div>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 악보 관리</span></div><img src="shots/a-edit.jpg" alt="관리자 — 악보 등록" loading="lazy" width="1500" height="938"></div></div>
   <div class="specs four rv">
     <div class="spec"><b>파일 검사</b><p>형식 · 용량 · 암호 · 면수 · 용지 크기를 확인합니다.</p></div>
     <div class="spec"><b>곡명 채우기</b><p>파일 이름에서 곡명을 미리 채웁니다.</p></div>
@@ -666,7 +672,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">4</i>음역 확인<span class="new">새 기능</span></span>
   <h2 class="rv">음역은 적지 않습니다.<br>PDF에서 읽어 옵니다.</h2>
   <p class="lede rv">올린 악보에서 파트별 최저음 · 최고음을 읽어 채웁니다.<br>담당자는 <b>맞는지 보고 확인</b>만 누릅니다.<br>확인한 값만 고객에게 보입니다.</p>
-  <div class="stage narrow rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 음역</span></div><img src="shots/a-range.jpg" alt="관리자 — PDF에서 음역 자동 읽기" loading="lazy"></div></div>
+  <div class="stage narrow rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 음역</span></div><img src="shots/a-range.jpg" alt="관리자 — PDF에서 음역 자동 읽기" loading="lazy" width="1300" height="964"></div></div>
   <div class="specs rv">
     <div class="spec"><b>너무 높거나 낮으면</b><p>아마추어 성가대에 어려운 음을 미리 표시합니다.</p></div>
     <div class="spec"><b>사보 원본이 있으면</b><p>MusicXML 파일이 있으면 더 정확하고 빠릅니다.</p></div>
@@ -679,7 +685,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">5</i>화면 관리</span>
   <h2 class="rv">홈도, 배너도, 메뉴도.<br>개발자 없이 바꿉니다.</h2>
   <p class="lede rv">절기가 바뀌면 홈을 직접 바꿉니다.<br>어떤 줄을 어떤 순서로 놓을지 고르고, 켜고 끕니다.<br>오른쪽에 고객이 볼 화면이 함께 바뀝니다.</p>
-  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 홈 편성</span></div><img src="shots/a-home.jpg" alt="관리자 — 홈 편성" loading="lazy"></div></div>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 홈 편성</span></div><img src="shots/a-home.jpg" alt="관리자 — 홈 편성" loading="lazy" width="1500" height="938"></div></div>
   <div class="specs rv">
     <div class="spec"><b>줄을 누르면 열림</b><p>모든 목록이 같습니다. 한 번 익히면 어느 메뉴든 씁니다.</p></div>
     <div class="spec"><b>전례색 8가지</b><p>컬렉션 배경을 절기 색에서 고릅니다.</p></div>
@@ -692,7 +698,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">6</i>주문 관리</span>
   <h2 class="rv">고객 문의가 오면,<br>주문 상세에서 바로 확인합니다.</h2>
   <p class="lede rv">주문 줄을 누르면 오른쪽에 <b>주문 상세</b>가 열립니다.<br>언제 몇 번 발급했고, 언제 다운로드했는지 기록이 보입니다.<br>재발급과 환불도 여기서 합니다.</p>
-  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 주문 관리</span></div><img src="shots/a-order.jpg" alt="관리자 — 주문 상세" loading="lazy"></div></div>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 주문 관리</span></div><img src="shots/a-order.jpg" alt="관리자 — 주문 상세" loading="lazy" width="1500" height="938"></div></div>
   <div class="specs rv">
     <div class="spec"><b>발급 · 다운로드 기록</b><p>회차마다 시각과 부수가 남습니다.</p></div>
     <div class="spec"><b>재발급</b><p>메일을 못 받았으면 새 발급 주소와 안내 메일을 다시 보냅니다.</p></div>
@@ -705,7 +711,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">7</i>다운로드 이력</span>
   <h2 class="rv">이상한 다운로드는<br>먼저 알아차립니다.</h2>
   <p class="lede rv">모든 발급이 한 줄씩 쌓입니다 — 언제, 누가, 어느 곡을, 몇 부로.<br>구매한 부수보다 너무 자주 받으면 <b>‘주의’</b>가 붙습니다.<br>밖으로 내보낼 때는 이름을 <b>김*윤</b>처럼 가립니다.</p>
-  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 다운로드 이력</span></div><img src="shots/a-down.jpg" alt="관리자 — 다운로드 이력" loading="lazy"></div></div>
+  <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 다운로드 이력</span></div><img src="shots/a-down.jpg" alt="관리자 — 다운로드 이력" loading="lazy" width="1500" height="938"></div></div>
   <div class="specs rv">
     <div class="spec"><b>주의 표시</b><p>막기보다 먼저 알아차리게 합니다.</p></div>
     <div class="spec"><b>주의만 모아 보기</b><p>탭 하나로 ‘주의’ 줄만 봅니다.</p></div>
@@ -718,7 +724,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">8</i>저작권료 정산<span class="new">새 기능</span></span>
   <h2 class="rv">매달 하던 저작권료 계산.<br>이제 버튼 하나.</h2>
   <p class="lede rv">팔릴 때마다 <b>어느 곡이, 몇 부, 얼마에</b> 팔렸는지 남습니다.<br>이 기록이 그대로 장부가 됩니다.<br>권리자별 이번 달 지급액이 계산됩니다.</p>
-  <div class="stage rv" style="padding-bottom:0"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 저작권료 정산</span></div><img src="shots/royalty.jpg" alt="관리자 — 저작권료 정산" loading="lazy"></div></div>
+  <div class="stage rv" style="padding-bottom:0"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>admin · 저작권료 정산</span></div><img src="shots/royalty.jpg" alt="관리자 — 저작권료 정산" loading="lazy" width="1500" height="938"></div></div>
   <div class="specs rv">
     <div class="spec"><b>역할별 요율</b><p>작곡 · 작사 · 편곡 · 원곡 요율을 따로 둡니다.</p><small>시안 값: 8% · 2% · 5% · 3% · 변호사 확인 뒤 확정</small></div>
     <div class="spec"><b>엑셀 · 지급명세서</b><p>버튼 하나로 만듭니다. 밖으로 나가는 파일은 이름을 가립니다.</p></div>
@@ -735,13 +741,13 @@ img{display:block;max-width:100%}
     <h2 class="rv">기존 CI를 그대로 이어받았습니다</h2>
     <p class="lead rv">JA 글자와 두 실선은 그대로 두었습니다.<br>바탕만 흰색으로 바꾸고 <b>오선</b>을 더했습니다.<br>실물 곡집과 한 집안이고, 악보를 파는 곳이라는 것이 함께 보입니다.</p>
     <div class="logos rv">
-      <div class="lgc"><img src="shots/ci-old.png" alt="중앙아트 기존 CI"><b>중앙아트 CI</b><span>실물 곡집 쇼핑몰<br>파란 바탕 · 흰 JA</span></div>
+      <div class="lgc"><img src="shots/ci-old.png" alt="중앙아트 기존 CI" width="185" height="185"><b>중앙아트 CI</b><span>실물 곡집 쇼핑몰<br>파란 바탕 · 흰 JA</span></div>
       <div class="lg-eq" aria-hidden="true" style="font-size:24px">→</div>
       <div class="lgc"><img src="shots/logo-mall.svg" alt="디지털 악보몰 로고"><b>디지털 악보몰</b><span>새 사이트<br>흰 바탕 · 오선 · 파란 JA</span></div>
     </div>
     <div class="lg-uses2 rv">
-      <figure><img src="shots/logo-head.jpg" alt="고객 사이트 머리의 로고"><figcaption>고객 사이트 머리</figcaption></figure>
-      <figure><img src="shots/logo-admin.jpg" alt="관리자 화면의 로고"><figcaption>관리자 화면 · 같은 로고에 「관리자」 표시만 더합니다</figcaption></figure>
+      <figure><img src="shots/logo-head.jpg" alt="고객 사이트 머리의 로고" width="418" height="116"><figcaption>고객 사이트 머리</figcaption></figure>
+      <figure><img src="shots/logo-admin.jpg" alt="관리자 화면의 로고" width="372" height="121"><figcaption>관리자 화면 · 같은 로고에 「관리자」 표시만 더합니다</figcaption></figure>
     </div>
     <p class="lead rv" style="font-size:14px">CI 원본 벡터 파일을 주시면 선 굵기와 비율을 실제 CI에 더 정확히 맞추겠습니다.</p>
   </div>
