@@ -396,6 +396,11 @@ img{display:block;max-width:100%}
 .hero h1.tag span{display:block}
 .hero h1.tag .hl{background:linear-gradient(92deg,var(--blue) 0%,#4a6cf0 55%,#7b5cff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.06em}
 .hero .sub-en{margin:16px 0 0;font-size:clamp(15px,1.6vw,19px);font-weight:600;letter-spacing:.2px;color:var(--tx2)}
+.notice{max-width:1000px;margin:26px auto 0;padding:0 20px}
+.notice-t{font-size:13px;font-weight:800;color:var(--blue);letter-spacing:-.2px;margin:0 0 10px}
+.notice img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--ln);box-shadow:0 16px 40px rgba(18,41,45,.12)}
+.notice-p{margin:16px auto 0;max-width:760px;font-size:15px;line-height:1.75;color:var(--tx2)}
+.notice-p b{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -477,13 +482,14 @@ img{display:block;max-width:100%}
 
 <section class="spot" id="s-home">
   <span class="eb rv"><i class="stp">2</i>홈 · 첫 화면</span>
-  <h2 class="rv">첫 화면에서 한 번에,<br>원하는 곡 목록으로.</h2>
-  <p class="lede rv">맨 위에 <b>통합 검색</b>, 그 아래 지금 소개할 곡집 배너.<br>배너 아래 <b>바로 찾기</b>에 예배 · 편성 · 난이도 조건이 버튼으로 놓여 있습니다.<br>메뉴를 뒤지지 않고 한 번에 원하는 곡 목록으로 갑니다.</p>
+  <h2 class="rv">검색, 분류, 배너, 바로 찾기.<br>어디서 시작해도 원하는 악보가 바로 나옵니다.</h2>
+  <p class="lede rv">첫 화면에 찾는 방법을 네 가지 두었습니다.<br>곡명을 아는 분은 <b>검색창</b>, 종류로 고르는 분은 <b>분류 메뉴</b>,<br>이번 절기 곡이 궁금한 분은 <b>배너</b>, 조건이 정해진 분은 <b>바로 찾기</b>.<br>어느 쪽이든 두세 번 누르면 원하는 곡 목록입니다.</p>
   <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>홈</span></div><img src="shots/hero.jpg" alt="홈 첫 화면 — 검색, 배너, 바로 찾기" loading="lazy" width="1500" height="802"></div></div>
-  <div class="specs rv">
+  <div class="specs four rv">
+    <div class="spec"><b>통합 검색</b><p>곡명 · 곡집 · 편곡자, 무엇을 넣어도 찾습니다. 한 글자만 넣어도 후보가 뜹니다.</p></div>
+    <div class="spec"><b>분류 메뉴</b><p>찬양곡 · 성가곡 · 오케스트레이션 · 기악 · 피아노 · 컬렉션. 맨 위 줄에서 실물 쇼핑몰 · 파트연습실로도 오갑니다.</p></div>
+    <div class="spec"><b>배너</b><p>지금 소개할 곡집을 크게. 수록 곡을 그 자리에서 들어 봅니다.</p></div>
     <div class="spec"><b>바로 찾기</b><p>“부활절 · 무반주 · 쉬운 곡” 같은 조건을 한 번에 누릅니다. 관리자가 8개까지 골라 둡니다.</p></div>
-    <div class="spec"><b>배너에서 바로 듣기</b><p>배너 곡집의 수록 곡을 그 자리에서 들어 봅니다.</p></div>
-    <div class="spec"><b>쇼핑몰 · 파트연습실 연결</b><p>맨 위 줄에서 실물 악보 쇼핑몰과 파트연습실로 오갑니다.</p></div>
   </div>
   <p class="specl rv">화면 명세 <a href="docs.html#A-01" target="_blank" rel="noopener"><b>A-01</b> 홈</a></p>
 </section>
@@ -559,9 +565,14 @@ img{display:block;max-width:100%}
   <h2 class="rv">배송은 없습니다.<br>결제가 끝나면 바로 인쇄합니다.</h2>
   <p class="lede rv">주문서에는 고른 곡, 인쇄 부수, 금액만 있습니다.<br>배송지가 없습니다. 기다리는 시간도 없습니다.<br>결제가 끝나면 바로 내 악보함으로 가서 인쇄합니다.</p>
   <div class="stage rv"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>주문서 작성</span></div><img src="shots/order-top.jpg" alt="주문서 작성 화면 — 곡, 인쇄 부수, 금액, 주문자 정보" loading="lazy" width="1500" height="938"></div></div>
+  <div class="notice rv">
+    <p class="notice-t">결제 버튼 바로 위, 저작권 안내</p>
+    <img src="shots/order-notice.jpg" alt="결제 전 저작권 안내 — 구입한 인쇄 부수 안에서만 사용, PDF 전달 금지, 주문번호와 구매자 성함 표기" loading="lazy" width="1072" height="208">
+    <p class="notice-p">약관 목록에 묻히지 않게 따로 둡니다. <b>구입한 부수 안에서만 인쇄</b>, <b>PDF 파일을 남에게 전달하지 않기</b>, <b>악보에 주문번호와 이름이 찍힘</b> — 이 세 가지를 읽고 확인해야 결제 버튼이 열립니다.</p>
+  </div>
   <div class="specs rv">
     <div class="spec"><b>결제 수단 6가지</b><p>카드 · 계좌이체 · 가상계좌 · 카카오페이 · 네이버페이. 해외는 PayPal.</p></div>
-    <div class="spec"><b>이용 범위 동의</b><p>“산 부수 안에서만 인쇄”에 결제 전에 동의를 받습니다.</p></div>
+    <div class="spec"><b>주문자 정보는 자동</b><p>이름 · 이메일은 쇼핑몰 계정에서 가져옵니다. 배송지 칸이 없습니다.</p></div>
     <div class="spec"><b>안내 메일 · 알림톡</b><p>발급 안내는 메일로 늘 보내고, 번호를 준 분께는 알림톡도 보냅니다.</p></div>
   </div>
   <p class="specl rv">화면 명세 <a href="docs.html#B-04" target="_blank" rel="noopener"><b>B-04</b> 주문서</a></p>
