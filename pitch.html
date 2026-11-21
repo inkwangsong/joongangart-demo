@@ -242,6 +242,8 @@ img{display:block;max-width:100%}
 .spot.dk .stage .frame{border-color:#26343D;box-shadow:0 30px 80px rgba(0,0,0,.5)}
 .stage.narrow{max-width:760px}
 .stage.duo{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;align-items:end;max-width:1040px}
+.stage.duo-sm{grid-template-columns:1fr 300px;align-items:end;max-width:1040px}
+.stage.duo-sm .frame:last-child{margin-bottom:12px}
 .specs{display:grid;grid-template-columns:repeat(3,1fr);max-width:1000px;margin:0 auto;padding:60px 20px 120px;text-align:left}
 .specs.four{grid-template-columns:repeat(4,1fr)}
 .spec{padding:4px 22px;border-left:1px solid var(--ln)}
@@ -259,7 +261,7 @@ img{display:block;max-width:100%}
 .specs + .memo{margin-top:-84px;padding-bottom:110px}
 .memo{max-width:640px;margin:0 auto;font-size:13px;color:var(--tx3);padding:0 20px 40px;text-align:center}
 .spot.dk .memo{color:rgba(255,255,255,.5)}
-@media (max-width:900px){.specs.four{grid-template-columns:1fr 1fr;row-gap:28px}.stage.duo{grid-template-columns:1fr}}
+@media (max-width:900px){.specs.four{grid-template-columns:1fr 1fr;row-gap:28px}.stage.duo{grid-template-columns:1fr}.stage.duo-sm .frame:last-child{width:68%;max-width:300px;margin:0 auto}}
 @media (max-width:600px){
   .spot{padding-top:84px}.chap{padding-top:84px}
   .specs,.specs.four{grid-template-columns:1fr;row-gap:24px;padding:44px 20px 84px}
@@ -484,7 +486,7 @@ img{display:block;max-width:100%}
   <span class="eb rv"><i class="stp">2</i>홈 · 찾기<span class="new">새 기능</span></span>
   <h2 class="rv">검색, 분류, 배너, 바로 찾기.<br>어디서 시작해도 원하는 악보가 바로 나옵니다.</h2>
   <p class="lede rv">첫 화면에 찾는 방법을 네 가지 두었습니다.<br>곡명을 아는 분은 <b>검색창</b>, 종류로 고르는 분은 <b>분류 메뉴</b>,<br>이번 절기 곡이 궁금한 분은 <b>배너</b>, 조건이 정해진 분은 <b>바로 찾기</b>.<br>어느 쪽이든 두세 번 누르면 원하는 곡 목록입니다.</p>
-  <div class="stage duo rv">
+  <div class="stage duo duo-sm rv">
     <div class="frame"><div class="bar"><i></i><i></i><i></i><span>홈</span></div><img src="shots/hero.jpg" alt="홈 첫 화면 — 검색, 분류 메뉴, 배너, 바로 찾기" loading="lazy" width="1500" height="802"></div>
     <div class="frame"><div class="bar"><i></i><i></i><i></i><span>검색창을 눌렀을 때</span></div><img src="shots/search-panel.jpg" alt="통합 검색 패널 — 추천 검색어, 최근 검색어, 지금 많이 찾는 악보, 인기 검색어" loading="lazy" width="1280" height="1160"></div>
   </div>
