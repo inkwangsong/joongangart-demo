@@ -89,6 +89,7 @@ img{display:block;max-width:100%}
 .mo.l2{background:var(--lime-soft);transform:rotate(1.2deg)}
 .mo.d2{background:var(--slate);color:#fff;transform:rotate(-1.8deg)}
 .mo.w2{background:#fff;transform:rotate(2deg)}
+.moments .mo:last-child:nth-child(3n+1){grid-column:2}
 
 /* 지금 → 바뀌면 */
 .vs{max-width:900px;margin:64px auto 0;background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--ln)}
@@ -352,6 +353,8 @@ img{display:block;max-width:100%}
 
 @media (max-width:900px){
   .moments{grid-template-columns:1fr 1fr}
+  .moments .mo:last-child:nth-child(3n+1){grid-column:auto}
+  .moments .mo:last-child:nth-child(odd){grid-column:1 / -1;max-width:50%;justify-self:center;width:100%}
   .row,.row.flip{grid-template-columns:1fr;gap:28px}
   .row.flip .shot{order:0}
   .guard{grid-template-columns:1fr}
@@ -364,6 +367,7 @@ img{display:block;max-width:100%}
 @media (max-width:600px){
   .hero{padding-top:84px}
   .moments{grid-template-columns:1fr}
+  .moments .mo:last-child:nth-child(odd){max-width:none}
   .mo{min-height:0}
   .vs-h{display:none}
   .vs-r{grid-template-columns:1fr}
@@ -404,6 +408,8 @@ img{display:block;max-width:100%}
 .notice img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--ln);box-shadow:0 16px 40px rgba(18,41,45,.12)}
 .notice-p{margin:16px auto 0;max-width:760px;font-size:15px;line-height:1.75;color:var(--tx2)}
 .notice-p b{color:var(--ink)}
+.ly-txt{align-self:center}
+.ly-txt img{display:block;width:100%;height:auto;filter:drop-shadow(0 24px 40px rgba(18,41,45,.18))}
 </style>
 </head>
 <body>
@@ -440,7 +446,7 @@ img{display:block;max-width:100%}
   <div class="vid-in">
     <video id="v" src="shots/intro.mp4" poster="shots/intro-poster.jpg" controls playsinline preload="metadata"></video>
   </div>
-  <p class="vid-cap">1분 소개 영상 · 새 기능만 모았습니다 · 배경 음악이 있습니다 · <a href="shots/intro-full.mp4" target="_blank" rel="noopener">전체판(2분 12초) 보기</a></p>
+  <p class="vid-cap">1분 소개 영상 · 새 기능만 모았습니다 · 배경 음악이 있습니다 · <a href="shots/intro-full.mp4" target="_blank" rel="noopener">전체판(2분 18초) 보기</a></p>
 </div>
 
 <!-- 왜 -->
@@ -454,6 +460,7 @@ img{display:block;max-width:100%}
       <a class="mo l1" href="#s-season"><b>부활절에 뭘 부르지?<br>어디서부터 찾지?</b><span class="ft">홈이 절기를 먼저 알려 줍니다<i>→</i></span></a>
       <a class="mo d1" href="#s-range"><b>우리 소프라노가<br>이 음까지 올라갈까?</b><span class="ft">파트별 음역을 봅니다<i>→</i></span></a>
       <a class="mo l2" href="#s-lib"><b>네 곡을 하나씩 열어<br>인쇄하기 번거로워</b><span class="ft">PDF 한 파일로 받습니다<i>→</i></span></a>
+      <a class="mo l1" href="#s-lyrics"><b>칸타타 가사를<br>PPT에 다시 치고 있어</b><span class="ft">자막용 TXT로 받습니다<i>→</i></span></a>
       <a class="mo d2" href="#guard"><b>우리 악보가<br>카톡방에 돌면 어떡하지?</b><span class="ft">모든 면에 구매자를 찍습니다<i>→</i></span></a>
       <a class="mo w2" href="#royalty"><b>매달 저작권료 계산,<br>손으로 하기 지쳤어</b><span class="ft">자동으로 계산합니다<i>→</i></span></a>
     </div>
@@ -466,7 +473,7 @@ img{display:block;max-width:100%}
   <h2 class="rv">악보몰</h2>
   <p class="rv">들어와서 인쇄하기까지, 성가대가 거치는 순서대로 보여 드립니다.</p>
   <nav class="flow rv" aria-label="악보몰 흐름">
-    <a href="#s-login"><b>1</b>로그인</a><a href="#s-home"><b>2</b>홈 · 찾기</a><a href="#s-list"><b>3</b>목록</a><a href="#s-range"><b>4</b>곡 화면</a><a href="#s-order"><b>5</b>주문 · 결제</a><a href="#s-lib"><b>6</b>내 악보함</a><a href="#guard"><b>7</b>인쇄</a>
+    <a href="#s-login"><b>1</b>로그인</a><a href="#s-home"><b>2</b>홈 · 찾기</a><a href="#s-list"><b>3</b>목록</a><a href="#s-range"><b>4</b>곡 화면</a><a href="#s-order"><b>5</b>주문 · 결제</a><a href="#s-lib"><b>6</b>내 악보함 · 가사</a><a href="#guard"><b>7</b>인쇄</a>
   </nav>
 </div>
 
@@ -589,6 +596,21 @@ img{display:block;max-width:100%}
     <div class="spec"><b>곡마다 워터마크</b><p>묶어 받아도 곡마다 그 곡의 구매 부수가 찍힙니다.</p></div>
   </div>
   <p class="specl rv">화면 명세 <a href="docs.html#C-03" target="_blank" rel="noopener"><b>C-03</b> 내 악보함 · 다운로드</a></p>
+</section>
+<section class="spot" id="s-lyrics">
+  <span class="eb rv"><i class="stp">6</i>가사 TXT<span class="new">새 기능</span></span>
+  <h2 class="rv">칸타타 자막도,<br>파일 하나로.</h2>
+  <p class="lede rv">곡 화면에서 누구나 가사를 슬라이드처럼 봅니다.<br>산 곡은 <b>교회 자막 프로그램에 그대로 넣는 TXT</b>로 받습니다.<br>악보를 묶어 받을 때 켜 두면, <b>고른 순서대로 가사도 한 파일</b>로 나옵니다.</p>
+  <div class="stage duo duo-sm rv">
+    <div class="frame"><div class="bar"><i></i><i></i><i></i><span>가사 보기</span></div><img src="shots/lyrics.jpg" alt="곡 화면의 가사 보기 — 슬라이드처럼 한 장씩, 가사 TXT 다운로드" loading="lazy" width="1500" height="938"></div>
+    <div class="ly-txt"><img src="shots/lyrics-txt.png" alt="받은 가사 TXT — 빈 줄 하나가 슬라이드 한 장" loading="lazy" width="1204" height="1340"></div>
+  </div>
+  <div class="specs rv">
+    <div class="spec"><b>빈 줄 = 슬라이드 한 장</b><p>곡집 가사 PPT와 같은 나눔. 맨 앞은 제목 · 크레딧 장입니다.</p></div>
+    <div class="spec"><b>칸타타는 한 파일로</b><p>묶어 받기에서 ‘가사 TXT도 함께’ — 고른 곡 순서대로 이어 줍니다.</p></div>
+    <div class="spec"><b>곡집째 한 번에 등록</b><p>관리자는 곡집 가사 TXT를 끌어다 놓으면 곡명으로 수록곡에 연결됩니다.</p></div>
+  </div>
+  <p class="specl rv">화면 명세 <a href="docs.html#A-03" target="_blank" rel="noopener"><b>A-03</b> 가사 보기</a> <a href="docs.html#C-03" target="_blank" rel="noopener"><b>C-03</b> 가사 TXT</a> <a href="docs.html#D-09" target="_blank" rel="noopener"><b>D-09</b> 곡집 가사 올리기</a></p>
 </section>
 
 <!-- ───────── 인쇄 · 저작권 ───────── -->
