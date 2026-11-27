@@ -1,0 +1,2764 @@
+openapi: 3.1.0
+info:
+  title: 중앙아트 디지털 악보몰 API
+  version: 0.1.0 (2026-11-27 초안)
+  description: 기획 문서 「서버 · API 명세」와 짝입니다. 규칙 번호(x-policy)는 기본 정책서, 화면 번호(x-screen)는 상세 기획서를 가리킵니다. 금액은 원 단위 정수, 시각은 +09:00.
+servers:
+- url: https://sheet.joongangart.co.kr
+  description: 운영(예정)
+- url: https://stg-sheet.joongangart.co.kr
+  description: 검수(예정)
+- url: http://localhost:3000
+  description: 개발
+tags:
+- name: 고객 · 인증
+- name: 고객 · 둘러보기
+- name: 고객 · 관심 · 장바구니
+- name: 고객 · 주문
+- name: 고객 · 악보함
+- name: 관리자 · 인증
+- name: 관리자 · 현황
+- name: 관리자 · 악보
+- name: 관리자 · 곡집
+- name: 관리자 · 주문
+- name: 관리자 · 저작권료
+- name: 관리자 · 권리자
+- name: 관리자 · 회원
+- name: 관리자 · 설정
+- name: 통지
+paths:
+  /api/v1/auth/cafe24/start:
+    get:
+      summary: 카페24 인증 화면으로 보냄
+      tags:
+      - 고객 · 인증
+      responses:
+        '302':
+          description: 카페24 authorize 주소로
+      security: []
+      x-policy: M-02
+      x-screen: B-01
+  /api/v1/auth/cafe24/callback:
+    get:
+      summary: 인증 코드 → 우리 세션
+      tags:
+      - 고객 · 인증
+      responses:
+        '302':
+          description: 동의 전이면 /consent, 아니면 돌아갈 곳
+      security: []
+      parameters:
+      - name: code
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: state
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      x-policy: M-02
+      x-screen: B-01
+  /api/v1/auth/consent:
+    post:
+      summary: 최초 연동 동의
+      tags:
+      - 고객 · 인증
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Me'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+      security:
+      - member: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsentInput'
+      x-policy: M-03
+      x-screen: B-02
+  /api/v1/auth/logout:
+    post:
+      summary: 로그아웃
+      tags:
+      - 고객 · 인증
+      responses:
+        '204':
+          description: 성공
+      security:
+      - member: []
+  /api/v1/me:
+    get:
+      summary: 내 정보
+      tags:
+      - 고객 · 인증
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Me'
+        '401':
+          $ref: '#/components/responses/E401'
+      security:
+      - member: []
+      x-screen: C-06
+    delete:
+      summary: 연동 해제 — 이름 · 이메일 · 동의 · 관심 지움, 주문 · 결제는 법정 보존
+      tags:
+      - 고객 · 인증
+      responses:
+        '204':
+          description: 성공
+      security:
+      - member: []
+      x-policy: M-07 W-07
+      x-screen: C-06
+  /api/v1/home:
+    get:
+      summary: 홈 블록(게시한 판)
+      tags:
+      - 고객 · 둘러보기
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+      security: []
+      x-policy: H-04
+      x-screen: A-01
+  /api/v1/menu:
+    get:
+      summary: 메뉴(게시한 판)
+      tags:
+      - 고객 · 둘러보기
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+      security: []
+      x-policy: N-01
+      x-screen: A-00
+  /api/v1/scores:
+    get:
+      summary: 목록 · 검색
+      tags:
+      - 고객 · 둘러보기
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ScoreCard'
+                  meta:
+                    $ref: '#/components/schemas/Page'
+      security: []
+      parameters:
+      - name: cat
+        in: query
+        required: false
+        description: 분류
+        schema:
+          type: string
+      - name: season
+        in: query
+        required: false
+        description: 절기
+        schema:
+          type: string
+      - name: voice
+        in: query
+        required: false
+        description: 편성
+        schema:
+          type: string
+      - name: acc
+        in: query
+        required: false
+        description: 반주
+        schema:
+          type: string
+      - name: bible
+        in: query
+        required: false
+        description: 성경 장절
+        schema:
+          type: string
+      - name: q
+        in: query
+        required: false
+        description: 검색어
+        schema:
+          type: string
+      - name: sort
+        in: query
+        required: false
+        description: popular · new · title
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: size
+        in: query
+        required: false
+        description: 최대 100
+        schema:
+          type: string
+      x-policy: H-06
+      x-screen: A-02 A-07
+  /api/v1/scores/{code}:
+    get:
+      summary: 악보 상세
+      tags:
+      - 고객 · 둘러보기
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ScoreDetail'
+        '404':
+          $ref: '#/components/responses/E404'
+      security: []
+      parameters:
+      - &id001
+        name: code
+        in: path
+        required: true
+        description: '상품코드 (예: JA52001)'
+        schema:
+          type: string
+      x-policy: P-08 P-10
+      x-screen: A-03
+  /api/v1/scores/{code}/preview:
+    get:
+      summary: 공개 면 이미지 · 미리듣기 주소
+      tags:
+      - 고객 · 둘러보기
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      pages:
+                        type: array
+                        items:
+                          type: string
+                      audio:
+                        type: string
+                        nullable: true
+      security: []
+      parameters:
+      - *id001
+      x-screen: A-04
+  /api/v1/scores/{code}/lyrics:
+    get:
+      summary: 가사 슬라이드
+      tags:
+      - 고객 · 둘러보기
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Lyrics'
+        '404':
+          $ref: '#/components/responses/E404'
+      security: []
+      parameters:
+      - *id001
+      x-policy: P-12
+      x-screen: A-03
+  /api/v1/books/{code}:
+    get:
+      summary: 곡집
+      tags:
+      - 고객 · 둘러보기
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+      security: []
+      parameters:
+      - name: code
+        in: path
+        required: true
+        description: '곡집 코드 (예: JA52)'
+        schema:
+          type: string
+      x-screen: A-05
+  /api/v1/collections/{id}:
+    get:
+      summary: 컬렉션
+      tags:
+      - 고객 · 둘러보기
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+      security: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      x-screen: A-06
+  /api/v1/wishlist/{code}:
+    put:
+      summary: 관심에 담기
+      tags:
+      - 고객 · 관심 · 장바구니
+      responses:
+        '204':
+          description: 성공
+        '401':
+          $ref: '#/components/responses/E401'
+        '422':
+          $ref: '#/components/responses/E422'
+      security:
+      - member: []
+      parameters:
+      - *id001
+      x-policy: W-01~04
+      x-screen: C-07
+    delete:
+      summary: 관심에서 빼기
+      tags:
+      - 고객 · 관심 · 장바구니
+      responses:
+        '204':
+          description: 성공
+        '401':
+          $ref: '#/components/responses/E401'
+        '422':
+          $ref: '#/components/responses/E422'
+      security:
+      - member: []
+      parameters:
+      - *id001
+      x-policy: W-01~04
+      x-screen: C-07
+  /api/v1/wishlist:
+    get:
+      summary: 관심 악보
+      tags:
+      - 고객 · 관심 · 장바구니
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ScoreCard'
+      security:
+      - member: []
+      x-screen: C-07
+  /api/v1/wishlist/to-cart:
+    post:
+      summary: 골라서 같은 부수로 장바구니에
+      tags:
+      - 고객 · 관심 · 장바구니
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Cart'
+        '422':
+          $ref: '#/components/responses/E422'
+      security:
+      - member: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - codes
+              - copies
+              properties:
+                codes:
+                  type: array
+                  items:
+                    type: string
+                copies:
+                  type: integer
+                  default: 20
+      x-policy: W-06
+  /api/v1/cart:
+    get:
+      summary: 장바구니
+      tags:
+      - 고객 · 관심 · 장바구니
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Cart'
+      security:
+      - member: []
+      x-screen: B-03
+  /api/v1/cart/items/{code}:
+    put:
+      summary: 담기 · 부수 바꾸기
+      tags:
+      - 고객 · 관심 · 장바구니
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Cart'
+        '422':
+          $ref: '#/components/responses/E422'
+      security:
+      - member: []
+      parameters:
+      - *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - copies
+              properties:
+                copies:
+                  type: integer
+                  minimum: 1
+                  maximum: 999
+      x-policy: P-03
+    delete:
+      summary: 빼기
+      tags:
+      - 고객 · 관심 · 장바구니
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Cart'
+      security:
+      - member: []
+      parameters:
+      - *id001
+  /api/v1/orders:
+    post:
+      summary: 주문 만들기 — 금액은 서버가 계산
+      tags:
+      - 고객 · 주문
+      responses:
+        '201':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/OrderCreated'
+        '401':
+          $ref: '#/components/responses/E401'
+        '422':
+          $ref: '#/components/responses/E422'
+      description: 화면은 곡과 부수만 보냅니다. 가격 · 합계는 보내지 않고, 보내도 무시합니다.
+      security:
+      - member: []
+      parameters:
+      - $ref: '#/components/parameters/Idem'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+      x-policy: C-01 R-03 P-03
+      x-screen: B-04
+    get:
+      summary: 주문 내역
+      tags:
+      - 고객 · 주문
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Order'
+                  meta:
+                    $ref: '#/components/schemas/Page'
+      security:
+      - member: []
+      x-screen: C-04
+  /api/v1/orders/{orderNo}:
+    get:
+      summary: 주문 상세(여는 암호 포함)
+      tags:
+      - 고객 · 주문
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Order'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      security:
+      - member: []
+      parameters:
+      - &id002
+        name: orderNo
+        in: path
+        required: true
+        description: '주문번호 (예: 20261108-0000131)'
+        schema:
+          type: string
+      x-policy: DL-05
+      x-screen: C-01 C-04
+  /api/v1/orders/{orderNo}/refund-requests:
+    post:
+      summary: 환불 요청(곡 단위)
+      tags:
+      - 고객 · 주문
+      responses:
+        '201':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      requestId:
+                        type: string
+        '403':
+          $ref: '#/components/responses/E403'
+        '422':
+          $ref: '#/components/responses/E422'
+      security:
+      - member: []
+      parameters:
+      - *id002
+      - $ref: '#/components/parameters/Idem'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - itemIds
+              - reason
+              properties:
+                itemIds:
+                  type: array
+                  items:
+                    type: integer
+                reason:
+                  type: string
+                  maxLength: 500
+      x-policy: F-01~04
+      x-screen: C-05
+  /api/v1/library:
+    get:
+      summary: 내 악보함
+      tags:
+      - 고객 · 악보함
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LibraryItem'
+      security:
+      - member: []
+      x-policy: DL-02
+      x-screen: C-03
+  /api/v1/library/items/{itemId}/issue:
+    post:
+      summary: PDF 발급 — 10분짜리 주소
+      tags:
+      - 고객 · 악보함
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Issue'
+        '403':
+          $ref: '#/components/responses/E403'
+        '429':
+          $ref: '#/components/responses/E429'
+      security:
+      - member: []
+      parameters:
+      - &id003
+        name: itemId
+        in: path
+        required: true
+        description: 주문 항목 id
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                kind:
+                  type: string
+                  enum:
+                  - pdf
+                  - print
+      x-policy: DL-03~06 DL-08 L-07
+      x-screen: C-03
+  /api/v1/library/merge:
+    post:
+      summary: 묶어 받기
+      tags:
+      - 고객 · 악보함
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Issue'
+        '202':
+          description: 오래 걸림 — 작업 번호
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Job'
+        '403':
+          $ref: '#/components/responses/E403'
+        '422':
+          $ref: '#/components/responses/E422'
+      security:
+      - member: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MergeRequest'
+      x-policy: DL-07
+      x-screen: C-03
+  /api/v1/jobs/{jobId}:
+    get:
+      summary: 작업 상태
+      tags:
+      - 고객 · 악보함
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Job'
+      security:
+      - member: []
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+  /api/v1/library/items/{itemId}/lyrics.txt:
+    get:
+      summary: 곡 하나 가사 TXT
+      tags:
+      - 고객 · 악보함
+      responses:
+        '200':
+          description: UTF-8 BOM · CRLF · 빈 줄 = 슬라이드
+          content:
+            text/plain; charset=utf-8:
+              schema:
+                type: string
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      security:
+      - member: []
+      parameters:
+      - *id003
+      x-policy: P-12
+  /api/v1/library/lyrics.txt:
+    post:
+      summary: 고른 순서대로 이은 가사 TXT
+      tags:
+      - 고객 · 악보함
+      responses:
+        '200':
+          description: 성공
+          content:
+            text/plain; charset=utf-8:
+              schema:
+                type: string
+        '403':
+          $ref: '#/components/responses/E403'
+      security:
+      - member: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                itemIds:
+                  type: array
+                  items:
+                    type: integer
+      x-policy: P-12
+  /api/admin/v1/auth/login:
+    post:
+      summary: 관리자 로그인
+      tags:
+      - 관리자 · 인증
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Admin'
+        '401':
+          $ref: '#/components/responses/E401'
+        '423':
+          $ref: '#/components/responses/E423'
+        '429':
+          $ref: '#/components/responses/E429'
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - email
+              - password
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                  format: password
+      x-policy: A-02~04
+      x-screen: D-00
+  /api/admin/v1/auth/logout:
+    post:
+      summary: 로그아웃
+      tags:
+      - 관리자 · 인증
+      responses:
+        '204':
+          description: 성공
+      security:
+      - admin: []
+  /api/admin/v1/dashboard:
+    get:
+      summary: 대시보드
+      tags:
+      - 관리자 · 현황
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+      security:
+      - admin: []
+      parameters:
+      - name: period
+        in: query
+        required: false
+        description: today · week · month · year
+        schema:
+          type: string
+      x-screen: D-07
+  /api/admin/v1/scores:
+    get:
+      summary: 악보 목록
+      tags:
+      - 관리자 · 악보
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ScoreCard'
+                  meta:
+                    $ref: '#/components/schemas/Page'
+      security:
+      - admin: []
+      x-screen: D-08
+    post:
+      summary: 새 악보(작성중)
+      tags:
+      - 관리자 · 악보
+      responses:
+        '201':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ScoreAdmin'
+      security:
+      - admin: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScoreAdmin'
+      x-screen: D-01
+  /api/admin/v1/scores/{code}:
+    get:
+      summary: 악보 보기
+      tags:
+      - 관리자 · 악보
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ScoreAdmin'
+      security:
+      - admin: []
+      parameters:
+      - *id001
+    patch:
+      summary: 악보 고치기
+      tags:
+      - 관리자 · 악보
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ScoreAdmin'
+        '400':
+          $ref: '#/components/responses/E400'
+        '403':
+          $ref: '#/components/responses/E403'
+      security:
+      - admin: []
+      parameters:
+      - *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScoreAdmin'
+    delete:
+      summary: 악보 지우기(팔린 적 없을 때만)
+      tags:
+      - 관리자 · 악보
+      responses:
+        '204':
+          description: 성공
+        '409':
+          $ref: '#/components/responses/E409'
+      security:
+      - admin: []
+      parameters:
+      - *id001
+      x-policy: P-04
+  /api/admin/v1/scores/{code}/publish:
+    post:
+      summary: 판매 시작
+      tags:
+      - 관리자 · 악보
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ScoreAdmin'
+        '422':
+          $ref: '#/components/responses/E422'
+      security:
+      - admin: []
+      parameters:
+      - *id001
+      x-policy: P-04
+  /api/admin/v1/scores/{code}/stop:
+    post:
+      summary: 판매중지
+      tags:
+      - 관리자 · 악보
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ScoreAdmin'
+        '422':
+          $ref: '#/components/responses/E422'
+      security:
+      - admin: []
+      parameters:
+      - *id001
+      x-policy: P-04
+  /api/admin/v1/uploads:
+    post:
+      summary: 파일 올릴 임시 주소
+      tags:
+      - 관리자 · 악보
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      uploadId:
+                        type: string
+                      putUrl:
+                        type: string
+                      expiresAt:
+                        type: string
+                        format: date-time
+      security:
+      - admin: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fileName:
+                  type: string
+                size:
+                  type: integer
+                  maximum: 20971520
+  /api/admin/v1/scores/{code}/file:
+    post:
+      summary: 올린 PDF 연결 · 검사 · 교체
+      tags:
+      - 관리자 · 악보
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      version:
+                        type: integer
+                      checks:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/FileCheck'
+        '422':
+          $ref: '#/components/responses/E422'
+      description: 교체면 파일 버전 +1, 기존 워터마크 사본 무효화, 고르면 기존 구매자 알림
+      security:
+      - admin: []
+      parameters:
+      - *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - uploadId
+              properties:
+                uploadId:
+                  type: string
+                reason:
+                  type: string
+                  enum:
+                  - 오탈자 수정
+                  - 음표 오류
+                  - 스캔 품질
+                  - 편곡 수정
+                notifyBuyers:
+                  type: boolean
+      x-policy: P-05~07
+      x-screen: D-01
+  /api/admin/v1/scores/{code}/lyrics:
+    put:
+      summary: 곡 가사 저장
+      tags:
+      - 관리자 · 악보
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Lyrics'
+      security:
+      - admin: []
+      parameters:
+      - *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: 빈 줄 = 슬라이드. 빈 문자열이면 가사 없음
+      x-policy: P-12
+  /api/admin/v1/scores/{code}/rights:
+    put:
+      summary: 곡의 권리자 · 요율
+      tags:
+      - 관리자 · 악보
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      rights:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Right'
+                      newPayees:
+                        type: array
+                        items:
+                          type: string
+                        description: 이번에 명단에 새로 생긴 이름
+      security:
+      - admin: []
+      parameters:
+      - *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rights:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/RightInput'
+      x-policy: S-04 S-12
+  /api/admin/v1/books/{code}/lyrics:import:
+    post:
+      summary: 곡집 가사 TXT 여러 개 → 미리보기
+      tags:
+      - 관리자 · 곡집
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        credit:
+                          type: string
+                        slides:
+                          type: integer
+                        matchCode:
+                          type: string
+                          nullable: true
+      security:
+      - admin: []
+      parameters:
+      - name: code
+        in: path
+        required: true
+        description: 곡집 코드
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+      x-policy: P-12
+      x-screen: D-09
+  /api/admin/v1/books/{code}/lyrics:apply:
+    post:
+      summary: 맞는 곡에 넣기
+      tags:
+      - 관리자 · 곡집
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      applied:
+                        type: integer
+      security:
+      - admin: []
+      parameters:
+      - name: code
+        in: path
+        required: true
+        description: 곡집 코드
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                items:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                      text:
+                        type: string
+      x-policy: P-12
+  /api/admin/v1/orders:
+    get:
+      summary: 주문 목록
+      tags:
+      - 관리자 · 주문
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Order'
+                  meta:
+                    $ref: '#/components/schemas/Page'
+      security:
+      - admin: []
+      x-screen: D-02
+  /api/admin/v1/orders/{orderNo}:
+    get:
+      summary: 주문 상세 · 발급 · 다운로드 기록
+      tags:
+      - 관리자 · 주문
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Order'
+      security:
+      - admin: []
+      parameters:
+      - *id002
+  /api/admin/v1/orders/{orderNo}/refunds:
+    post:
+      summary: 환불(owner)
+      tags:
+      - 관리자 · 주문
+      responses:
+        '201':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Refund'
+        '403':
+          $ref: '#/components/responses/E403'
+        '422':
+          $ref: '#/components/responses/E422'
+        '502':
+          $ref: '#/components/responses/E502'
+      description: ① PG 취소 → ② 성공 확인 → ③ 주문 상태 → ④ 악보함 권한 회수 → ⑤ 사본 폐기 (F-05)
+      security:
+      - admin: []
+      parameters:
+      - *id002
+      - $ref: '#/components/parameters/Idem'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - itemIds
+              - kind
+              properties:
+                itemIds:
+                  type: array
+                  items:
+                    type: integer
+                kind:
+                  type: string
+                  enum:
+                  - normal
+                  - defect
+                reason:
+                  type: string
+      x-policy: F-01~05 A-01
+  /api/admin/v1/downloads:
+    get:
+      summary: 다운로드 이력 · 판정
+      tags:
+      - 관리자 · 주문
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+      security:
+      - admin: []
+      x-policy: DL-04
+      x-screen: D-12
+  /api/admin/v1/royalty/{month}:
+    get:
+      summary: 저작권료 월
+      tags:
+      - 관리자 · 저작권료
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/RoyaltyMonth'
+        '403':
+          $ref: '#/components/responses/E403'
+      security:
+      - admin: []
+      parameters:
+      - &id004
+        name: month
+        in: path
+        required: true
+        description: '정산 월 (예: 2026-10)'
+        schema:
+          type: string
+      x-policy: S-04~08
+      x-screen: D-17
+  /api/admin/v1/royalty/{month}/confirm:
+    post:
+      summary: 그 달 확정
+      tags:
+      - 관리자 · 저작권료
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/RoyaltyMonth'
+        '409':
+          $ref: '#/components/responses/E409'
+      security:
+      - admin: []
+      parameters:
+      - *id004
+      x-policy: S-06
+  /api/admin/v1/royalty/{month}/export.xlsx:
+    get:
+      summary: 전체 정산표(구매자 가림 · 수식 주입 막기)
+      tags:
+      - 관리자 · 저작권료
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+      security:
+      - admin: []
+      parameters:
+      - *id004
+      x-policy: S-10
+  /api/admin/v1/royalty/{month}/payees/{id}/statement.pdf:
+    get:
+      summary: 한 사람 명세서(암호 PDF)
+      tags:
+      - 관리자 · 저작권료
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+      security:
+      - admin: []
+      parameters:
+      - *id004
+      - &id005
+        name: id
+        in: path
+        required: true
+        description: 권리자 id
+        schema:
+          type: integer
+      x-policy: S-11 S-12
+  /api/admin/v1/royalty/{month}/payees/{id}/statement.xlsx:
+    get:
+      summary: 한 사람 곡별 정산 내역
+      tags:
+      - 관리자 · 저작권료
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+      security:
+      - admin: []
+      parameters:
+      - *id004
+      - *id005
+      x-policy: S-11
+  /api/admin/v1/royalty/{month}/statements.zip:
+    get:
+      summary: 사람별 파일 ZIP
+      tags:
+      - 관리자 · 저작권료
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+      security:
+      - admin: []
+      parameters:
+      - *id004
+      x-policy: S-11
+  /api/admin/v1/royalty/{month}/sends:
+    post:
+      summary: 메일로 보내기(대기열)
+      tags:
+      - 관리자 · 저작권료
+      responses:
+        '202':
+          description: 대기열에 넣음
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SendBatch'
+        '403':
+          $ref: '#/components/responses/E403'
+        '409':
+          $ref: '#/components/responses/E409'
+      description: 한 통에 받는 사람 한 명 · 그 사람 명세서만 · 첨부 PDF는 생년월일 6자리. 연락처 없음 · 중지는 skipped
+      security:
+      - admin: []
+      parameters:
+      - *id004
+      - $ref: '#/components/parameters/Idem'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendRequest'
+      x-policy: S-11 S-12
+    get:
+      summary: 발송 기록
+      tags:
+      - 관리자 · 저작권료
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Send'
+      security:
+      - admin: []
+      parameters:
+      - *id004
+  /api/admin/v1/royalty/{month}/sends/{payeeId}:retry:
+    post:
+      summary: 한 사람 다시 보내기
+      tags:
+      - 관리자 · 저작권료
+      responses:
+        '202':
+          description: 대기열
+        '422':
+          $ref: '#/components/responses/E422'
+      security:
+      - admin: []
+      parameters:
+      - *id004
+      - name: payeeId
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Idem'
+      x-policy: S-11
+  /api/admin/v1/payees:
+    get:
+      summary: 권리자 목록(연락처 필요 먼저)
+      tags:
+      - 관리자 · 권리자
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Payee'
+      security:
+      - admin: []
+      parameters:
+      - name: need
+        in: query
+        required: false
+        description: 연락처 필요만
+        schema:
+          type: boolean
+      x-policy: S-12
+    post:
+      summary: 권리자 추가
+      tags:
+      - 관리자 · 권리자
+      responses:
+        '201':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Payee'
+        '400':
+          $ref: '#/components/responses/E400'
+        '409':
+          $ref: '#/components/responses/E409'
+      security:
+      - admin: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayeeInput'
+      x-policy: S-12
+  /api/admin/v1/payees/{id}:
+    patch:
+      summary: 이메일 · 생년월일 · 메모 · 상태
+      tags:
+      - 관리자 · 권리자
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Payee'
+        '400':
+          $ref: '#/components/responses/E400'
+      security:
+      - admin: []
+      parameters:
+      - *id005
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayeeInput'
+      x-policy: S-12
+    delete:
+      summary: 지우기(이력 없을 때만)
+      tags:
+      - 관리자 · 권리자
+      responses:
+        '204':
+          description: 성공
+        '409':
+          $ref: '#/components/responses/E409'
+      security:
+      - admin: []
+      parameters:
+      - *id005
+      x-policy: S-12
+  /api/admin/v1/payees/{id}:merge:
+    post:
+      summary: 같은 사람 합치기
+      tags:
+      - 관리자 · 권리자
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      into:
+                        $ref: '#/components/schemas/Payee'
+                      movedRights:
+                        type: integer
+      security:
+      - admin: []
+      parameters:
+      - *id005
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - intoId
+              properties:
+                intoId:
+                  type: integer
+      x-policy: S-12
+  /api/admin/v1/payees:import:
+    post:
+      summary: 엑셀(CSV)로 한 번에
+      tags:
+      - 관리자 · 권리자
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ImportResult'
+      security:
+      - admin: []
+      requestBody:
+        required: true
+        content:
+          text/csv:
+            schema:
+              type: string
+      x-policy: S-12
+  /api/admin/v1/payees/template.csv:
+    get:
+      summary: 양식
+      tags:
+      - 관리자 · 권리자
+      responses:
+        '200':
+          description: 성공
+          content:
+            text/csv:
+              schema:
+                type: string
+      security:
+      - admin: []
+  /api/admin/v1/payees/{id}/logs:
+    get:
+      summary: 변경 기록
+      tags:
+      - 관리자 · 권리자
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        what:
+                          type: string
+                        by:
+                          type: string
+                        at:
+                          type: string
+                          format: date-time
+      security:
+      - admin: []
+      parameters:
+      - *id005
+  /api/admin/v1/members:
+    get:
+      summary: 회원(가려서)
+      tags:
+      - 관리자 · 회원
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+      security:
+      - admin: []
+      x-policy: M-08
+      x-screen: D-05
+  /api/admin/v1/members/{id}:reveal:
+    post:
+      summary: 사유를 남기고 펼치기
+      tags:
+      - 관리자 · 회원
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      email:
+                        type: string
+      security:
+      - admin: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - reason
+              properties:
+                reason:
+                  type: string
+      x-policy: M-08
+  /api/admin/v1/settings:
+    get:
+      summary: 기본 설정
+      tags:
+      - 관리자 · 설정
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+      security:
+      - admin: []
+      x-screen: D-16
+    patch:
+      summary: 기본 설정 바꾸기
+      tags:
+      - 관리자 · 설정
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+      security:
+      - admin: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+  /api/admin/v1/integrations:
+    get:
+      summary: 연동 상태
+      tags:
+      - 관리자 · 설정
+      responses:
+        '200':
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                        expiresAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+      security:
+      - admin: []
+  /api/hooks/inicis/return:
+    post:
+      summary: 결제창 복귀 — 승인 · 금액 대조 · 주문 확정
+      tags:
+      - 통지
+      responses:
+        '302':
+          description: /order/done 또는 /order/fail
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+      x-policy: C-01 C-02
+  /api/hooks/inicis/noti:
+    post:
+      summary: PG 서버 통지
+      tags:
+      - 통지
+      responses:
+        '200':
+          description: PG가 요구하는 응답 문자열
+          content:
+            text/plain:
+              schema:
+                type: string
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+      x-policy: C-02 C-03
+  /api/hooks/mail/events:
+    post:
+      summary: 메일 반송 · 거부 통지
+      tags:
+      - 통지
+      responses:
+        '204':
+          description: 성공
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      x-policy: S-11
+components:
+  securitySchemes:
+    member:
+      type: apiKey
+      in: cookie
+      name: jm_sid
+      description: 카페24 인증 뒤 발급하는 고객 세션
+    admin:
+      type: apiKey
+      in: cookie
+      name: ja_admin_sid
+      description: 관리자 세션 · 권한 owner / manager / viewer
+  parameters:
+    Idem:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+      description: 같은 키로 다시 보내면 첫 결과를 돌려줍니다
+  responses:
+    E400:
+      description: 입력을 확인해 주세요
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: VALIDATION
+              message: 입력을 확인해 주세요
+    E401:
+      description: 로그인이 필요합니다
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: AUTH_REQUIRED
+              message: 로그인이 필요합니다
+    E403:
+      description: 권한이 없습니다
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: FORBIDDEN
+              message: 권한이 없습니다
+    E404:
+      description: 찾을 수 없습니다
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: NOT_FOUND
+              message: 찾을 수 없습니다
+    E409:
+      description: 지금 상태에서는 할 수 없습니다 — 코드별 문장은 API 명세 3장
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: CONFLICT
+              message: 지금 상태에서는 할 수 없습니다 — 코드별 문장은 API 명세 3장
+    E422:
+      description: 규칙에 맞지 않습니다 — 코드별 문장은 API 명세 3장
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: UNPROCESSABLE
+              message: 규칙에 맞지 않습니다 — 코드별 문장은 API 명세 3장
+    E423:
+      description: 로그인 5회 실패로 30분 동안 잠겼습니다
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: ADMIN_LOCKED
+              message: 로그인 5회 실패로 30분 동안 잠겼습니다
+    E429:
+      description: 잠시 뒤 다시 시도해 주세요
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: RATE_LIMITED
+              message: 잠시 뒤 다시 시도해 주세요
+    E502:
+      description: 결제사 응답이 없습니다
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: PG_ERROR
+              message: 결제사 응답이 없습니다
+  schemas:
+    Error:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: object
+          required:
+          - code
+          - message
+          properties:
+            code:
+              type: string
+              example: MIN_COPIES
+            message:
+              type: string
+              example: 이 곡은 20부부터 구매하실 수 있습니다
+            field:
+              type: string
+              example: items[0].copies
+    Page:
+      type: object
+      properties:
+        total:
+          type: integer
+        page:
+          type: integer
+        size:
+          type: integer
+    Me:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        consentAt:
+          type: string
+          format: date-time
+          nullable: true
+    ConsentInput:
+      type: object
+      required:
+      - terms
+      - privacy
+      - usage
+      properties:
+        terms:
+          type: boolean
+          const: true
+        privacy:
+          type: boolean
+          const: true
+        usage:
+          type: boolean
+          const: true
+        phone:
+          type: string
+          nullable: true
+        shareToPayee:
+          type: boolean
+          default: false
+          description: 구매자 이름 · 이메일을 권리자에게 제공(선택, S-10)
+    ScoreCard:
+      type: object
+      properties:
+        code:
+          type: string
+          example: JA52001
+        title:
+          type: string
+        book:
+          type: string
+          nullable: true
+        voice:
+          type: string
+          example: SATB
+        price:
+          type: integer
+          example: 1000
+        minCopies:
+          type: integer
+          example: 1
+        status:
+          type: string
+          enum:
+          - on_sale
+          - stopped
+        hasLyrics:
+          type: boolean
+    ScoreDetail:
+      allOf:
+      - $ref: '#/components/schemas/ScoreCard'
+      - type: object
+        properties:
+          pages:
+            type: integer
+          durationSec:
+            type: integer
+          key:
+            type: string
+          level:
+            type: string
+          range:
+            type: array
+            nullable: true
+            description: 관리자가 확인한 것만
+            items:
+              type: object
+              properties:
+                part:
+                  type: string
+                lo:
+                  type: string
+                  example: D4
+                hi:
+                  type: string
+                  example: G5
+          bible:
+            type: array
+            items:
+              type: object
+              properties:
+                ref:
+                  type: string
+                  example: 요한복음 19:30
+                rel:
+                  type: string
+                  enum:
+                  - quote
+                  - paraphrase
+                  - theme
+          people:
+            type: array
+            items:
+              type: object
+              properties:
+                role:
+                  type: string
+                name:
+                  type: string
+                note:
+                  type: string
+    ScoreAdmin:
+      allOf:
+      - $ref: '#/components/schemas/ScoreDetail'
+      - type: object
+        properties:
+          status:
+            type: string
+            enum:
+            - draft
+            - on_sale
+            - stopped
+          fileVersion:
+            type: integer
+          rights:
+            type: array
+            items:
+              $ref: '#/components/schemas/Right'
+    Lyrics:
+      type: object
+      properties:
+        title:
+          type: string
+        credit:
+          type: string
+          example: Arr. by 진선미
+        slides:
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+    FileCheck:
+      type: object
+      properties:
+        k:
+          type: string
+          example: 하단 여백
+        ok:
+          type: boolean
+        block:
+          type: boolean
+        msg:
+          type: string
+    Right:
+      type: object
+      properties:
+        payeeId:
+          type: integer
+        name:
+          type: string
+        role:
+          type: string
+          enum:
+          - 작곡
+          - 작사
+          - 작사 · 작곡
+          - 편곡
+          - 원곡
+        rate:
+          type: number
+          example: 8
+        note:
+          type: string
+    RightInput:
+      type: object
+      required:
+      - name
+      - role
+      - rate
+      properties:
+        name:
+          type: string
+        role:
+          type: string
+        rate:
+          type: number
+        note:
+          type: string
+    Cart:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              title:
+                type: string
+              unitPrice:
+                type: integer
+              copies:
+                type: integer
+              amount:
+                type: integer
+        amount:
+          type: integer
+    OrderCreate:
+      type: object
+      required:
+      - items
+      - agree
+      properties:
+        items:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+            - code
+            - copies
+            properties:
+              code:
+                type: string
+              copies:
+                type: integer
+                minimum: 1
+                maximum: 999
+        agree:
+          type: object
+          required:
+          - digitalNoRefundAfterDownload
+          properties:
+            digitalNoRefundAfterDownload:
+              type: boolean
+              const: true
+    OrderCreated:
+      type: object
+      properties:
+        orderNo:
+          type: string
+          example: 20261127-0000214
+        amount:
+          type: integer
+          example: 80000
+        pg:
+          type: object
+          description: KG이니시스 결제창에 넘길 값(서명 포함, 서버가 만듦)
+    Order:
+      type: object
+      properties:
+        orderNo:
+          type: string
+        status:
+          type: string
+          enum:
+          - pending
+          - paid
+          - failed
+          - partially_refunded
+          - refunded
+        amount:
+          type: integer
+        paidAt:
+          type: string
+          format: date-time
+        pdfPassword:
+          type: string
+          example: '000214'
+          description: 주문번호 뒤 6자리 (DL-05)
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              code:
+                type: string
+              titleAtOrder:
+                type: string
+              unitPrice:
+                type: integer
+              copies:
+                type: integer
+              amount:
+                type: integer
+              status:
+                type: string
+                enum:
+                - active
+                - refunded
+              downloaded:
+                type: boolean
+    LibraryItem:
+      type: object
+      properties:
+        itemId:
+          type: integer
+        code:
+          type: string
+        title:
+          type: string
+        orderNo:
+          type: string
+        copies:
+          type: integer
+        rounds:
+          type: integer
+          description: 받은 회차
+        pdfPassword:
+          type: string
+        hasLyrics:
+          type: boolean
+        practiceUrl:
+          type: string
+          nullable: true
+    Issue:
+      type: object
+      properties:
+        url:
+          type: string
+          description: 서명된 주소 · 10분 유효
+        expiresAt:
+          type: string
+          format: date-time
+        fileName:
+          type: string
+        password:
+          type: string
+        round:
+          type: integer
+        kind:
+          type: string
+          enum:
+          - pdf
+          - print
+          - merge
+        lyricsUrl:
+          type: string
+          nullable: true
+        lyricsMissing:
+          type: integer
+          description: 가사가 없어 빠진 곡 수
+    MergeRequest:
+      type: object
+      required:
+      - items
+      properties:
+        items:
+          type: array
+          minItems: 2
+          maxItems: 20
+          items:
+            type: integer
+          description: 고른 순서대로
+        cover:
+          type: boolean
+          default: true
+        withLyrics:
+          type: boolean
+          default: true
+        kind:
+          type: string
+          enum:
+          - pdf
+          - print
+    Job:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          type: string
+          enum:
+          - running
+          - done
+          - failed
+        pollAfterSec:
+          type: integer
+        result:
+          $ref: '#/components/schemas/Issue'
+    Refund:
+      type: object
+      properties:
+        orderNo:
+          type: string
+        amount:
+          type: integer
+        kind:
+          type: string
+        pgCancelTid:
+          type: string
+        status:
+          type: string
+          enum:
+          - done
+          - failed
+    RoyaltyMonth:
+      type: object
+      properties:
+        month:
+          type: string
+          example: 2026-10
+        status:
+          type: string
+          enum:
+          - draft
+          - confirmed
+        totalCopies:
+          type: integer
+        totalPay:
+          type: integer
+        payees:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              roles:
+                type: array
+                items:
+                  type: string
+              songs:
+                type: integer
+              copies:
+                type: integer
+              pay:
+                type: integer
+              contact:
+                type: string
+                enum:
+                - ok
+                - need_email
+                - need_birth
+                - stopped
+              send:
+                allOf:
+                - $ref: '#/components/schemas/Send'
+                nullable: true
+              lines:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    code:
+                      type: string
+                    title:
+                      type: string
+                    role:
+                      type: string
+                    rate:
+                      type: number
+                    copies:
+                      type: integer
+                    sales:
+                      type: integer
+                    pay:
+                      type: integer
+    SendRequest:
+      type: object
+      required:
+      - payeeIds
+      properties:
+        payeeIds:
+          type: array
+          items:
+            type: integer
+        attach:
+          type: object
+          properties:
+            statementPdf:
+              type: boolean
+              const: true
+            detailXlsx:
+              type: boolean
+              default: false
+    SendBatch:
+      type: object
+      properties:
+        batchId:
+          type: string
+        queued:
+          type: integer
+        skipped:
+          type: array
+          items:
+            type: object
+            properties:
+              payeeId:
+                type: integer
+              reason:
+                type: string
+    Send:
+      type: object
+      properties:
+        payeeId:
+          type: integer
+        to:
+          type: string
+        files:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum:
+          - queued
+          - sent
+          - failed
+        error:
+          type: string
+          nullable: true
+        at:
+          type: string
+          format: date-time
+    Payee:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+          nullable: true
+        hasBirth:
+          type: boolean
+          description: 값은 내려주지 않음
+        status:
+          type: string
+          enum:
+          - active
+          - stopped
+        contact:
+          type: string
+          enum:
+          - ok
+          - need_email
+          - need_birth
+          - stopped
+        memo:
+          type: string
+        source:
+          type: string
+          enum:
+          - seed
+          - score
+          - manual
+          - import
+        songs:
+          type: integer
+    PayeeInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: 추가할 때만
+        email:
+          type: string
+          format: email
+        birth:
+          type: string
+          pattern: ^[0-9]{6}$
+          writeOnly: true
+        memo:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - stopped
+    ImportResult:
+      type: object
+      properties:
+        added:
+          type: integer
+        updated:
+          type: integer
+        skipped:
+          type: array
+          items:
+            type: object
+            properties:
+              line:
+                type: integer
+              reason:
+                type: string
+    Admin:
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+          enum:
+          - owner
+          - manager
+          - viewer
